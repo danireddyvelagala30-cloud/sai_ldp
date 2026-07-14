@@ -14,10 +14,10 @@
 
     <nav>
         <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About Me</a></li>
-            <li><a href="#contact">Contact Me</a></li>
-            <li><a href="#gallery">My Gallery</a></li>
+            <li><a href="#home" class="nav-link">Home</a></li>
+            <li><a href="#about" class="nav-link">About Me</a></li>
+            <li><a href="#contact" class="nav-link">Contact Me</a></li>
+            <li><a href="#gallery" class="nav-link">My Gallery</a></li>
         </ul>
     </nav>
 </header>
@@ -151,6 +151,51 @@
 </div>
 
 </footer>
+
+<script>
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('section');
+
+    const setActiveLink = (id) => {
+        navLinks.forEach(link => {
+            const isActive = link.getAttribute('href') === `#${id}`;
+            link.classList.toggle('active', isActive);
+        });
+    };
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault();
+            const sectionId = link.getAttribute('href').slice(1);
+            const section = document.getElementById(sectionId);
+            setActiveLink(sectionId);
+
+            if (section) {
+                const headerHeight = document.querySelector('header').offsetHeight;
+                const topPosition = section.offsetTop - headerHeight - 10;
+                window.scrollTo({
+                    top: topPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                setActiveLink(entry.target.id);
+            }
+        });
+    }, { rootMargin: '-40% 0px -45% 0px', threshold: 0.1 });
+
+    sections.forEach(section => observer.observe(section));
+
+    const currentHash = window.location.hash.replace('#', '');
+    if (currentHash) {
+        setActiveLink(currentHash);
+    }
+</script>
 
 </body>
 </html>
