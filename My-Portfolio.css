@@ -57,6 +57,31 @@ nav a.active{
     box-shadow:0 0 8px rgba(255,255,255,0.4);
 }
 
+/* Prevent touch devices from keeping a focused-looking style */
+nav a:focus{
+    outline: none;
+}
+
+nav a:focus:not(.active){
+    background: transparent;
+    color: white;
+    border-color: transparent;
+    box-shadow: none;
+}
+
+/* Remove tap highlight and prevent :active from looking like stuck active */
+nav a{
+    -webkit-tap-highlight-color: transparent;
+}
+
+nav a:active:not(.active),
+nav a:focus-visible:not(.active){
+    background: transparent;
+    color: white;
+    border-color: transparent;
+    box-shadow: none;
+}
+
 section{
     padding:40px 10%;
     scroll-margin-top:80px;
