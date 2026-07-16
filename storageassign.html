@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storage Assignment</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background-color:#f2f2f2;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }
+
+        .container{
+            background:white;
+            padding:30px;
+            border-radius:10px;
+            text-align:center;
+            box-shadow:0 0 10px gray;
+        }
+
+        h2{
+            color:blue;
+        }
+
+        button{
+            padding:10px 20px;
+            margin:10px;
+            font-size:18px;
+            cursor:pointer;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Storage Counter App</h1>
+
+    <h2>Local Score :
+        <span id="localScore">0</span>
+    </h2>
+
+    <h2>Session Score :
+        <span id="sessionScore">0</span>
+    </h2>
+
+    <button onclick="incrementScore()">
+        Increment Scores
+    </button>
+
+    <button onclick="resetScore()">
+        Reset Scores
+    </button>
+
+</div>
+
+<script>
+
+    // Load scores from storage
+    let localScore = Number(localStorage.getItem("localScore")) || 0;
+    let sessionScore = Number(sessionStorage.getItem("sessionScore")) || 0;
+
+    // Display saved scores
+    document.getElementById("localScore").innerHTML = localScore;
+    document.getElementById("sessionScore").innerHTML = sessionScore;
+
+    // Increment both scores
+    function incrementScore(){
+
+        localScore++;
+        sessionScore++;
+
+        localStorage.setItem("localScore", localScore);
+        sessionStorage.setItem("sessionScore", sessionScore);
+
+        document.getElementById("localScore").innerHTML = localScore;
+        document.getElementById("sessionScore").innerHTML = sessionScore;
+
+    }
+
+    // Reset both scores
+    function resetScore(){
+
+        localScore = 0;
+        sessionScore = 0;
+
+        localStorage.setItem("localScore", 0);
+        sessionStorage.setItem("sessionScore", 0);
+
+        document.getElementById("localScore").innerHTML = 0;
+        document.getElementById("sessionScore").innerHTML = 0;
+
+    }
+
+</script>
+
+</body>
+</html>
