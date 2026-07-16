@@ -153,48 +153,86 @@
 </footer>
 
 <script>
-    const navLinks = document.querySelectorAll('.nav-link');
-    const sections = document.querySelectorAll('section');
+    const navLinks = Array.from(document.querySelectorAll('.nav-link'));
+    const sections = Array.from(document.querySelectorAll('section'));
 
     const setActiveLink = (id) => {
-        navLinks.forEach(link => {
-            const isActive = link.getAttribute('href') === `#${id}`;
-            link.classList.toggle('active', isActive);
+        navLinks.forEach(link => link.classList.remove('active'));
+        const match = navLinks.find(link => link.getAttribute('href') === `#${id}`);
+        if (match) match.classList.add('active');
+    };
+
+    const updateActiveLink = () => {
+        // pick the section nearest to the top of the viewport (after header)
+        const headerHeight = document.querySelector('header').offsetHeight || 0;
+        const referenceY = headerHeight + 20;
+        let closest = { id: 'home', distance: Infinity };
+
+        // clear any lingering visual active state first
+        navLinks.forEach(l => l.classList.remove('active'));
+
+        sections.forEach(section => {
+            const rect = section.getBoundingClientRect();
+            const distance = Math.abs(rect.top - referenceY);
+            if (distance < closest.distance) {
+                closest = { id: section.id, distance };
+            }
         });
+
+        setActiveLink(closest.id);
+        // remove any focus from links so touch/click styles don't linger
+        navLinks.forEach(l => { try { l.blur(); } catch (e) {} });
     };
 
     navLinks.forEach(link => {
         link.addEventListener('click', (event) => {
+            // smooth navigation handled in-page; ensure only clicked link is active immediately
             event.preventDefault();
             const sectionId = link.getAttribute('href').slice(1);
             const section = document.getElementById(sectionId);
             setActiveLink(sectionId);
 
+            // remove focus so touch devices don't keep a focus style
+            try { link.blur(); } catch (e) {}
+
             if (section) {
                 const headerHeight = document.querySelector('header').offsetHeight;
                 const topPosition = section.offsetTop - headerHeight - 10;
-                window.scrollTo({
-                    top: topPosition,
-                    behavior: 'smooth'
-                });
+                window.scrollTo({ top: topPosition, behavior: 'smooth' });
             }
         });
     });
 
+    // Use IntersectionObserver to update active link reliably when scrolling
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                setActiveLink(entry.target.id);
-            }
-        });
-    }, { rootMargin: '-40% 0px -45% 0px', threshold: 0.1 });
+        const visible = entries.filter(e => e.isIntersecting);
+        if (visible.length) {
+            // pick the entry with largest intersectionRatio
+            visible.sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+            setActiveLink(visible[0].target.id);
+            // clear focus from links after observer updates active state
+            navLinks.forEach(l => { try { l.blur(); } catch (e) {} });
+        }
+    }, { rootMargin: '-30% 0px -45% 0px', threshold: [0.2, 0.4, 0.6, 0.8] });
 
     sections.forEach(section => observer.observe(section));
 
-    const currentHash = window.location.hash.replace('#', '');
-    if (currentHash) {
-        setActiveLink(currentHash);
-    }
+    // helper to clear active visuals immediately (prevents stuck highlights)
+    const clearActiveVisuals = () => {
+        navLinks.forEach(l => {
+            try { l.classList.remove('active'); l.blur(); } catch (e) {}
+        });
+    };
+
+    // On touch interactions, clear visuals and update active while moving
+    window.addEventListener('touchstart', () => { clearActiveVisuals(); }, { passive: true });
+    window.addEventListener('touchmove', () => { updateActiveLink(); }, { passive: true });
+
+    // On scroll, clear previous active immediately then recompute
+    window.addEventListener('scroll', () => { clearActiveVisuals(); updateActiveLink(); }, { passive: true });
+    window.addEventListener('resize', updateActiveLink);
+    window.addEventListener('load', updateActiveLink);
+    updateActiveLink();
 </script>
 
 </body>
