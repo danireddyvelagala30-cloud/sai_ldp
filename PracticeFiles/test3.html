@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Course Practice</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        h1 {
+            color: darkblue;
+        }
+
+        button {
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        #output {
+            margin-top: 20px;
+            padding: 15px;
+            border: 2px solid black;
+            background: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 id="heading">JavaScript Complete Practice</h1>
+
+    <button onclick="runProgram()">Run JavaScript Program</button>
+
+    <button onclick="changeColor()">Change Background</button>
+
+    <button onclick="changeHeading()">Change Heading</button>
+
+    <div id="output"></div>
+
+    <script>
+
+        function runProgram() {
+
+    let output = document.getElementById("output");
+
+            output.innerHTML = "";
+
+            // 5.1 JavaScript Best Practices
+
+            const college = "ABC College";
+
+            let studentName = "Sai";
+
+            let age = 22;
+
+            let marks = 90;
+
+            var city = "hyderabad"; 
+
+            output.innerHTML += "<h2>5.1 Best Practices</h2>";
+
+            output.innerHTML += "College : " + college + "<br>";
+
+            output.innerHTML += "Student : " + studentName + "<br>";
+
+            output.innerHTML += "Age : " + age + "<br>";
+
+            output.innerHTML += "Marks : " + marks + "<br>";
+
+            output.innerHTML += "City : " + city  + "<br>";
+
+            if (marks >= 35) {
+
+                output.innerHTML += "Result : Pass<br>";
+
+            } else {
+
+                output.innerHTML += "Result : Fail<br>";
+
+            }
+
+            output.innerHTML += "<hr>";
+
+            // 5.2 Basics till Objects
+
+            output.innerHTML += "<h2>5.2 JavaScript Basics</h2>";
+
+            let subjects = ["HTML", "CSS", "JavaScript"];
+
+            output.innerHTML += "<b>Subjects</b><br>";
+
+            for (let i = 0; i < subjects.length; i++) {
+
+                output.innerHTML += subjects[i] + "<br>";
+
+            }
+
+            let student = {
+
+                name: studentName,
+
+                age: age,
+
+                course: "Full Stack",
+
+                marks: marks
+
+            };
+
+            output.innerHTML += "<br>";
+
+            output.innerHTML += "Student Name : " + student.name + "<br>";
+
+            output.innerHTML += "Course : " + student.course + "<br>";
+
+            output.innerHTML += "<hr>";
+
+            // 5.3 Functions
+
+            output.innerHTML += "<h2>5.3 Functions</h2>";
+
+            function add(a, b) {
+
+                return a + b;
+
+            }
+
+            function average(total) {
+
+                return total / 2;
+
+            }
+
+            let total = add(80, 90);
+
+            let avg = average(total);
+
+            output.innerHTML += "Total : " + total + "<br>";
+
+            output.innerHTML += "Average : " + avg + "<br>";
+
+            const square = (num) => {
+
+                return num * num;
+
+            }
+
+            output.innerHTML += "Square of 5 : " + square(5) + "<br>";
+
+            output.innerHTML += "<hr>";
+            
+            // 5.4 Custom Object
+
+            output.innerHTML += "<h2>5.4 Custom Object</h2>";
+
+            class Employee {
+
+                constructor(id, name, salary) {
+
+                    this.id = id;
+
+                    this.name = name;
+
+                    this.salary = salary;
+
+                }
+
+                display() {
+
+                    return "ID : " + this.id +
+                        "<br>Name : " + this.name +
+                        "<br>Salary : " + this.salary;
+
+                }
+
+            }
+
+            let emp = new Employee(101, "Sai", 50000);
+
+            output.innerHTML += emp.display();
+
+            output.innerHTML += "<hr>";
+
+            // Closure
+
+            output.innerHTML += "<h2>Closure Example</h2>";
+
+            function counter() {
+
+                let count = 0;
+
+                return function () {
+
+                    count++;
+
+                    return count;
+
+                }
+
+            }
+
+            let increase = counter();
+
+            output.innerHTML += increase() + "<br>";
+
+            output.innerHTML += increase() + "<br>";
+
+            output.innerHTML += increase() + "<br>";
+
+        }
+
+        // 5.5 DOM
+
+        function changeColor() {
+            if (document.body.style.backgroundColor === "lightyellow") {
+                document.body.style.backgroundColor = "#f4f4f4";
+            } else {
+                document.body.style.backgroundColor = "lightyellow";
+            }
+        }
+
+        function changeHeading() {
+            if (document.getElementById("heading").innerHTML === "JavaScript DOM Manipulation") {
+                document.getElementById("heading").innerHTML = "JavaScript Complete Practice";
+                document.getElementById("heading").style.color = "darkblue";
+                document.getElementById("heading").style.fontSize = "32px";
+            } else {
+            document.getElementById("heading").innerHTML = "JavaScript DOM Manipulation";
+
+            document.getElementById("heading").style.color = "red";
+
+            document.getElementById("heading").style.fontSize = "40px";
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>
