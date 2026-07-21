@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>DOM Manipulation Practice</title>
+
+    <style>
+        body{
+            font-family: Arial;
+            margin:30px;
+        }
+
+        button{
+            margin:5px;
+            padding:10px;
+        }
+
+        .box{
+            color:blue;
+            font-size:20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1 id="heading">JavaScript DOM</h1>
+
+<p class="box">Paragraph 1</p>
+<p class="box">Paragraph 2</p>
+
+<img id="image"
+src="https://picsum.photos/200"
+alt="Image">
+
+<br><br>
+
+<input
+type="text"
+id="username"
+placeholder="Enter Name">
+
+<br><br>
+
+<button id="changeText">Change Text</button>
+
+<button id="changeStyle">Change Style</button>
+
+<button id="addElement">Add Element</button>
+
+<button id="removeElement">Remove Element</button>
+
+<button id="changeImage">Change Image</button>
+
+<div id="container"></div>
+
+<script>
+
+// getElementById()
+
+let heading = document.getElementById("heading");
+
+// querySelector()
+
+let firstPara = document.querySelector(".box");
+
+// querySelectorAll()
+
+let allPara = document.querySelectorAll(".box");
+
+// innerHTML
+
+document.getElementById("changeText").addEventListener("click",function(){
+
+    heading.innerHTML="<i>DOM Manipulation Completed</i>";
+
+    firstPara.innerText="This is innerText";
+
+    allPara[1].textContent="This is textContent";
+
+});
+
+// style
+
+document.getElementById("changeStyle").addEventListener("click",function(){
+
+    heading.style.color="red";
+
+    heading.style.backgroundColor="yellow";
+
+    heading.style.padding="10px";
+
+    heading.style.border="2px solid black";
+
+});
+
+// createElement()
+
+document.getElementById("addElement").addEventListener("click",function(){
+
+    let newPara=document.createElement("p");
+
+    newPara.innerHTML="New Paragraph Created";
+
+    newPara.id="newParagraph";
+
+    document.getElementById("container").appendChild(newPara);
+
+});
+
+// remove()
+
+document.getElementById("removeElement").addEventListener("click",function(){
+
+    let removePara=document.getElementById("newParagraph");
+
+    if(removePara){
+
+        removePara.remove();
+
+    }
+
+});
+
+// setAttribute() and getAttribute()
+
+document.getElementById("changeImage").addEventListener("click",function(){
+
+    let img=document.getElementById("image");
+
+    img.setAttribute("src","https://picsum.photos/250");
+
+    alert(img.getAttribute("src"));
+
+});
+
+// value
+
+document.getElementById("username").addEventListener("input",function(){
+
+    console.log(this.value);
+
+});
+
+</script>
+
+</body>
+</html>

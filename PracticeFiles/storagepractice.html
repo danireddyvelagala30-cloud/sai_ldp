@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>JavaScript Storage Example</title>
+
+    <style>
+        body{
+            font-family: Arial;
+            margin:30px;
+        }
+
+        input{
+            padding:8px;
+            width:250px;
+        }
+
+        button{
+            padding:10px;
+            margin:5px;
+        }
+
+        h2{
+            color:blue;
+        }
+
+        #output{
+            margin-top:20px;
+            font-size:18px;
+            color:green;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>JavaScript Storage Example</h2>
+
+<input type="text" id="name" placeholder="Enter your name">
+
+<br><br>
+
+<button onclick="saveLocal()">Save Local Storage</button>
+
+<button onclick="getLocal()">Get Local Storage</button>
+
+<button onclick="removeLocal()">Remove Local Storage</button>
+
+<button onclick="clearLocal()">Clear Local Storage</button>
+
+<button onclick="localLength()">Local Length</button>
+
+<button onclick="localKey()">Local Key</button>
+
+<hr>
+
+<button onclick="saveSession()">Save Session Storage</button>
+
+<button onclick="getSession()">Get Session Storage</button>
+
+<button onclick="removeSession()">Remove Session Storage</button>
+
+<button onclick="clearSession()">Clear Session Storage</button>
+
+<button onclick="sessionLength()">Session Length</button>
+
+<button onclick="sessionKey()">Session Key</button>
+
+<h3 id="output"></h3>
+
+<script>
+
+// Local Storage
+
+function saveLocal(){
+
+    let name=document.getElementById("name").value;
+
+    localStorage.setItem("username",name);
+
+    document.getElementById("output").innerHTML="Saved to Local Storage";
+
+}
+
+function getLocal(){
+    let data=localStorage.getItem("username");
+
+    document.getElementById("output").innerHTML="Local Storage : "+data;
+
+}
+
+function removeLocal(){
+
+    localStorage.removeItem("username");
+
+    document.getElementById("output").innerHTML="Local Storage Item Removed";
+
+}
+
+function clearLocal(){
+
+    localStorage.clear();
+
+    document.getElementById("output").innerHTML="Local Storage Cleared";
+
+}
+
+function localLength(){
+
+    document.getElementById("output").innerHTML=
+    "Local Storage Length : "+localStorage.length;
+
+}
+
+function localKey(){
+
+    document.getElementById("output").innerHTML=
+    "First Key : "+localStorage.key(0);
+
+}
+// Session Storage
+function saveSession(){
+
+    let name=document.getElementById("name").value;
+
+    sessionStorage.setItem("username",name);
+
+    document.getElementById("output").innerHTML="Saved to Session Storage";
+
+}
+
+function getSession(){
+
+    let data=sessionStorage.getItem("username");
+
+    document.getElementById("output").innerHTML=
+    "Session Storage : "+data;
+
+}
+
+function removeSession(){
+
+    sessionStorage.removeItem("username");
+
+    document.getElementById("output").innerHTML=
+    "Session Storage Item Removed";
+
+}
+
+function clearSession(){
+
+    sessionStorage.clear();
+
+    document.getElementById("output").innerHTML=
+    "Session Storage Cleared";
+
+}
+
+function sessionLength(){
+
+    document.getElementById("output").innerHTML=
+    "Session Storage Length : "+sessionStorage.length;
+
+}
+
+function sessionKey(){
+
+    document.getElementById("output").innerHTML=
+    "First Key : "+sessionStorage.key(0);
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promises Complete Example</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            margin:30px;
+        }
+
+        button{
+            padding:10px 20px;
+            margin:5px;
+            cursor:pointer;
+        }
+
+        #output{
+            margin-top:20px;
+            background:#f2f2f2;
+            padding:15px;
+            border-radius:8px;
+            white-space:pre-line;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<h2>JavaScript Promises, Async & Await</h2>
+
+<button onclick="basicPromise()">Basic Promise</button>
+
+<button onclick="allPromise()">Promise.all()</button>
+
+<button onclick="racePromise()">Promise.race()</button>
+
+<button onclick="anyPromise()">Promise.any()</button>
+
+<button onclick="allSettledPromise()">Promise.allSettled()</button>
+
+<button onclick="asyncExample()">Async / Await</button>
+
+<div id="output"></div>
+
+<script>
+
+const output = document.getElementById("output");
+
+function show(message){
+    output.innerHTML += message + "\n";
+}
+
+// Basic Promise
+
+function basicPromise(){
+
+    output.innerHTML="";
+
+    let promise = new Promise((resolve,reject)=>{
+
+        setTimeout(()=>{
+
+            let success=true;
+
+            if(success){
+                resolve("Data Loaded Successfully");
+            }
+            else{
+                reject("Loading Failed");
+            }
+
+        },2000);
+
+    });
+
+    promise
+    .then(result=>{
+        show("THEN : " + result);
+    })
+
+    .catch(error=>{
+        show("CATCH : " + error);
+    })
+
+    .finally(()=>{
+        show("FINALLY : Operation Completed");
+    });
+
+}
+
+
+// Promise.all()
+
+function allPromise(){
+
+    output.innerHTML="";
+
+    let p1=new Promise(resolve=>setTimeout(()=>resolve("HTML"),1000));
+
+    let p2=new Promise(resolve=>setTimeout(()=>resolve("CSS"),2000));
+
+    let p3=new Promise(resolve=>setTimeout(()=>resolve("JavaScript"),3000));
+
+    Promise.all([p1,p2,p3])
+
+    .then(result=>{
+
+        show("Promise.all()");
+        show(result.join(", "));
+
+    });
+
+}
+
+
+
+// Promise.race()
+
+function racePromise(){
+
+    output.innerHTML="";
+
+    let p1=new Promise(resolve=>setTimeout(()=>resolve("First"),3000));
+
+    let p2=new Promise(resolve=>setTimeout(()=>resolve("Second"),1000));
+
+    let p3=new Promise(resolve=>setTimeout(()=>resolve("Third"),2000));
+
+    Promise.race([p1,p2,p3])
+
+    .then(result=>{
+
+        show("Promise.race()");
+        show(result);
+
+    });
+
+}
+
+
+
+// Promise.any()
+
+function anyPromise(){
+
+    output.innerHTML="";
+
+    let p1=new Promise((resolve,reject)=>setTimeout(()=>reject("Server1 Failed"),1000));
+
+    let p2=new Promise((resolve,reject)=>setTimeout(()=>resolve("Server2 Success"),3000));
+
+    let p3=new Promise((resolve,reject)=>setTimeout(()=>resolve("Server3 Success"),2000));
+
+    Promise.any([p1,p2,p3])
+
+    .then(result=>{
+
+        show("Promise.any()");
+        show(result);
+
+    })
+
+    .catch(error=>{
+
+        show(error);
+
+    });
+
+}
+
+
+
+// Promise.allSettled()
+
+function allSettledPromise(){
+
+    output.innerHTML="";
+
+    let p1=Promise.resolve("Login Success");
+
+    let p2=Promise.reject("Network Error");
+
+    let p3=Promise.resolve("Payment Success");
+
+    Promise.allSettled([p1,p2,p3])
+
+    .then(results=>{
+
+        show("Promise.allSettled()");
+
+        results.forEach(result=>{
+
+            show(result.status+" : "+(result.value || result.reason));
+
+        });
+
+    });
+
+}
+
+
+
+// Async Await
+
+function getStudent(){
+
+    return new Promise(resolve=>{
+
+        setTimeout(()=>{
+
+            resolve("Student Data Received");
+
+        },2500);
+
+    });
+
+}
+
+
+async function asyncExample(){
+
+    output.innerHTML="";
+
+    show("Loading...");
+
+    try{
+
+        let data=await getStudent();
+
+        show(data);
+
+    }
+
+    catch(error){
+
+        show(error);
+
+    }
+
+    finally{
+
+        show("Async Operation Finished");
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
