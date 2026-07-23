@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Restaurant Billing App</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="left-panel">
+            <h2>Restaurant Tables</h2>
+            <input type="text" id="searchInput" placeholder="Search table..." />
+            <div id="tablesList" class="tables-list"></div>
+        </div>
+
+        <div class="right-panel">
+            <h2>Menu</h2>
+            <p>Drag a menu item onto a table to add it to the order.</p>
+
+            <div class="menu-controls">
+                <input type="text" id="menuSearch" placeholder="Search menu item..." />
+                <select id="categoryFilter">
+                    <option value="All">All Categories</option>
+                    <option value="Appetizer">Appetizer</option>
+                    <option value="Main Course">Main Course</option>
+                    <option value="Dessert">Dessert</option>
+                    <option value="Beverage">Beverage</option>
+                </select>
+            </div>
+
+            <div id="menuList" class="menu-list"></div>
+        </div>
+    </div>
+
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <h3 id="modalTitle">Table</h3>
+            <div id="orderItems" class="order-items"></div>
+            <div class="modal-actions">
+                <button id="generateBillBtn">Generate Bill</button>
+                <button id="closeModalBtn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="tables.js"></script>
+    <script src="menuItems.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
