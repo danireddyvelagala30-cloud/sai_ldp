@@ -1,0 +1,44 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #1d1d1d;
+  color: white;
+}
+
+.container {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.contracts {
+  flex: 2;
+  background: #2b2b2b;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid gray;
+}
+
+.summary {
+  flex: 1;
+  background: #2b2b2b;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  background: purple;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
