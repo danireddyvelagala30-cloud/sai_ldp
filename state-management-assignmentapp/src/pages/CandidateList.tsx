@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  Chip,
   Paper,
   Stack,
   TextField,
@@ -128,18 +127,79 @@ const CandidateList = ({ candidates }: CandidateListProps) => {
             bgcolor: "#fff",
           }}
         >
-          <Box sx={{ display: "flex", justifyContent: "space-between", gap: 2, alignItems: "center" }}>
-            <Typography variant="h5" sx={{ fontWeight: 700 }}>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              gap: 2,
+              alignItems: "center",
+              flexWrap: "wrap",
+            }}
+          >
+            <Typography variant="h5" sx={{ fontWeight: 500 }}>
               Candidate Information
             </Typography>
 
-            <TextField
-              size="small"
-              placeholder="Search any candidate"
-              value={search}
-              onChange={(event) => setSearch(event.target.value)}
-              sx={{ width: 340 }}
-            />
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: 1,
+                ml: "auto",
+                border: "1px solid #cbd5e1",
+                borderRadius: 1.5,
+                px: 1.5,
+                py: 0.5,
+                bgcolor: "#fff",
+              }}
+            >
+              <Box
+                sx={{
+                  color: "#94a3b8",
+                  fontSize: 18,
+                  lineHeight: 1,
+                  display: "grid",
+                  placeItems: "center",
+                }}
+              >
+                ⌕
+              </Box>
+
+              <TextField
+                size="small"
+                placeholder="Search any candidate"
+                value={search}
+                onChange={(event) => setSearch(event.target.value)}
+                variant="standard"
+                slotProps={{
+                  input: {
+                    disableUnderline: true,
+                  },
+                }}
+                sx={{
+                  width: 320,
+                  "& .MuiInputBase-input": {
+                    padding: 0,
+                    fontSize: "0.95rem",
+                  },
+                }}
+              />
+
+              <Box
+                sx={{
+                  borderLeft: "1px solid #cbd5e1",
+                  color: "#64748b",
+                  px: 1,
+                  fontWeight: 700,
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 0.5,
+                }}
+              >
+                <Box sx={{ fontSize: 14 }}>Filter</Box>
+                <Box sx={{ fontSize: 12 }}>▾</Box>
+              </Box>
+            </Box>
           </Box>
         </Paper>
 
@@ -147,7 +207,6 @@ const CandidateList = ({ candidates }: CandidateListProps) => {
           <Typography variant="body2" color="text.secondary">
             Total Candidates: {filteredCandidates.length}
           </Typography>
-          <Chip label="Filter" variant="outlined" />
         </Box>
 
         <CandidateTable candidates={filteredCandidates} />

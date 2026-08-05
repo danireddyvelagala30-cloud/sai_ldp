@@ -103,7 +103,16 @@ const CandidateDetails = ({ candidates, engageCandidate }: CandidateDetailsProps
         >
           <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
             <Button onClick={() => navigate("/")} variant="text">← Back</Button>
-            <Typography variant="h4" sx={{ fontWeight: 700 }}>
+            <Typography
+              sx={{
+                fontFamily: '"Inter", Arial, Helvetica, sans-serif',
+                fontWeight: 500,
+                fontSize: "16px",
+                lineHeight: "24px",
+                letterSpacing: "0%",
+                color: "#111827",
+              }}
+            >
               {candidate.name}
             </Typography>
           </Box>
@@ -126,9 +135,9 @@ const CandidateDetails = ({ candidates, engageCandidate }: CandidateDetailsProps
             <Table>
               <TableHead sx={{ backgroundColor: "#f4f6f8" }}>
                 <TableRow>
-                  <TableCell sx={{ fontWeight: 700 }}>SEARCH</TableCell>
-                  <TableCell sx={{ fontWeight: 700 }}>STATUS</TableCell>
-                  <TableCell sx={{ fontWeight: 700 }}>DATE</TableCell>
+                  <TableCell sx={{ fontWeight: 500 }}>SEARCH</TableCell>
+                  <TableCell sx={{ fontWeight: 500 }}>STATUS</TableCell>
+                  <TableCell sx={{ fontWeight: 500 }}>DATE</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>

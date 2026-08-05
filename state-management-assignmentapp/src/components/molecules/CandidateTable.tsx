@@ -23,11 +23,11 @@ const CandidateTable = ({ candidates }: CandidateTableProps) => {
         <Table>
           <TableHead sx={{ backgroundColor: "#f4f6f8" }}>
             <TableRow>
-              <TableCell sx={{ fontWeight: 700, color: "#475569" }}>NAME</TableCell>
-              <TableCell sx={{ fontWeight: 700, color: "#475569" }}>ADJUDICATION</TableCell>
-              <TableCell sx={{ fontWeight: 700, color: "#475569" }}>STATUS</TableCell>
-              <TableCell sx={{ fontWeight: 700, color: "#475569" }}>LOCATION</TableCell>
-              <TableCell sx={{ fontWeight: 700, color: "#475569" }}>DATE</TableCell>
+              <TableCell sx={{ fontWeight: 500, color: "#475569" }}>NAME</TableCell>
+              <TableCell sx={{ fontWeight: 500, color: "#475569" }}>ADJUDICATION</TableCell>
+              <TableCell sx={{ fontWeight: 500, color: "#475569" }}>STATUS</TableCell>
+              <TableCell sx={{ fontWeight: 500, color: "#475569" }}>LOCATION</TableCell>
+              <TableCell sx={{ fontWeight: 500, color: "#475569" }}>DATE</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
