@@ -8,10 +8,10 @@ const StatusChip = ({ label }: StatusChipProps) => {
   let bg = "#ECFDF5";
   let color = "#12B76A";
 
-  if (label === "CLEAR") {
+  if (label.toUpperCase() === "CLEAR") {
     bg = "#ECFDF5";
     color = "#12B76A";
-  } else if (label === "CONSIDER") {
+  } else if (label.toUpperCase() === "CONSIDER") {
     bg = "#FEF0C7";
     color = "#B54708";
   }
@@ -25,15 +25,16 @@ const StatusChip = ({ label }: StatusChipProps) => {
         textTransform: "uppercase",
         fontWeight: 600,
         letterSpacing: "0.04em",
-        fontSize: "0.75rem",
+        fontSize: "12px",
         height: 24,
         borderRadius: "4px",
         bgcolor: bg,
         color: color,
         boxShadow: "none",
-        px: 0.5,
+        border: "none",
         "& .MuiChip-label": {
-          px: 1,
+          px: "8px",
+          py: 0,
         },
       }}
     />

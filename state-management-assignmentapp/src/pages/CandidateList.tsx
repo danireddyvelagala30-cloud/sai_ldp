@@ -44,12 +44,11 @@ const CandidateList = ({ candidates }: CandidateListProps) => {
       <Box
         sx={{
           flex: 1,
-          height: "100%",
+          height: "100vh",
           display: "flex",
           flexDirection: "column",
-          overflowY: "auto",
-          overflowX: "hidden",
-          p: "24px 32px 24px 24px",
+          overflow: "hidden",
+          p: "20px 24px",
           boxSizing: "border-box",
         }}
       >
@@ -59,7 +58,8 @@ const CandidateList = ({ candidates }: CandidateListProps) => {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            mb: "24px",
+            mb: "16px",
+            flexShrink: 0,
           }}
         >
           <Typography
@@ -87,7 +87,7 @@ const CandidateList = ({ candidates }: CandidateListProps) => {
                 fontWeight: 600,
                 fontSize: "14px",
                 px: "16px",
-                py: "8px",
+                py: "6px",
                 "&:hover": {
                   bgcolor: "#F9FAFB",
                   borderColor: "#D0D5DD",
@@ -108,7 +108,7 @@ const CandidateList = ({ candidates }: CandidateListProps) => {
                 fontWeight: 600,
                 fontSize: "14px",
                 px: "16px",
-                py: "8px",
+                py: "6px",
                 boxShadow: "none",
                 "&:hover": {
                   bgcolor: "#1A3EDC",
@@ -125,11 +125,15 @@ const CandidateList = ({ candidates }: CandidateListProps) => {
         <Paper
           elevation={0}
           sx={{
+            flex: 1,
+            display: "flex",
+            flexDirection: "column",
             borderRadius: "8px",
             border: "1px solid #E4E7EC",
             bgcolor: "#FFFFFF",
             overflow: "hidden",
             boxShadow: "0px 1px 3px rgba(0, 0, 0, 0.04)",
+            minHeight: 0,
           }}
         >
           {/* Candidate Information Header & Tools */}
@@ -138,9 +142,9 @@ const CandidateList = ({ candidates }: CandidateListProps) => {
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
-              p: "20px 24px",
+              p: "14px 24px",
               borderBottom: "1px solid #EAECF0",
-              flexWrap: "wrap",
+              flexShrink: 0,
               gap: 2,
             }}
           >
@@ -165,7 +169,7 @@ const CandidateList = ({ candidates }: CandidateListProps) => {
                   border: "1px solid #D0D5DD",
                   borderRadius: "6px",
                   px: "12px",
-                  py: "6px",
+                  py: "4px",
                   bgcolor: "#FFFFFF",
                   width: 280,
                 }}
@@ -210,8 +214,8 @@ const CandidateList = ({ candidates }: CandidateListProps) => {
                   fontWeight: 500,
                   fontSize: "14px",
                   px: "14px",
-                  py: "6px",
-                  height: 36,
+                  py: "4px",
+                  height: 34,
                   "&:hover": {
                     bgcolor: "#F9FAFB",
                     borderColor: "#D0D5DD",
@@ -226,9 +230,9 @@ const CandidateList = ({ candidates }: CandidateListProps) => {
                 sx={{
                   border: "1px solid #D0D5DD",
                   borderRadius: "6px",
-                  p: "6px",
-                  height: 36,
-                  width: 36,
+                  p: "4px",
+                  height: 34,
+                  width: 34,
                   color: "#667085",
                   "&:hover": {
                     bgcolor: "#F9FAFB",
@@ -240,8 +244,10 @@ const CandidateList = ({ candidates }: CandidateListProps) => {
             </Box>
           </Box>
 
-          {/* Table */}
-          <CandidateTable candidates={filteredCandidates} />
+          {/* Table Component */}
+          <Box sx={{ flex: 1, display: "flex", flexDirection: "column", minHeight: 0 }}>
+            <CandidateTable candidates={filteredCandidates} />
+          </Box>
         </Paper>
       </Box>
     </Box>

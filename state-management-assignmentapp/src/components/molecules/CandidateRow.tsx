@@ -16,14 +16,18 @@ const CandidateRow = ({ candidate }: CandidateRowProps) => {
     <TableRow
       hover
       sx={{
+        "&:hover": {
+          bgcolor: "#F9FAFB",
+        },
         "& td": {
-          borderBottom: "1px solid #F2F4F7",
-          py: "12px",
+          borderBottom: "1px solid #EAECF0",
+          py: "8px",
           px: "24px",
+          verticalAlign: "middle",
         },
       }}
     >
-      <TableCell>
+      <TableCell sx={{ width: "22%" }}>
         <Link
           to={`/candidate/${candidate.id}`}
           style={{
@@ -36,22 +40,24 @@ const CandidateRow = ({ candidate }: CandidateRowProps) => {
           {candidate.name}
         </Link>
       </TableCell>
-      <TableCell>
+
+      <TableCell sx={{ width: "18%" }}>
         {hasAdjudication ? (
           <Chip
             label={candidate.adjudication}
             size="small"
             sx={{
               borderRadius: "4px",
-              border: isEngaged ? "1px dashed #8b5cf6" : "1px dashed #94a3b8",
-              backgroundColor: isEngaged ? "#f3f4f6" : "#ffffff",
-              color: isEngaged ? "#16a34a" : "#475569",
+              border: isEngaged ? "1px solid #A6F4C5" : "1px solid #D0D5DD",
+              backgroundColor: isEngaged ? "#ECFDF5" : "#F9FAFB",
+              color: isEngaged ? "#12B76A" : "#344054",
               fontWeight: 600,
               fontSize: "12px",
               letterSpacing: "0.02em",
+              height: 24,
               textTransform: "uppercase",
-              ".MuiChip-label": {
-                px: 1,
+              "& .MuiChip-label": {
+                px: "8px",
               },
             }}
           />
@@ -59,13 +65,16 @@ const CandidateRow = ({ candidate }: CandidateRowProps) => {
           <Typography sx={{ color: "#667085", fontSize: "14px" }}>-</Typography>
         )}
       </TableCell>
-      <TableCell>
+
+      <TableCell sx={{ width: "18%" }}>
         <StatusChip label={candidate.status} />
       </TableCell>
-      <TableCell sx={{ color: "#344054", fontSize: "14px" }}>
+
+      <TableCell sx={{ color: "#344054", fontSize: "14px", width: "22%" }}>
         {candidate.location}
       </TableCell>
-      <TableCell sx={{ color: "#667085", fontSize: "14px" }}>
+
+      <TableCell sx={{ color: "#667085", fontSize: "14px", width: "20%" }}>
         {candidate.date}
       </TableCell>
     </TableRow>
