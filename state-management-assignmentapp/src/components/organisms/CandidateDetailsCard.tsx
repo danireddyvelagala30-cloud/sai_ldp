@@ -1,127 +1,118 @@
 import { useState } from "react";
 import { Box, Collapse, IconButton, Typography } from "@mui/material";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 import type { Candidate } from "../../models/Candidate";
 
 interface CandidateDetailsCardProps {
-  candidate: Candidate;
+  title: string;
+  defaultExpanded?: boolean;
+  children?: React.ReactNode;
+  candidate?: Candidate;
 }
 
-const CandidateDetailsCard = ({ candidate }: CandidateDetailsCardProps) => {
-  const [expanded, setExpanded] = useState(false);
+const CandidateDetailsCard = ({
+  title,
+  defaultExpanded = false,
+  children,
+  candidate,
+}: CandidateDetailsCardProps) => {
+  const [expanded, setExpanded] = useState(defaultExpanded);
 
   return (
     <Box
       sx={{
-        border: "1px solid #1d4ed8",
-        borderStyle: "dashed",
-        bgcolor: "#ffffff",
+        bgcolor: "#FFFFFF",
+        borderRadius: "8px",
+        border: "1px solid #E4E7EC",
         overflow: "hidden",
+        mb: "16px",
+        boxShadow: "0px 1px 3px rgba(0, 0, 0, 0.04)",
       }}
     >
       <Box
+        onClick={() => setExpanded((prev) => !prev)}
         sx={{
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          px: 2,
-          py: 1.8,
+          px: "24px",
+          py: "16px",
           cursor: "pointer",
-          minHeight: 56,
+          userSelect: "none",
+          bgcolor: "#FFFFFF",
         }}
-        onClick={() => setExpanded((prev) => !prev)}
       >
         <Typography
           sx={{
-            fontFamily: '"Inter", Arial, Helvetica, sans-serif',
-            fontWeight: 500,
+            fontFamily: '"Inter", sans-serif',
+            fontWeight: 600,
             fontSize: "16px",
+            color: "#1D2939",
             lineHeight: "24px",
-            letterSpacing: "0%",
-            color: "#111827",
           }}
         >
-          Candidate Information
+          {title}
         </Typography>
 
         <IconButton
           size="small"
           sx={{
-            color: "#1d4ed8",
+            color: "#667085",
             transform: expanded ? "rotate(180deg)" : "rotate(0deg)",
-            transition: "transform 0.2s ease",
-          }}
-          onClick={(event) => {
-            event.stopPropagation();
-            setExpanded((prev) => !prev);
+            transition: "transform 0.2s ease-in-out",
           }}
         >
-          <KeyboardArrowDownIcon />
+          <ExpandMoreIcon />
         </IconButton>
       </Box>
 
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <Box
           sx={{
-            borderTop: "1px dashed #93c5fd",
-            display: "grid",
-            gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
-            gap: 2,
-            px: 3,
-            py: 3,
+            borderTop: "1px solid #EAECF0",
+            p: "20px 24px",
+            bgcolor: "#FAFAFA",
           }}
         >
-          <Typography
-            sx={{
-              color: "#111827",
-              fontFamily: '"Inter", Arial, Helvetica, sans-serif',
-              fontWeight: 500,
-              fontSize: "16px",
-              lineHeight: "24px",
-              letterSpacing: "0%",
-            }}
-          >
-            Position: {candidate.position}
-          </Typography>
-          <Typography
-            sx={{
-              color: "#111827",
-              textAlign: "right",
-              fontFamily: '"Inter", Arial, Helvetica, sans-serif',
-              fontWeight: 500,
-              fontSize: "16px",
-              lineHeight: "24px",
-              letterSpacing: "0%",
-            }}
-          >
-            Status: {candidate.status}
-          </Typography>
-          <Typography
-            sx={{
-              color: "#111827",
-              fontFamily: '"Inter", Arial, Helvetica, sans-serif',
-              fontWeight: 500,
-              fontSize: "16px",
-              lineHeight: "24px",
-              letterSpacing: "0%",
-            }}
-          >
-            Location: {candidate.location}
-          </Typography>
-          <Typography
-            sx={{
-              color: "#111827",
-              textAlign: "right",
-              fontFamily: '"Inter", Arial, Helvetica, sans-serif',
-              fontWeight: 500,
-              fontSize: "16px",
-              lineHeight: "24px",
-              letterSpacing: "0%",
-            }}
-          >
-            Date: {candidate.date}
-          </Typography>
+          {children ? (
+            children
+          ) : candidate ? (
+            <Box sx={{ display: "grid", gridTemplateColumns: { xs: "1fr 1fr", sm: "repeat(4, 1fr)" }, gap: 2 }}>
+              <Box>
+                <Typography variant="caption" sx={{ color: "#667085", fontWeight: 500 }}>
+                  Name
+                </Typography>
+                <Typography variant="body2" sx={{ color: "#1D2939", fontWeight: 600 }}>
+                  {candidate.name}
+                </Typography>
+              </Box>
+              <Box>
+                <Typography variant="caption" sx={{ color: "#667085", fontWeight: 500 }}>
+                  Location
+                </Typography>
+                <Typography variant="body2" sx={{ color: "#1D2939", fontWeight: 600 }}>
+                  {candidate.location}
+                </Typography>
+              </Box>
+              <Box>
+                <Typography variant="caption" sx={{ color: "#667085", fontWeight: 500 }}>
+                  Date
+                </Typography>
+                <Typography variant="body2" sx={{ color: "#1D2939", fontWeight: 600 }}>
+                  {candidate.date}
+                </Typography>
+              </Box>
+              <Box>
+                <Typography variant="caption" sx={{ color: "#667085", fontWeight: 500 }}>
+                  Position
+                </Typography>
+                <Typography variant="body2" sx={{ color: "#1D2939", fontWeight: 600 }}>
+                  {candidate.position}
+                </Typography>
+              </Box>
+            </Box>
+          ) : null}
         </Box>
       </Collapse>
     </Box>

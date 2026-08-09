@@ -1,7 +1,7 @@
 import {
   Box,
   Button,
-  Chip,
+  IconButton,
   Paper,
   Stack,
   Table,
@@ -12,10 +12,13 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate, useParams } from "react-router-dom";
 
 import type { Candidate } from "../models/Candidate";
-import CandidateInfoCard from "../components/organisms/CandidateDetailsCard";
+import CandidateDetailsCard from "../components/organisms/CandidateDetailsCard";
+import StatusChip from "../components/atoms/StatusChip";
+import Sidebar from "../components/organisms/Sidebar";
 
 interface CandidateDetailsProps {
   candidates: Candidate[];
@@ -29,12 +32,20 @@ const CandidateDetails = ({ candidates, engageCandidate }: CandidateDetailsProps
   const candidate = candidates.find((item) => item.id === Number(id));
 
   if (!candidate) {
-    return <Typography variant="h5">Candidate Not Found</Typography>;
+    return (
+      <Box sx={{ p: 4 }}>
+        <Typography variant="h5">Candidate Not Found</Typography>
+        <Button onClick={() => navigate("/")} sx={{ mt: 2 }} variant="outlined">
+          Go Back to Candidates
+        </Button>
+      </Box>
+    );
   }
+
+  const isEngaged = candidate.adjudication === "ENGAGE";
 
   const handleEngage = () => {
     engageCandidate(candidate.id);
-    navigate("/");
   };
 
   const courtSearches = [
@@ -46,113 +57,198 @@ const CandidateDetails = ({ candidates, engageCandidate }: CandidateDetailsProps
   ];
 
   return (
-    <Box sx={{ minHeight: "100vh", bgcolor: "#f3f5f9", display: "flex" }}>
+    <Box sx={{ width: "100%", height: "100vh", bgcolor: "#F7F8FA", display: "flex", overflow: "hidden" }}>
+      <Sidebar activeItem="Candidates" />
+
       <Box
         sx={{
-          width: 260,
-          bgcolor: "#ffffff",
-          borderRight: "1px solid #dbe2ea",
-          p: 2,
+          flex: 1,
+          height: "100%",
           display: "flex",
           flexDirection: "column",
-          justifyContent: "space-between",
+          overflowY: "auto",
+          overflowX: "hidden",
+          p: "24px 32px 24px 24px",
+          boxSizing: "border-box",
         }}
       >
-        <Box>
-          <Typography variant="h5" sx={{ fontWeight: 800, color: "#2952FF", mb: 4 }}>
-            RECRUIT
-          </Typography>
-
-          <Stack spacing={1}>
-            {[
-              "Home",
-              "Candidates",
-              "Adverse Actions",
-              "Logs",
-              "Analytics",
-              "Account",
-              "Screenings",
-            ].map((item) => (
-              <Button
-                key={item}
-                variant={item === "Candidates" ? "contained" : "text"}
-                sx={{
-                  justifyContent: "flex-start",
-                  textTransform: "none",
-                  color: item === "Candidates" ? "#fff" : "#475569",
-                  bgcolor: item === "Candidates" ? "#224DFF" : "transparent",
-                  borderRadius: 1.5,
-                  py: 1.2,
-                }}
-              >
-                {item}
-              </Button>
-            ))}
-          </Stack>
-        </Box>
-      </Box>
-
-      <Box sx={{ flex: 1, p: 4 }}>
+        {/* Top Header Bar */}
         <Box
           sx={{
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            mb: 3,
+            mb: "24px",
           }}
         >
-          <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-            <Button onClick={() => navigate("/")} variant="text">← Back</Button>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: "12px",
+              cursor: "pointer",
+            }}
+            onClick={() => navigate("/")}
+          >
+            <IconButton size="small" sx={{ color: "#344054", p: 0.5 }}>
+              <ArrowBackIcon sx={{ fontSize: "20px" }} />
+            </IconButton>
             <Typography
               sx={{
-                fontFamily: '"Inter", Arial, Helvetica, sans-serif',
-                fontWeight: 500,
-                fontSize: "16px",
-                lineHeight: "24px",
-                letterSpacing: "0%",
-                color: "#111827",
+                fontFamily: '"Inter", sans-serif',
+                fontWeight: 600,
+                fontSize: "20px",
+                color: "#1D2939",
+                lineHeight: "28px",
               }}
             >
               {candidate.name}
             </Typography>
           </Box>
 
-          <Button variant="contained" onClick={handleEngage}>
-            Engage
-          </Button>
+          <Stack direction="row" spacing={1.5}>
+            <Button
+              variant="outlined"
+              sx={{
+                textTransform: "none",
+                color: "#344054",
+                borderColor: "#D0D5DD",
+                bgcolor: "#FFFFFF",
+                borderRadius: "6px",
+                fontWeight: 500,
+                fontSize: "14px",
+                px: "16px",
+                py: "8px",
+                "&:hover": {
+                  bgcolor: "#F9FAFB",
+                  borderColor: "#D0D5DD",
+                },
+              }}
+            >
+              Pre-Adverse Action
+            </Button>
+
+            {!isEngaged ? (
+              <Button
+                variant="contained"
+                onClick={handleEngage}
+                sx={{
+                  textTransform: "none",
+                  bgcolor: "#224DFF",
+                  color: "#FFFFFF",
+                  borderRadius: "6px",
+                  fontWeight: 600,
+                  fontSize: "14px",
+                  px: "20px",
+                  py: "8px",
+                  boxShadow: "none",
+                  "&:hover": {
+                    bgcolor: "#1A3EDC",
+                    boxShadow: "none",
+                  },
+                }}
+              >
+                Engage
+              </Button>
+            ) : (
+              <Button
+                variant="contained"
+                disabled
+                sx={{
+                  textTransform: "none",
+                  bgcolor: "#ECFDF5 !important",
+                  color: "#12B76A !important",
+                  borderRadius: "6px",
+                  fontWeight: 600,
+                  fontSize: "14px",
+                  px: "20px",
+                  py: "8px",
+                }}
+              >
+                ENGAGED
+              </Button>
+            )}
+          </Stack>
         </Box>
 
-        <Paper sx={{ p: 2, borderRadius: 2, border: "1px solid #dbe2ea", bgcolor: "#fff", mb: 3 }}>
-          <CandidateInfoCard candidate={candidate} />
-        </Paper>
+        {/* Collapsible Section 1: Candidate Information */}
+        <CandidateDetailsCard title="Candidate Information" candidate={candidate} />
 
-        <Paper sx={{ p: 2, borderRadius: 2, border: "1px solid #dbe2ea", bgcolor: "#fff" }}>
-          <Typography variant="h6" sx={{ fontWeight: 700, mb: 2 }}>
-            Court Searches
-          </Typography>
+        {/* Collapsible Section 2: Report Information */}
+        <CandidateDetailsCard title="Report Information" candidate={candidate} />
+
+        {/* Section 3: Court Searches Table */}
+        <Paper
+          elevation={0}
+          sx={{
+            borderRadius: "8px",
+            border: "1px solid #E4E7EC",
+            bgcolor: "#FFFFFF",
+            overflow: "hidden",
+            boxShadow: "0px 1px 3px rgba(0, 0, 0, 0.04)",
+          }}
+        >
+          <Box
+            sx={{
+              p: "20px 24px",
+              borderBottom: "1px solid #EAECF0",
+            }}
+          >
+            <Typography
+              sx={{
+                fontFamily: '"Inter", sans-serif',
+                fontWeight: 600,
+                fontSize: "16px",
+                color: "#1D2939",
+              }}
+            >
+              Court Searches
+            </Typography>
+          </Box>
 
           <TableContainer>
             <Table>
-              <TableHead sx={{ backgroundColor: "#f4f6f8" }}>
-                <TableRow>
-                  <TableCell sx={{ fontWeight: 500 }}>SEARCH</TableCell>
-                  <TableCell sx={{ fontWeight: 500 }}>STATUS</TableCell>
-                  <TableCell sx={{ fontWeight: 500 }}>DATE</TableCell>
+              <TableHead sx={{ backgroundColor: "#F9FAFB" }}>
+                <TableRow sx={{ "& th": { borderBottom: "1px solid #EAECF0", py: "12px", px: "24px" } }}>
+                  <TableCell sx={{ fontWeight: 600, fontSize: "12px", color: "#475467", letterSpacing: "0.02em", width: "280px" }}>
+                    SEARCH
+                  </TableCell>
+                  <TableCell sx={{ fontWeight: 600, fontSize: "12px", color: "#475467", letterSpacing: "0.02em", width: "200px" }}>
+                    STATUS
+                  </TableCell>
+                  <TableCell sx={{ fontWeight: 600, fontSize: "12px", color: "#475467", letterSpacing: "0.02em" }}>
+                    DATE
+                  </TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
                 {courtSearches.map((item) => (
-                  <TableRow key={item.search} hover>
-                    <TableCell>{item.search}</TableCell>
-                    <TableCell>
-                      <Chip
-                        label={item.status}
-                        size="small"
-                        color={item.status === "CONSIDER" ? "warning" : "success"}
-                        variant="filled"
-                      />
+                  <TableRow
+                    key={item.search}
+                    hover
+                    sx={{
+                      "& td": {
+                        borderBottom: "1px solid #F2F4F7",
+                        py: "12px",
+                        px: "24px",
+                      },
+                    }}
+                  >
+                    <TableCell
+                      sx={{
+                        color: "#224DFF",
+                        fontWeight: 500,
+                        fontSize: "14px",
+                      }}
+                    >
+                      {item.search}
                     </TableCell>
-                    <TableCell>{item.date}</TableCell>
+                    <TableCell>
+                      <StatusChip label={item.status} />
+                    </TableCell>
+                    <TableCell sx={{ color: "#667085", fontSize: "14px" }}>
+                      {item.date}
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>

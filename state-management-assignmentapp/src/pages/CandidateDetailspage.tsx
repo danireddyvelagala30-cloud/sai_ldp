@@ -15,8 +15,8 @@ const CandidateDetailsPage = () => {
   }
 
   return (
-    <div style={{ padding: "16px" }}>
-      <CandidateDetailsCard candidate={candidate} />
+    <div style={{ padding: 0, width: "100%", height: "100vh", overflow: "hidden" }}>
+      <CandidateDetailsCard title="Candidate Information" candidate={candidate} />
     </div>
   );
 };
