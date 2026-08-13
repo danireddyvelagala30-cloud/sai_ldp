@@ -1,0 +1,12 @@
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	symlinks = false
+	ignorecase = true
+[remote "seeder-app"]
+	url = https://github.com/danireddyvelagala30-cloud/sai_ldp.git
+	fetch = +refs/heads/*:refs/remotes/seeder-app/*
+[branch "master"]
+	vscode-merge-base = seeder-app/main

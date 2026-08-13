@@ -1,0 +1,17 @@
+# pack-refs with: peeled fully-peeled sorted 
+5fadec4c2678e09717c96d9ae0b980a83f973e83 refs/heads/master
+21c59d713f6e48821e171c8b10fd4825dd1d41fa refs/remotes/seeder-app/Component-assignment
+4ab17ded3f20ec8ccdd889b32e987b8c6630de3e refs/remotes/seeder-app/Java-Practice
+3c8a4f9a73ba42eb838e6ab74e9e243604c1b775 refs/remotes/seeder-app/Java-assignments
+2ba4068170c1600f47309622b6d68827aee967d3 refs/remotes/seeder-app/Storybook-assignment
+e41210efacc81dd24a9101edeee79cb73e7e235f refs/remotes/seeder-app/main
+3393c9929df4c60c4c449e2fa288f328845e53a3 refs/remotes/seeder-app/master
+9083970c38db6ea4e194ec060407364f49130e75 refs/remotes/seeder-app/material-ui
+7513808b8840617e3e20c4427b1565901c51755b refs/remotes/seeder-app/parent-child-assignment
+35e668005990cf8abcc027682cf97dfbae9ea5f3 refs/remotes/seeder-app/pratice-reactapp
+33e782d76315bb88d5a59b92d2387731fe5ebd6e refs/remotes/seeder-app/restaurant
+a241c5e0ac2189fa678229fddc9b9dbf5d60a121 refs/remotes/seeder-app/saimanikanta
+e41210efacc81dd24a9101edeee79cb73e7e235f refs/remotes/seeder-app/seeder-app
+732a9ebd91333fb9e839685fbbe4703afc1d871a refs/remotes/seeder-app/state-management-assignment
+b14d742a0a7345f7abf1728dff2824b150ae8496 refs/remotes/seeder-app/storybook
+1ffa629dab822aa08d9899da08f55b5c95274599 refs/remotes/seeder-app/webpack-babel
