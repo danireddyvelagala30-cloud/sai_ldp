@@ -1,3 +1,9 @@
+export interface CourtSearch {
+  search: string;
+  status: string;
+  date: string;
+}
+
 export interface Candidate {
   id: number;
   name: string;
@@ -6,4 +12,5 @@ export interface Candidate {
   location: string;
   date: string;
   position: string;
+  courtSearches?: CourtSearch[];
 }
