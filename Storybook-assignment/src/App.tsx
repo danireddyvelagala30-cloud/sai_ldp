@@ -1,36 +1,37 @@
-import CheckboxAtom from "./components/atoms/CheckboxAtom";
-import TextAtom from "./components/atoms/TextAtom";
+import "./App.css";
+import CheckboxAtom from "./components/atoms/checkbox/CheckboxAtom";
+import TextAtom from "./components/atoms/textatom/TextAtom";
 
 const App = () => {
   return (
-    <div
-      style={{
-        padding: "20px",
-        fontFamily: "Arial, sans-serif",
-      }}
-    >
-      <h1>Atoms Example</h1>
+    <div className="app-container">
+      <h1 className="app-title">Atoms Example</h1>
 
-      <h2>Checkbox Atom</h2>
-      <CheckboxAtom checked={false} />
+      <div className="section">
+        <h2 className="section-title">Checkbox Atom</h2>
+        <div className="component-demo">
+          <CheckboxAtom checked={false} />
+          <TextAtom text="Unchecked state" />
+        </div>
+      </div>
 
-      <br />
-      <br />
+      <div className="section">
+        <h2 className="section-title">Text Atom</h2>
+        <TextAtom text="Contract 1" />
+      </div>
 
-      <h2>Text Atom</h2>
-      <TextAtom text="Contract 1" />
+      <div className="section">
+        <h2 className="section-title">Another Text Example</h2>
+        <TextAtom text="Total Payable: $0.00" fontSize={16} fontWeight="bold" />
+      </div>
 
-      <br />
-      <br />
-
-      <h2>Another Text Example</h2>
-      <TextAtom text="Total Payable: $0.00" />
-
-      <br />
-      <br />
-
-      <h2>Checked Checkbox</h2>
-      <CheckboxAtom checked={true} />
+      <div className="section">
+        <h2 className="section-title">Checked Checkbox</h2>
+        <div className="component-demo">
+          <CheckboxAtom checked={true} />
+          <TextAtom text="Checked state" />
+        </div>
+      </div>
     </div>
   );
 };
