@@ -1,0 +1,154 @@
+.sidebar {
+  width: 238px;
+  min-width: 238px;
+  height: 720px;
+  max-height: calc(100vh - 48px);
+  background-color: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #e4e8ee;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin: 24px 0 24px 24px;
+}
+
+.sidebar__top {
+  padding-top: 24px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.sidebar__logo {
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 24px;
+  color: #0b198f;
+  letter-spacing: 0.5px;
+  margin-bottom: 24px;
+  display: block;
+}
+
+.sidebar__nav-list {
+  width: 206px;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  margin-left: -8px;
+}
+
+.sidebar__nav-item {
+  width: 100%;
+  height: 44px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 14px;
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+  color: #334155;
+  background-color: transparent;
+  border: none;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.sidebar__nav-item:hover {
+  background-color: #f8fafc;
+  color: #1e293b;
+}
+
+.sidebar__nav-item--active {
+  background-color: #f0f3ff;
+  color: #224dff;
+}
+
+.sidebar__nav-item--active:hover {
+  background-color: #f0f3ff;
+  color: #224dff;
+}
+
+.sidebar__nav-icon {
+  font-size: 20px;
+  color: #475569;
+  flex-shrink: 0;
+}
+
+.sidebar__nav-icon--active {
+  color: #224dff;
+}
+
+.sidebar__nav-label {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.sidebar__nav-label--active {
+  font-weight: 600;
+}
+
+.sidebar__bottom {
+  border-top: 1px solid #e4e7ec;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+}
+
+.sidebar__profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sidebar__avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.sidebar__profile-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar__profile-name {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1d2939;
+  line-height: 18px;
+}
+
+.sidebar__profile-email {
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: #667085;
+  line-height: 16px;
+}
+
+.sidebar__logout-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #667085;
+  display: grid;
+  place-items: center;
+  padding: 4px;
+  border-radius: 4px;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.sidebar__logout-btn:hover {
+  color: #344054;
+  background-color: #f8fafc;
+}

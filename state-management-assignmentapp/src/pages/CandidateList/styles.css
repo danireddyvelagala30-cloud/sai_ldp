@@ -1,0 +1,224 @@
+.candidate-list-page {
+  width: 100%;
+  height: 100vh;
+  background-color: #f7f8fa;
+  display: flex;
+  overflow: hidden;
+}
+
+.candidate-list-page__main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100vh;
+  padding: 24px 32px 24px 24px;
+  box-sizing: border-box;
+}
+
+.candidate-list-page__card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #e4e7ec;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+}
+
+.candidate-list-page__card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid #eaecf0;
+}
+
+.candidate-list-page__card-title {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: #101828;
+  line-height: 28px;
+  margin: 0;
+}
+
+.candidate-list-page__card-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.candidate-list-page__btn-export {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 6px;
+  border: 1px solid #d0d5dd;
+  background-color: transparent;
+  color: #344054;
+  font-weight: 600;
+  font-size: 14px;
+  font-family: "Inter", sans-serif;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.candidate-list-page__btn-export:hover {
+  border-color: #98a2b3;
+  background-color: #f9fafb;
+}
+
+.candidate-list-page__btn-add {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 6px;
+  border: 1px solid #224dff;
+  background-color: #224dff;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 14px;
+  font-family: "Inter", sans-serif;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.candidate-list-page__btn-add:hover {
+  background-color: #1b3ec8;
+  border-color: #1b3ec8;
+}
+
+.candidate-list-page__toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  border-bottom: 1px solid #eaecf0;
+  background-color: #ffffff;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.candidate-list-page__toolbar-title {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: #1d2939;
+  margin: 0;
+}
+
+.candidate-list-page__toolbar-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+}
+
+.candidate-list-page__search-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 240px;
+  height: 38px;
+  border: 1px solid #d0d5dd;
+  border-radius: 6px;
+  padding: 0 10px;
+  background-color: #ffffff;
+  box-sizing: border-box;
+}
+
+.candidate-list-page__search-field input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  font-family: "Inter", sans-serif;
+  background: transparent;
+  color: #344054;
+}
+
+.candidate-list-page__search-field input::placeholder {
+  color: #98a2b3;
+}
+
+.candidate-list-page__search-field:focus-within {
+  border-color: #224dff;
+}
+
+.candidate-list-page__search-icon {
+  color: #667085;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.candidate-list-page__btn-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 38px;
+  border-radius: 6px;
+  border: 1px solid #d0d5dd;
+  background-color: transparent;
+  color: #344054;
+  font-weight: 600;
+  font-size: 14px;
+  font-family: "Inter", sans-serif;
+  padding: 0 14px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.candidate-list-page__btn-filter:hover {
+  border-color: #98a2b3;
+  background-color: #f9fafb;
+}
+
+.candidate-list-page__btn-more {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid #d0d5dd;
+  border-radius: 6px;
+  background: transparent;
+  color: #344054;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.candidate-list-page__btn-more:hover {
+  background-color: #f9fafb;
+}
+
+.candidate-list-page__filter-popover {
+  width: 260px;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
+  background: #ffffff;
+  position: absolute;
+  z-index: 100;
+}
+
+.candidate-list-page__filter-heading {
+  font-weight: 600;
+  font-size: 14px;
+  color: #344054;
+  margin: 0 0 8px;
+  font-family: "Inter", sans-serif;
+}
+
+.candidate-list-page__filter-heading--spaced {
+  margin-top: 16px;
+}
+
+.candidate-list-page__table-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
