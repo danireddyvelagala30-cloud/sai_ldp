@@ -1,0 +1,84 @@
+.candidate-row:hover td {
+  background-color: #f9fafb;
+}
+
+.candidate-row td {
+  border-bottom: 1px solid #eaecf0;
+  padding: 8px 24px;
+  vertical-align: middle;
+}
+
+.candidate-row-link,
+.candidate-row-link:link,
+.candidate-row-link:visited,
+.candidate-row-link:hover,
+.candidate-row-link:active,
+.candidate-row-link:focus {
+  text-decoration: none;
+  color: #224dff !important;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.candidate-row-link:hover {
+  text-decoration: underline;
+}
+
+.candidate-row__adjudication-chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 4px;
+  padding: 0 8px;
+  height: 24px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.candidate-row__adjudication-chip--engaged {
+  border: 1px solid #a6f4c5;
+  background-color: #ecfdf5;
+  color: #12b76a;
+}
+
+.candidate-row__adjudication-chip--neutral {
+  border: 1px solid #d0d5dd;
+  background-color: #f9fafb;
+  color: #344054;
+}
+
+.candidate-row__empty-text {
+  color: #667085;
+  font-size: 14px;
+}
+
+.candidate-row__location {
+  color: #344054;
+  font-size: 14px;
+}
+
+.candidate-row__date {
+  color: #667085;
+  font-size: 14px;
+}
+
+.candidate-row__cell--name {
+  width: 22%;
+}
+
+.candidate-row__cell--adjudication {
+  width: 18%;
+}
+
+.candidate-row__cell--status {
+  width: 18%;
+}
+
+.candidate-row__cell--location {
+  width: 22%;
+}
+
+.candidate-row__cell--date {
+  width: 20%;
+}

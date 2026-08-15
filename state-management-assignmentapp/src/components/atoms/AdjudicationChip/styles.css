@@ -1,0 +1,14 @@
+.adjudication-chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 4px;
+  padding: 0 8px;
+  height: 24px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  background-color: #e0e7ff;
+  color: #3730a3;
+  border: none;
+}
