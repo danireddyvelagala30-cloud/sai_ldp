@@ -1,7 +1,7 @@
 import "./App.css";
 
-import ContractRow from "./components/molecules/ContractRow";
-import SummaryCard from "./components/molecules/SummaryCard";
+import ContractRow from "./components/molecules/ContractRow/ContractRow";
+import SummaryCard from "./components/molecules/SummaryCard/SummaryCard";
 
 function App() {
   return (
