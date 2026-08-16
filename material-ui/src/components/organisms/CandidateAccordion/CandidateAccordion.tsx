@@ -15,49 +15,23 @@ import ShieldOutlinedIcon from "@mui/icons-material/ShieldOutlined";
 import BadgeOutlinedIcon from "@mui/icons-material/BadgeOutlined";
 import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
 
-import InfoCard from "../molecules/InfoCard";
+import InfoCard from "../../molecules/InfoCard/InfoCard";
+import "./CandidateAccordion.css";
 
 const CandidateAccordion = () => {
   return (
     <>
-      <Accordion defaultExpanded sx={{ borderRadius: 3, boxShadow: '0px 4px 28px 0px rgba(45, 45, 47, 0.1)', overflow: 'hidden' }}>
-
+      <Accordion defaultExpanded className="candidate-accordion">
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
-          sx={{
-            pl: 2,
-            pr: 2,
-            py: 2,
-            '& .MuiAccordionSummary-content': {
-              m: 0,
-            },
-          }}
+          className="candidate-accordion-summary"
         >
-          <Box
-            sx={{
-              fontFamily: 'Inter',
-              fontWeight: 500,
-              fontSize: '16px',
-              lineHeight: '24px',
-              color: '#2C2C2E',
-              verticalAlign: 'middle',
-            }}
-          >
+          <Box className="candidate-accordion-title">
             Candidate Information
           </Box>
         </AccordionSummary>
 
-        <AccordionDetails
-          sx={{
-            p: 2,
-            pt: 2,
-            display: 'grid',
-            gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, minmax(0, 1fr))', md: 'repeat(3, minmax(0, 1fr))' },
-            columnGap: 2,
-            rowGap: 2,
-            bgcolor: '#FFFFFF',
-          }}
-    >
+        <AccordionDetails className="candidate-accordion-details">
           <Box>
             <InfoCard
               title="Name"
@@ -122,7 +96,6 @@ const CandidateAccordion = () => {
             />
           </Box>
         </AccordionDetails>
-
       </Accordion>
 
       <Accordion>
