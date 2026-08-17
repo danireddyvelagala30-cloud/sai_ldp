@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import TextAtom from "./TextAtom";
+import Text from "./Text";
 
-const meta: Meta<typeof TextAtom> = {
-  title: "Atoms/TextAtom",
-  component: TextAtom,
+const meta: Meta<typeof Text> = {
+  title: "Atoms/Text",
+  component: Text,
 
   argTypes: {
     text: {
@@ -34,7 +34,7 @@ const meta: Meta<typeof TextAtom> = {
 
 export default meta;
 
-type Story = StoryObj<typeof TextAtom>;
+type Story = StoryObj<typeof Text>;
 
 export const Default: Story = {
   args: {

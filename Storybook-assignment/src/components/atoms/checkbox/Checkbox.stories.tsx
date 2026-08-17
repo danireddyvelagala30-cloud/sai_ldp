@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import CheckboxAtom from "./CheckboxAtom";
+import Checkbox from "./Checkbox";
 
-const meta: Meta<typeof CheckboxAtom> = {
-  title: "Atoms/CheckboxAtom",
-  component: CheckboxAtom,
+const meta: Meta<typeof Checkbox> = {
+  title: "Atoms/Checkbox",
+  component: Checkbox,
 
   argTypes: {
     checked: {
@@ -22,7 +22,7 @@ const meta: Meta<typeof CheckboxAtom> = {
 
 export default meta;
 
-type Story = StoryObj<typeof CheckboxAtom>;
+type Story = StoryObj<typeof Checkbox>;
 
 export const Default: Story = {
   args: {

@@ -1,16 +1,16 @@
 import type { ChangeEvent } from "react";
 
-interface CheckboxAtomProps {
+interface CheckboxProps {
   checked?: boolean;
   disabled?: boolean;
   onChange?: (checked: boolean) => void;
 }
 
-const CheckboxAtom = ({
+const Checkbox = ({
   checked = false,
   disabled = false,
   onChange,
-}: CheckboxAtomProps) => {
+}: CheckboxProps) => {
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     onChange?.(event.target.checked);
   };
@@ -21,9 +21,9 @@ const CheckboxAtom = ({
       checked={checked}
       disabled={disabled}
       onChange={handleChange}
-      aria-label="checkbox atom"
+      aria-label="checkbox"
     />
   );
 };
 
-export default CheckboxAtom;
+export default Checkbox;

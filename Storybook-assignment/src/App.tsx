@@ -1,6 +1,6 @@
 import "./App.css";
-import CheckboxAtom from "./components/atoms/checkbox/CheckboxAtom";
-import TextAtom from "./components/atoms/textatom/TextAtom";
+import Checkbox from "./components/atoms/checkbox/Checkbox";
+import Text from "./components/atoms/text/Text";
 
 const App = () => {
   return (
@@ -10,26 +10,26 @@ const App = () => {
       <div className="section">
         <h2 className="section-title">Checkbox Atom</h2>
         <div className="component-demo">
-          <CheckboxAtom checked={false} />
-          <TextAtom text="Unchecked state" />
+          <Checkbox checked={false} />
+          <Text text="Unchecked state" />
         </div>
       </div>
 
       <div className="section">
         <h2 className="section-title">Text Atom</h2>
-        <TextAtom text="Contract 1" />
+        <Text text="Contract 1" />
       </div>
 
       <div className="section">
         <h2 className="section-title">Another Text Example</h2>
-        <TextAtom text="Total Payable: $0.00" fontSize={16} fontWeight="bold" />
+        <Text text="Total Payable: $0.00" fontSize={16} fontWeight="bold" />
       </div>
 
       <div className="section">
         <h2 className="section-title">Checked Checkbox</h2>
         <div className="component-demo">
-          <CheckboxAtom checked={true} />
-          <TextAtom text="Checked state" />
+          <Checkbox checked={true} />
+          <Text text="Checked state" />
         </div>
       </div>
     </div>

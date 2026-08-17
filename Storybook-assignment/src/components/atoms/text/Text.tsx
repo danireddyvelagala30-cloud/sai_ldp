@@ -1,16 +1,16 @@
-interface TextAtomProps {
+interface TextProps {
   text: string;
   color?: string;
   fontSize?: number;
   fontWeight?: "normal" | "bold" | "lighter";
 }
 
-const TextAtom = ({
+const Text = ({
   text,
   color = "#000000",
   fontSize = 18,
   fontWeight = "normal",
-}: TextAtomProps) => {
+}: TextProps) => {
   return (
     <span
       style={{
@@ -24,4 +24,4 @@ const TextAtom = ({
   );
 };
 
-export default TextAtom;
+export default Text;
