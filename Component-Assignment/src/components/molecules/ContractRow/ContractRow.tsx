@@ -1,13 +1,13 @@
-import CheckboxAtom from "../../atoms/CheckboxAtom/CheckboxAtom";
-import TextAtom from "../../atoms/TextAtom/TextAtom";
+import Checkbox from "../../atoms/Checkbox/Checkbox";
+import Text from "../../atoms/Text/Text";
 
 const ContractRow = () => {
   return (
     <div className="row">
-      <CheckboxAtom />
-      <TextAtom text="Contract 1" />
-      <TextAtom text="Monthly" />
-      <TextAtom text="$12,000" />
+      <Checkbox />
+      <Text text="Contract 1" />
+      <Text text="Monthly" />
+      <Text text="$12,000" />
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import TextAtom from "../../atoms/TextAtom/TextAtom";
+import Text from "../../atoms/Text/Text";
 
 const SummaryCard = () => {
   return (
@@ -6,15 +6,15 @@ const SummaryCard = () => {
       <h2>Summary</h2>
 
       <p>
-        <TextAtom text="Term: 12 Months" />
+        <Text text="Term: 12 Months" />
       </p>
 
       <p>
-        <TextAtom text="Selected Contracts: 0" />
+        <Text text="Selected Contracts: 0" />
       </p>
 
       <p>
-        <TextAtom text="Total Payable: $0.00" />
+        <Text text="Total Payable: $0.00" />
       </p>
 
       <button>Review Your Credit</button>
