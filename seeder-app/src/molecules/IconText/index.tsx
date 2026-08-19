@@ -1,5 +1,6 @@
 import React from 'react';
 import { Typography } from '../../atoms/Typography';
+import './style.css';
 
 export interface IconTextProps {
   icon: React.ReactNode;
@@ -11,10 +12,10 @@ export interface IconTextProps {
 export const IconText: React.FC<IconTextProps> = ({ icon, text, active, onClick }) => {
   return (
     <button className={`nav-item ${active ? 'active' : ''}`} onClick={onClick}>
-      <span className="nav-icon" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+      <span className="nav-icon icon-text-nav-icon">
         {icon}
       </span>
-      <Typography style={{ color: active ? '#f7f6ff' : '#c5c4d1', fontWeight: active ? 600 : 400 }}>
+      <Typography className="icon-text-label">
         {text}
       </Typography>
     </button>

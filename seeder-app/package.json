@@ -34,6 +34,7 @@
     "dev": "concurrently \"nodemon --watch server server/index.js\" \"react-scripts start\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:coverage": "react-scripts test --coverage --watchAll=false",
     "eject": "react-scripts eject",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
@@ -71,9 +72,6 @@
     "prettier": "^3.9.6",
     "prop-types": "^15.8.1",
     "storybook": "^10.5.6",
-    "webpack": "^5.109.2",
-    "@types/react": "...",
-    "@types/react-dom": "...",
-    "typescript": "..."
+    "webpack": "^5.109.2"
   }
 }

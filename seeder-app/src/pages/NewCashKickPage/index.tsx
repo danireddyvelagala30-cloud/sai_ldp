@@ -5,6 +5,7 @@ import { SummaryCard } from '../../organisms/SummaryCard';
 import { Contract } from '../../types/Contract';
 import { getContracts } from '../../services/api';
 import { Button } from '../../atoms/Button';
+import './style.css';
 
 export const NewCashKickPage: React.FC = () => {
   const [contracts, setContracts] = useState<Contract[]>([]);
@@ -123,14 +124,14 @@ export const NewCashKickPage: React.FC = () => {
       />
 
       {loading && (
-        <div style={{ gridColumn: '1 / -1', textAlign: 'center', padding: '60px', color: '#8a84ff' }}>
+        <div className="cash-kick-loading">
           Fetching contracts from backend server...
         </div>
       )}
 
       {error && (
-        <div style={{ gridColumn: '1 / -1', textAlign: 'center', padding: '60px' }}>
-          <div style={{ color: '#ff6b6b', marginBottom: '16px' }}>⚠️ {error}</div>
+        <div className="cash-kick-error-container">
+          <div className="cash-kick-error-msg">⚠️ {error}</div>
           <Button variant="primary" onClick={fetchContracts}>
             Retry Fetching Contracts
           </Button>

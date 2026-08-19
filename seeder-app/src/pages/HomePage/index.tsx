@@ -1,6 +1,7 @@
 import React from 'react';
 import { Header } from '../../organisms/Header';
 import { Typography } from '../../atoms/Typography';
+import './style.css';
 
 export const HomePage: React.FC = () => {
   return (
@@ -9,7 +10,7 @@ export const HomePage: React.FC = () => {
         title="Welcome to Seeder"
         subtitle="Manage your SaaS cash acceleration and contracts smoothly."
       />
-      <div style={{ marginTop: '32px' }}>
+      <div className="home-page-content">
         <Typography variant="body1">
           Select Cash Acceleration from the sidebar to manage your contracts and initiate cash kicks.
         </Typography>

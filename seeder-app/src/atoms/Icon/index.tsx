@@ -1,4 +1,5 @@
 import React from 'react';
+import './style.css';
 
 export interface IconProps {
   name?: string;
@@ -8,7 +9,7 @@ export interface IconProps {
 
 export const Icon: React.FC<IconProps> = ({ name, children, className = '' }) => {
   if (children) {
-    return <span className={`nav-icon ${className}`.trim()}>{children}</span>;
+    return <span className={`custom-icon nav-icon ${className}`.trim()}>{children}</span>;
   }
-  return <span className={`nav-icon ${className}`.trim()}>{name}</span>;
+  return <span className={`custom-icon nav-icon ${className}`.trim()}>{name}</span>;
 };

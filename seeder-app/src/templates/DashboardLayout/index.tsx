@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box } from '@mui/material';
+import './style.css';
 
 export interface DashboardLayoutProps {
   sidebar: React.ReactNode;
@@ -8,22 +8,11 @@ export interface DashboardLayoutProps {
 
 export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ sidebar, children }) => {
   return (
-    <Box sx={{ display: 'flex', height: '100vh', width: '100vw', overflow: 'hidden', backgroundColor: '#09090f' }}>
+    <div data-testid="dashboard-layout-container" className="dashboard-layout-container">
       {sidebar}
-      <Box
-        component="main"
-        sx={{
-          flexGrow: 1,
-          height: '100vh',
-          boxSizing: 'border-box',
-          minWidth: 0,
-          overflow: 'hidden',
-          display: 'flex',
-          flexDirection: 'column',
-        }}
-      >
+      <main className="dashboard-layout-main">
         {children}
-      </Box>
-    </Box>
+      </main>
+    </div>
   );
 };

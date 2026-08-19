@@ -1,4 +1,5 @@
 import React from 'react';
+import './style.css';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'text';
@@ -11,9 +12,14 @@ export const Button: React.FC<ButtonProps> = ({
   className = '',
   ...props
 }) => {
-  const baseClass = variant === 'primary' ? 'review-button' : variant === 'secondary' ? 'reset-button' : 'hero-back';
+  const baseClass =
+    variant === 'primary'
+      ? 'review-button custom-btn-primary'
+      : variant === 'secondary'
+      ? 'reset-button custom-btn-secondary'
+      : 'hero-back custom-btn-text';
   return (
-    <button className={`${baseClass} ${className}`.trim()} {...props}>
+    <button className={`custom-btn ${baseClass} ${className}`.trim()} {...props}>
       {children}
     </button>
   );

@@ -3,6 +3,7 @@ import { CheckBox } from '../../atoms/CheckBox';
 import { Typography } from '../../atoms/Typography';
 import { Contract } from '../../types/Contract';
 import { formatCurrency } from '../../utils/currency';
+import './style.css';
 
 export interface ContractRowProps {
   contract: Contract;
@@ -12,40 +13,27 @@ export interface ContractRowProps {
 
 export const ContractRow: React.FC<ContractRowProps> = ({ contract, selected, onToggle }) => {
   return (
-    <div
-      className="contracts-row"
-      style={{
-        display: 'grid',
-        gridTemplateColumns: '50px 1fr 1fr 1fr 1fr 1fr',
-        gap: '16px',
-        alignItems: 'center',
-        padding: '14px 16px',
-        background: '#14131e',
-        borderRadius: '12px',
-        border: selected ? '1px solid #6C5DD3' : '1px solid transparent',
-        transition: 'border-color 0.15s ease, background 0.15s ease',
-      }}
-    >
-      <div className="contract-check" style={{ display: 'flex', justifyContent: 'center' }}>
+    <div data-testid="contract-row" className={`contracts-row contract-row ${selected ? 'selected' : ''}`}>
+      <div className="contract-check contract-row-check">
         <CheckBox checked={selected} onChange={() => onToggle(contract.id)} />
       </div>
       <div className="contracts-cell">
-        <Typography style={{ color: '#ffffff', fontWeight: 600, fontSize: '0.95rem' }}>{contract.name}</Typography>
+        <Typography className="contract-row-name">{contract.name}</Typography>
       </div>
       <div className="contracts-cell">
-        <Typography style={{ color: '#a5a2b8', fontSize: '0.9rem' }}>{contract.type}</Typography>
+        <Typography className="contract-row-type">{contract.type}</Typography>
       </div>
       <div className="contracts-cell">
-        <Typography style={{ color: '#ffffff', fontSize: '0.95rem' }}>{formatCurrency(contract.perPayment)}</Typography>
+        <Typography className="contract-row-payment">{formatCurrency(contract.perPayment)}</Typography>
       </div>
       <div className="contracts-cell">
-        <Typography style={{ color: '#ffffff', fontSize: '0.95rem', display: 'block' }}>{contract.term}</Typography>
-        <Typography style={{ color: '#a5a2b8', fontSize: '0.8rem', marginTop: '2px', display: 'block' }}>
+        <Typography className="contract-row-term-primary">{contract.term}</Typography>
+        <Typography className="contract-row-term-fee">
           {(contract.feeRate || 12.0).toFixed(1)}% fee
         </Typography>
       </div>
       <div className="contracts-cell">
-        <Typography style={{ color: '#ffffff', fontWeight: 500, fontSize: '0.95rem' }}>{formatCurrency(contract.amount)}</Typography>
+        <Typography className="contract-row-amount">{formatCurrency(contract.amount)}</Typography>
       </div>
     </div>
   );

@@ -2,6 +2,7 @@ import React from 'react';
 import { Typography } from '../../atoms/Typography';
 import { Slider } from '../../atoms/Slider';
 import { formatCurrency } from '../../utils/currency';
+import './style.css';
 
 export interface SummarySliderProps {
   max: number;
@@ -14,32 +15,21 @@ export const SummarySlider: React.FC<SummarySliderProps> = ({ max, value, onChan
   const isResetDisabled = value === 0;
 
   return (
-    <div style={{ margin: '16px 0' }}>
-      <div className="summary-slider-label" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
-        <Typography variant="body2" style={{ color: '#a5a2b8', fontSize: '0.95rem' }}>
+    <div className="summary-slider-wrapper">
+      <div className="summary-slider-header">
+        <Typography variant="body2" className="summary-slider-label-text">
           Slide to autoselect
         </Typography>
         <button
-          className="reset-button"
+          className="summary-slider-reset-btn"
           onClick={onReset}
           disabled={isResetDisabled}
-          style={{
-            border: 'none',
-            background: '#201f2d',
-            color: isResetDisabled ? '#454359' : '#8a84ff',
-            padding: '6px 16px',
-            borderRadius: '12px',
-            cursor: isResetDisabled ? 'default' : 'pointer',
-            fontSize: '0.85rem',
-            fontWeight: 500,
-            transition: 'color 0.15s ease',
-          }}
         >
           Reset
         </button>
       </div>
 
-      <div className="slider-wrapper" style={{ margin: '12px 0' }}>
+      <div className="summary-slider-track">
         <Slider
           min={0}
           max={max}
@@ -48,10 +38,10 @@ export const SummarySlider: React.FC<SummarySliderProps> = ({ max, value, onChan
         />
       </div>
 
-      <div style={{ marginBottom: '20px', fontSize: '0.95rem' }}>
-        <span style={{ color: '#a29bff', fontWeight: 600 }}>{formatCurrency(value)}</span>
-        <span style={{ color: '#a5a2b8' }}> selected of </span>
-        <span style={{ color: '#ffffff', fontWeight: 600 }}>{formatCurrency(max)}</span>
+      <div className="summary-slider-value-row">
+        <span className="summary-slider-selected-value">{formatCurrency(value)}</span>
+        <span className="summary-slider-of-label"> selected of </span>
+        <span className="summary-slider-max-value">{formatCurrency(max)}</span>
       </div>
     </div>
   );
