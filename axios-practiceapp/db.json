@@ -1,0 +1,64 @@
+{
+  "students": [
+    {
+      "id": "2",
+      "name": "Rahul",
+      "email": "rahul@example.com",
+      "course": "JavaScript"
+    },
+    {
+      "id": "3",
+      "name": "Anil",
+      "email": "anil@example.com",
+      "course": "TypeScript"
+    },
+    {
+      "id": "VeiV8b0SM14",
+      "name": "Kiran",
+      "email": "kiran@example.com",
+      "course": "React"
+    },
+    {
+      "id": "P9mrXYbwKwU",
+      "name": "Kiran",
+      "email": "kiran@example.com",
+      "course": "React"
+    },
+    {
+      "id": "1vfq5fEDs7k",
+      "name": "Kiran",
+      "email": "kiran@example.com",
+      "course": "React"
+    },
+    {
+      "id": "Yv3BI28pFNk",
+      "name": "Kiran",
+      "email": "kiran@example.com",
+      "course": "React"
+    },
+    {
+      "id": "4",
+      "name": "Kiran",
+      "email": "kiran@example.com",
+      "course": "React"
+    },
+    {
+      "id": "5",
+      "name": "Kiran",
+      "email": "kiran@example.com",
+      "course": "React"
+    },
+    {
+      "id": "6",
+      "name": "Kiran",
+      "email": "kiran@example.com",
+      "course": "React"
+    },
+    {
+      "id": "7",
+      "name": "Kiran",
+      "email": "kiran@example.com",
+      "course": "React"
+    }
+  ]
+}
