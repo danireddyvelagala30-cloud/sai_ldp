@@ -1,25 +1,43 @@
-interface TextProps {
-  text: string;
-  color?: string;
-  fontSize?: number;
+import React from "react";
+
+export interface TextProps {
+  text?: string;
+  children?: React.ReactNode;
+  variant?: "muted" | "white" | "light" | "primary";
   fontWeight?: "normal" | "bold" | "lighter";
+  fontSize?: number;
+  color?: string;
+  className?: string;
 }
 
-const Text = ({
+const Text: React.FC<TextProps> = ({
   text,
-  color = "#000000",
-  fontSize = 18,
+  children,
+  variant,
   fontWeight = "normal",
-}: TextProps) => {
+  fontSize,
+  color,
+  className = "",
+}) => {
+  const classes = [
+    "atom-text",
+    `atom-text--${fontWeight}`,
+    variant ? `atom-text--${variant}` : "",
+    className,
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  const dynamicStyle: React.CSSProperties = {};
+  if (color) dynamicStyle.color = color;
+  if (fontSize) dynamicStyle.fontSize = `${fontSize}px`;
+
   return (
     <span
-      style={{
-        color,
-        fontSize: `${fontSize}px`,
-        fontWeight,
-      }}
+      className={classes}
+      style={Object.keys(dynamicStyle).length > 0 ? dynamicStyle : undefined}
     >
-      {text}
+      {text || children}
     </span>
   );
 };
