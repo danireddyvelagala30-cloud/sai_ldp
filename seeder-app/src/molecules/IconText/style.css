@@ -1,0 +1,15 @@
+.icon-text-nav-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-text-label {
+  color: #c5c4d1;
+  font-weight: 400;
+}
+
+.nav-item.active .icon-text-label {
+  color: #f7f6ff;
+  font-weight: 600;
+}

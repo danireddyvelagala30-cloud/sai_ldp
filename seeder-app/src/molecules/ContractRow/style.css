@@ -1,0 +1,55 @@
+.contract-row {
+  display: grid;
+  grid-template-columns: 50px 1fr 1fr 1fr 1fr 1fr;
+  gap: 16px;
+  align-items: center;
+  padding: 14px 16px;
+  background: #14131e;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.contract-row.selected {
+  border-color: #6C5DD3;
+}
+
+.contract-row-check {
+  display: flex;
+  justify-content: center;
+}
+
+.contract-row-name {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.contract-row-type {
+  color: #a5a2b8;
+  font-size: 0.9rem;
+}
+
+.contract-row-payment {
+  color: #ffffff;
+  font-size: 0.95rem;
+}
+
+.contract-row-term-primary {
+  color: #ffffff;
+  font-size: 0.95rem;
+  display: block;
+}
+
+.contract-row-term-fee {
+  color: #a5a2b8;
+  font-size: 0.8rem;
+  margin-top: 2px;
+  display: block;
+}
+
+.contract-row-amount {
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
