@@ -1,0 +1,58 @@
+JAVA ASSIGNMENT 8 - ERROR HANDLING
+
+QUESTION
+Create three new types of exceptions. Write a class with a method that throws all three exceptions. In main(), call the method but use only a single catch clause that catches all three exception types. Add a finally clause and verify that the finally clause is executed, even if a NullPointerException is thrown.
+
+HOW I SOLVED IT
+
+1. I created three custom checked exception classes:
+   - CustomExceptionA
+   - CustomExceptionB
+   - CustomExceptionC
+
+   Each class extends Exception.
+
+2. I created the ExceptionThrower class. Its throwAllThree() method declares all three exceptions using the throws keyword. The method uses a condition to throw one of the three custom exceptions.
+
+3. In the Main class, I called throwAllThree() inside a try block.
+
+4. I used one multi-catch clause to catch all three custom exceptions:
+
+   catch (CustomExceptionA | CustomExceptionB | CustomExceptionC e)
+
+5. I added a finally block. The finally block prints a message so it is easy to verify that it always runs.
+
+6. Inside the finally block, I deliberately used a null String and called length() on it. This throws a NullPointerException. I caught that exception inside the finally block and printed a message.
+
+FOLDER STRUCTURE
+
+java-assignment8/
+|
+|-- assignment-solution.txt
+|-- README.md
+|-- src/
+    |-- main/
+        |-- java/
+            |-- com/
+                |-- example/
+                    |-- errorhandling/
+                        |-- CustomExceptionA.java
+                        |-- CustomExceptionB.java
+                        |-- CustomExceptionC.java
+                        |-- ExceptionThrower.java
+                        |-- Main.java
+
+HOW TO COMPILE AND RUN
+
+From the java-assignment8 folder, run:
+
+javac -d out src/main/java/com/example/errorhandling/*.java
+java -cp out com.example.errorhandling.Main
+
+EXPECTED OUTPUT
+
+Caught custom exception: First custom exception thrown.
+Finally block executed.
+Caught NullPointerException in finally: Cannot invoke "String.length()" because "<local2>" is null
+
+This output verifies that the custom exception was caught and that the finally block executed even when a NullPointerException occurred.
