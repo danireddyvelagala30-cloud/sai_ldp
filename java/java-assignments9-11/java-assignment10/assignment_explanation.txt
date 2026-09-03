@@ -1,0 +1,35 @@
+Generics, Arrays and Containers
+
+Question:
+Create a generic, singly linked list class called SList, which does not implement the List interface.
+Each Link object in the list should contain a reference to the next element, but not the previous one.
+Create your own SListIterator, which also does not implement ListIterator.
+The only method in SList besides toString() should be iterator(), which returns an SListIterator.
+The only way to insert and remove elements from an SList is through SListIterator.
+Write code to demonstrate SList.
+
+How I solved it:
+We created a custom generic linked list using a node class called Link<T>. Each node stores:
+- data
+- a reference to the next node
+
+This makes it a singly linked list because each node points only to the next element, not the previous one.
+
+The SList<T> class stores the head of the list and provides the iterator() method, which returns an SListIterator.
+The iterator allows us to:
+- move through the list using next()
+- check if more elements exist using hasNext()
+- insert elements using add()
+- remove elements using remove()
+
+The example program demonstrates the list by adding names and numbers and then printing the list before and after removing an item.
+
+This assignment teaches how a linked list works internally and how generics can make the class reusable for different data types like String, Integer, etc.
+
+Example output:
+Initial list: [Charlie, Bob, Alice]
+Visited: Charlie
+Visited: Bob
+After removing Bob: [Charlie, Alice]
+Visited: Alice
+Numbers list: [30, 20, 10]

@@ -1,0 +1,67 @@
+Java Assignment 9: Sentence Validation
+
+QUESTION:
+Create a Java program that validates whether a sentence is valid based on the following rules:
+- The sentence must start with an uppercase letter.
+- The sentence must end with a period (.).
+- If the input is null, it should be considered invalid.
+
+Your task is to:
+1. Implement the validation logic in the SentenceValidator class.
+2. Ensure the validation uses a regex pattern that checks:
+   - first character is uppercase A-Z
+   - the rest of the sentence can be any characters
+   - the sentence must end with a period
+3. Write JUnit tests to verify valid and invalid cases.
+4. Run the Maven tests and make sure all tests pass.
+
+EXAMPLE VALID INPUT:
+This is a valid sentence.
+
+EXAMPLE INVALID INPUTS:
+this is not valid.
+This is missing a period
+
+HOW TO SOLVE IT:
+1. Open the file:
+   src/main/java/com/example/SentenceValidator.java
+
+2. Implement the method:
+   public static boolean isValidSentence(String input)
+
+3. Use the regex:
+   ^[A-Z].*\.$
+
+   Explanation:
+   - ^ = start of the string
+   - [A-Z] = first character must be uppercase
+   - .* = any characters after the first one
+   - \.$ = must end with a period
+
+4. In the method:
+   - If input is null, return false.
+   - Otherwise, return whether the regex matches the input.
+
+5. Write tests in:
+   src/test/java/com/example/RegexSentenceValidatorTest.java
+
+6. Test cases to include:
+   - valid sentence: "This is a valid sentence."
+   - lowercase start: "this is not valid."
+   - missing period: "This is missing a period"
+   - null input
+   - empty string
+   - valid short sentence: "A."
+
+7. Run the project with Maven:
+   mvn test -q
+
+8. If Maven is not recognized in PowerShell, run this first:
+   $env:JAVA_HOME = "C:\Users\srini\.jdks\jdk-25.0.2"
+   $env:PATH = "$env:JAVA_HOME\bin;C:\Users\srini\maven\maven-3.9.16\bin;$env:PATH"
+   mvn test -q
+
+9. Make sure the command exits successfully with code 0.
+
+FINAL NOTE:
+This assignment is simple Java regex validation. The main logic is in the SentenceValidator class, and the test class checks behavior with JUnit.
