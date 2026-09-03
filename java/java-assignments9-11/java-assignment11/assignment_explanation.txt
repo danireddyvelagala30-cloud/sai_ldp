@@ -1,0 +1,60 @@
+Assignment: I/O
+
+Question:
+Using TextFile and a Map<Character,Integer>, create a program that takes the file name as a command line argument and counts the occurrence of all the different characters. Save the results in a text file.
+
+What this means:
+- The program should read a text file whose name is passed from the command line.
+- It should count how many times each character appears in the file.
+- It should store the counts in a Map where:
+  - key = character
+  - value = number of times it appears
+- The program should write the result into another text file.
+
+How to solve it:
+1. Create a class named TextFile.
+2. In TextFile, write methods to:
+   - read a file and return its content as a String
+   - write the output result into a text file
+3. In the main class, read the file name from args[0].
+4. Use a Map<Character, Integer> to store the counts.
+5. Loop through every character in the file content:
+   - if the character is already in the map, increase its count
+   - otherwise, add it with value 1
+6. After counting, write the results in a formatted text file.
+7. Run the program using:
+   java CharacterFrequencyCounter sample.txt
+
+Example structure:
+- TextFile class handles file reading and writing.
+- CharacterFrequencyCounter class contains the logic to count characters.
+- Output file contains lines like:
+  a -> 10
+  b -> 4
+  space -> 7
+
+Sample Java logic:
+Map<Character, Integer> map = new HashMap<>();
+
+for (char ch : text.toCharArray()) {
+    if (map.containsKey(ch)) {
+        map.put(ch, map.get(ch) + 1);
+    } else {
+        map.put(ch, 1);
+    }
+}
+
+for (Map.Entry<Character, Integer> entry : map.entrySet()) {
+    System.out.println(entry.getKey() + " -> " + entry.getValue());
+}
+
+Important notes:
+- The file name must be passed as a command line argument.
+- Save the output in a separate text file, such as output/sample_counts.txt.
+- Use proper exception handling for file errors.
+
+This assignment demonstrates:
+- file input and output
+- use of a Map
+- counting characters
+- command line arguments in Java
