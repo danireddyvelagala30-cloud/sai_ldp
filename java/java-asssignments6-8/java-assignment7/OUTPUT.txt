@@ -1,0 +1,65 @@
+--- assignment1 ---
+=== Assignment 1: Rodent Hierarchy ===
+Creating a Rodent
+Creating a Mouse
+Creating a Rodent
+Creating a Gerbil
+Creating a Rodent
+Creating a Hamster
+Mouse nibbles cheese.
+Mouse scurries quickly.
+Mouse squeaks.
+
+Gerbil stores seeds in its cheeks.
+Gerbil runs on its wheel.
+Gerbil chirps.
+
+Hamster munches grain.
+Hamster waddles through its bedding.
+Hamster squeaks softly.
+
+--- assignment2 ---
+=== Assignment 2: Cycle Inheritance ===
+Creating a Cycle
+Creating a Unicycle
+Creating a Cycle
+Creating a Bicycle
+Creating a Cycle
+Creating a Tricycle
+Riding a unicycle.
+Balancing on a unicycle.
+Riding a bicycle.
+Balancing on a bicycle.
+Riding a tricycle.
+Tricycle has no balance() method.
+A Cycle reference cannot call balance() directly because Cycle does not declare it.
+
+--- assignment3 ---
+=== Assignment 3: Combined Interfaces ===
+ConcreteBase method called.
+Using InterfaceOne:
+InterfaceOne.oneFirst() called.
+InterfaceOne.oneSecond() called.
+Using InterfaceTwo:
+InterfaceTwo.twoFirst() called.
+InterfaceTwo.twoSecond() called.
+Using InterfaceThree:
+InterfaceThree.threeFirst() called.
+InterfaceThree.threeSecond() called.
+Using CombinedInterface:
+CombinedInterface.combinedMethod() called.
+
+--- assignment4 ---
+=== Assignment 4: Cycle Factories ===
+Factory created a unicycle.
+Factory created a bicycle.
+Factory created a tricycle.
+
+--- assignment5 ---
+=== Assignment 5: Inner-Class Inheritance ===
+Creating FirstClass.InnerClass with value 10
+Inner value: 10
+Creating FirstClass.InnerClass with value 20
+Creating SecondClass.InheritedInnerClass
+Inner value: 20
+Inherited inner-class behavior works.

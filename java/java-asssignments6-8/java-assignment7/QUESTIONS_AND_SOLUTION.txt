@@ -1,0 +1,171 @@
+JAVA ASSIGNMENT 7
+Questions and Solutions
+========================
+
+This assignment demonstrates inheritance, polymorphism, interfaces, factories,
+and inner classes in Java.
+
+
+QUESTION 1: RODENT INHERITANCE
+------------------------------
+Create an inheritance hierarchy with a base class Rodent and subclasses such as
+Mouse, Gerbil, and Hamster. Put common methods in Rodent and override them in the
+subclasses so each type behaves differently. Store different rodents in a Rodent
+array and call the common methods. Make methods abstract where possible. Every
+class must have a default constructor that prints a message.
+
+SOLUTION:
+The abstract class assignment1.Rodent declares the common methods eat(), move(),
+and speak(). Mouse, Gerbil, and Hamster extend Rodent and override all three
+methods with their own behavior. The assignment1.Main class creates a Rodent[]
+containing all three subclass objects. Calling the methods through Rodent
+references demonstrates runtime polymorphism: Java executes the overridden method
+of the actual object.
+
+Important concept: The constructor of the base class runs before the constructor
+of each subclass, so both constructor messages are printed.
+
+Main files:
+src/assignment1/Rodent.java
+src/assignment1/Mouse.java
+src/assignment1/Gerbil.java
+src/assignment1/Hamster.java
+src/assignment1/Main.java
+
+
+QUESTION 2: CYCLE INHERITANCE AND DOWNCASTING
+---------------------------------------------
+Create a Cycle class with subclasses Unicycle, Bicycle, and Tricycle. Add a
+balance() method to Unicycle and Bicycle, but not to Tricycle. Create objects of
+all three types and upcast them into a Cycle array. Try to call balance() and
+observe the result. Downcast the objects and call balance().
+
+SOLUTION:
+The abstract assignment2.Cycle class declares the common ride() method. Unicycle
+and Bicycle extend Cycle and define balance(). Tricycle extends Cycle but does
+not define balance().
+
+The array is declared as Cycle[], so balance() cannot be called directly through
+a Cycle reference because Cycle does not declare that method. The solution uses
+instanceof to determine the actual type and then downcasts:
+
+    ((Unicycle) cycle).balance();
+    ((Bicycle) cycle).balance();
+
+The Tricycle object is handled separately because it has no balance() method.
+This demonstrates that upcasting gives access only to members declared by the
+reference type, while downcasting gives access to subclass-specific methods.
+
+Main files:
+src/assignment2/Cycle.java
+src/assignment2/Unicycle.java
+src/assignment2/Bicycle.java
+src/assignment2/Tricycle.java
+src/assignment2/Main.java
+
+
+QUESTION 3: COMBINING INTERFACES
+--------------------------------
+Create three interfaces, each with two methods. Create a fourth interface that
+inherits all three interfaces and adds another method. Create a class that
+implements the combined interface and also inherits from a concrete class. Write
+four methods that accept one of the four interfaces as an argument. Create the
+class object and pass it to all four methods.
+
+SOLUTION:
+InterfaceOne, InterfaceTwo, and InterfaceThree each declare two methods.
+CombinedInterface extends all three interfaces and adds combinedMethod().
+MultiInterfaceClass extends ConcreteBase and implements CombinedInterface, so it
+must implement all methods from the three parent interfaces plus the new method.
+
+The assignment3.Main class defines useOne(), useTwo(), useThree(), and
+useCombined(). The same MultiInterfaceClass object can be passed to every method
+because it satisfies all four interface types. This demonstrates interface
+polymorphism and multiple inheritance of type. Java allows a class to implement
+multiple interfaces, but it can extend only one concrete class.
+
+Main files:
+src/assignment3/InterfaceOne.java
+src/assignment3/InterfaceTwo.java
+src/assignment3/InterfaceThree.java
+src/assignment3/CombinedInterface.java
+src/assignment3/ConcreteBase.java
+src/assignment3/MultiInterfaceClass.java
+src/assignment3/Main.java
+
+
+QUESTION 4: CYCLE FACTORIES
+----------------------------
+Create a Cycle interface with implementations Unicycle, Bicycle, and Tricycle.
+Create a factory for each type of Cycle and write code that uses these factories.
+
+SOLUTION:
+The assignment4.Cycle interface declares ride(). Unicycle, Bicycle, and Tricycle
+implement that interface. CycleFactory declares create(), and each concrete
+factory returns the correct Cycle implementation:
+
+    return new Unicycle();
+    return new Bicycle();
+    return new Tricycle();
+
+The assignment4.Main class stores the three factories in a CycleFactory[] array.
+It calls create() on each factory and stores the result in a Cycle reference. This
+keeps object creation separate from the code that uses the objects and demonstrates
+the Factory Method pattern.
+
+Main files:
+src/assignment4/Cycle.java
+src/assignment4/Unicycle.java
+src/assignment4/Bicycle.java
+src/assignment4/Tricycle.java
+src/assignment4/CycleFactory.java
+src/assignment4/UnicycleFactory.java
+src/assignment4/BicycleFactory.java
+src/assignment4/TricycleFactory.java
+src/assignment4/Main.java
+
+
+QUESTION 5: INNER-CLASS INHERITANCE
+-----------------------------------
+Create a class with an inner class that has a non-default constructor. Create a
+second class with an inner class that inherits from the first inner class.
+
+SOLUTION:
+FirstClass contains the non-static inner class InnerClass. InnerClass has a
+constructor that accepts an int value. SecondClass extends FirstClass and contains
+InheritedInnerClass, which extends InnerClass.
+
+Because InnerClass is non-static, its subclass constructor must call the parent
+inner-class constructor with super(value). An instance is created using the
+instance of the enclosing class:
+
+    SecondClass second = new SecondClass();
+    SecondClass.InheritedInnerClass inner =
+        second.new InheritedInnerClass(20);
+
+This demonstrates both inner-class construction and inheritance. The inherited
+class can call showValue(), which was defined in InnerClass.
+
+Main files:
+src/assignment5/FirstClass.java
+src/assignment5/SecondClass.java
+src/assignment5/Main.java
+
+
+HOW TO COMPILE AND RUN
+----------------------
+Open PowerShell in the java-assignment7 folder and run:
+
+    New-Item -ItemType Directory -Force out
+    $sources = Get-ChildItem -Recurse -Filter *.java src | ForEach-Object { $_.FullName }
+    javac -Xlint:all -d out $sources
+
+Run an individual assignment:
+
+    java -cp out assignment1.Main
+    java -cp out assignment2.Main
+    java -cp out assignment3.Main
+    java -cp out assignment4.Main
+    java -cp out assignment5.Main
+
+The complete verified console output is saved in OUTPUT.txt.

@@ -1,0 +1,141 @@
+JAVA ASSIGNMENT 6 GUIDE
+========================
+
+This guide explains the questions solved by the Java files in this folder.
+
+
+QUESTION 1: CONSTRUCTOR CHAINING
+--------------------------------
+File: ConstructorExample.java
+
+Question:
+Create a Java class with two constructors. The no-argument constructor must
+call the parameterized constructor using this(), assign values to fields, and
+display the values.
+
+How the solution works:
+1. The class has two fields: number and name.
+2. The no-argument constructor calls this(100, "Java").
+3. The parameterized constructor stores the values in the fields using this.number
+   and this.name.
+4. The main method creates an object using the no-argument constructor.
+5. The display method prints the stored values.
+6. The parameterized constructor runs first because it is called by this().
+
+Expected result:
+The output shows the parameterized constructor message, the no-argument
+constructor message, and then number 100 and name Java.
+
+Run commands:
+javac ConstructorExample.java
+java ConstructorExample
+
+
+QUESTION 2: ARRAY WITH OBJECTS
+------------------------------
+File: MessageArrayWithObjects.java
+
+Question:
+Create an array that can store five Message objects. Create five objects and
+assign each object to an array element.
+
+How the solution works:
+1. The nested Message class has a constructor that accepts a text value.
+2. Message[] messages = new Message[5] creates an array with five references.
+3. Each new Message(...) statement creates an actual object.
+4. The five objects are stored at indexes 0 through 4.
+5. The Message constructor prints a message whenever an object is created.
+
+Important point:
+The array and the objects are separate. The array stores references, while new
+Message(...) creates the actual objects.
+
+Run commands:
+javac MessageArrayWithObjects.java
+java MessageArrayWithObjects
+
+
+QUESTION 3: ARRAY WITHOUT OBJECTS
+----------------------------------
+File: MessageArrayWithoutObjects.java
+
+Question:
+Create an array for five Message object references without creating any Message
+objects. Observe the output.
+
+How the solution works:
+1. Message[] messages = new Message[5] creates space for five references.
+2. No new Message(...) statements are used.
+3. Therefore, the Message constructor is never called.
+4. All five array elements initially contain null references.
+5. The program only prints that the array was created and the program finished.
+
+Important point:
+new Message[5] creates an array, not five Message objects.
+
+Run commands:
+javac MessageArrayWithoutObjects.java
+java MessageArrayWithoutObjects
+
+
+QUESTION 4: VAMPIRE NUMBERS
+----------------------------
+File: VampireNumbers.java
+
+Question:
+Find and print the first 100 vampire numbers starting from 1000.
+
+A vampire number is a number with an even number of digits that can be written
+as the product of two numbers, called fangs. The fangs must each have half as
+many digits as the original number, must use exactly the same digits as the
+original number, and must not both end in zero.
+
+Example:
+1260 is a vampire number because:
+1260 = 21 x 60
+The digits in 21 and 60 are exactly the digits in 1260.
+
+How the solution works:
+1. Convert the number to a String to count its digits.
+2. Return false when the number has an odd number of digits.
+3. Calculate the required number of digits for each fang.
+4. Try possible factor values in the required range.
+5. Check whether the number is divisible by the factor.
+6. Calculate the second factor by dividing the number by the first factor.
+7. Reject factors that do not have the required number of digits.
+8. Reject factors that both end in zero.
+9. Sort the digits of the original number.
+10. Join the two factors, sort their digits, and compare both sorted arrays.
+11. Continue checking numbers until 100 vampire numbers are found.
+
+Run commands:
+javac VampireNumbers.java
+java VampireNumbers
+
+
+RUN ALL ASSIGNMENT PROGRAMS
+----------------------------
+Main.java runs the four programs in sequence and adds headings to the output.
+
+Commands:
+javac *.java
+java Main
+
+The VampireNumbers program prints 100 results, so the final output is long.
+
+
+PROJECT STRUCTURE
+-----------------
+java-assignment6/
+|-- ConstructorExample.java
+|-- MessageArrayWithObjects.java
+|-- MessageArrayWithoutObjects.java
+|-- VampireNumbers.java
+|-- Main.java
+|-- Assignment6_Guide.txt
+`-- src/
+    `-- Message.java
+
+Note:
+src/Message.java is a separate Message example. The four main assignment files
+contain their own entry points, so Main.java does not need to call src/Message.java.
