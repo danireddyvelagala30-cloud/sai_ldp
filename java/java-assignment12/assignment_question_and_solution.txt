@@ -1,0 +1,92 @@
+STREAM API ASSIGNMENT - QUESTION AND SOLUTION
+
+QUESTION:
+Create a Student class with the following fields:
+- id
+- name
+- age
+- gender
+- engDepartment
+- year of enrollment
+- perTillDate
+
+Add these students to a list:
+1. new Student(111, "Jiya Brein", 17, "Female", "Computer Science", 2018, 70.8)
+2. new Student(122, "Paul Niksui", 18, "Male", "Mechanical", 2016, 50.2)
+3. new Student(133, "Martin Theron", 17, "Male", "Electronic", 2017, 90.3)
+4. new Student(144, "Murali Gowda", 18, "Male", "Electrical", 2018, 80)
+5. new Student(155, "Nima Roy", 19, "Female", "Textile", 2016, 70)
+6. new Student(166, "Iqbal Hussain", 18, "Male", "Security", 2016, 70)
+7. new Student(177, "Manu Sharma", 16, "Male", "Chemical", 2018, 70)
+8. new Student(188, "Wang Liu", 20, "Male", "Computer Science", 2015, 80)
+9. new Student(199, "Amelia Zoe", 18, "Female", "Computer Science", 2016, 85)
+10. new Student(200, "Jaden Dough", 18, "Male", "Security", 2015, 82)
+11. new Student(211, "Jasna Kaur", 20, "Female", "Electronic", 2019, 83)
+12. new Student(222, "Nitin Joshi", 19, "Male", "Textile", 2016, 60.4)
+13. new Student(233, "Jyothi Reddy", 16, "Female", "Computer Science", 2015, 45.6)
+14. new Student(244, "Nicolus Den", 16, "Male", "Electronic", 2017, 95.8)
+15. new Student(255, "Ali Baig", 17, "Male", "Electronic", 2018, 88.4)
+16. new Student(266, "Sanvi Pandey", 17, "Female", "Electric", 2019, 72.4)
+17. new Student(277, "Anuj Chettiar", 18, "Male", "Computer Science", 2017, 57.5)
+
+Then use Java Stream API to answer the following:
+
+1. Print all departments in the college.
+2. Get names of all students enrolled after 2018.
+3. Get details of all male students in Computer Science.
+4. Count male and female students using groupingBy.
+5. Find average age of male and female students.
+6. Get student with highest percentage.
+7. Count students in each department using groupingBy.
+8. Find average percentage in each department.
+9. Get youngest male student in Electronic department using minBy.
+10. Count male and female students in Computer Science.
+
+HOW TO SOLVE IT:
+
+1. Create a Student class
+   - private fields: id, name, age, gender, engDepartment, yearOfEnrollment, perTillDate
+   - constructor
+   - getters
+   - toString method
+
+2. Create a StudentService class
+   - This class contains all stream operations.
+   - Use List<Student> as input.
+   - Use stream() to filter, map, group, count, average, min/max, and collect results.
+
+3. Use important Stream API methods:
+   - filter()
+   - map()
+   - collect(Collectors.toList())
+   - collect(Collectors.groupingBy())
+   - collect(Collectors.counting())
+   - Collectors.averagingInt()
+   - Collectors.averagingDouble()
+   - min(Comparator.comparingInt(...))
+   - max(Comparator.comparingDouble(...))
+
+4. Example logic:
+   - Departments: students.stream().map(Student::getEngDepartment).distinct().collect(Collectors.toList())
+   - Students after 2018: filter(student -> student.getYearOfEnrollment() > 2018)
+   - Male students in Computer Science: filter both gender and department
+   - Group by gender: Collectors.groupingBy(Student::getGender, Collectors.counting())
+   - Average age by gender: Collectors.groupingBy(Student::getGender, Collectors.averagingInt(Student::getAge))
+   - Highest percentage: max(Comparator.comparingDouble(Student::getPerTillDate))
+   - Youngest male in Electronic: filter by gender + department, then min by age
+
+5. Main class
+   - Create the list of students
+   - Create StudentService object
+   - Print results for all 10 questions
+
+SIMPLE EXPLANATION:
+This assignment is testing how well you can use Java Streams to work with a list of objects and answer different queries without using loops manually for each task. The key idea is to write clean, readable code that separates:
+- Student data model
+- stream query logic
+- main execution
+
+This follows clean code principles and keeps the code organized.
+
+FINAL NOTE:
+The goal of the assignment is to practice lambda expressions and stream operations, especially grouping, filtering, counting, averaging, and selecting min/max values.
