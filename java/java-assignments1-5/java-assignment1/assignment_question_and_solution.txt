@@ -1,0 +1,20 @@
+JAVA ASSIGNMENT 1
+
+Question
+Create a Java program that searches the home directory for files whose names match a regular expression. The program must accept regular expressions repeatedly and print the full absolute path of every matching file. The user can type exit to stop the program.
+
+Solution Method
+1. Read the home directory from the user.home system property.
+2. Read a regular expression from the user with Scanner.
+3. Compile the expression with Pattern.compile().
+4. Recursively visit every file and subdirectory with searchFiles().
+5. Compare each file name with pattern.matcher(file.getName()).matches().
+6. Print file.getAbsolutePath() when the name matches.
+7. Catch invalid regular expressions and continue asking for another input.
+
+Source File
+src/RegexFileSearch.java
+
+How to Run
+javac -d output src\RegexFileSearch.java
+java -cp output RegexFileSearch
