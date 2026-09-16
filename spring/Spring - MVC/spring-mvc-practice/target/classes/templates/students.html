@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Students</title>
+</head>
+<body>
+    <h1>Students</h1>
+
+    <p th:if="${students.isEmpty()}">No students found.</p>
+    <table th:if="${!students.isEmpty()}" border="1" cellpadding="8">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Age</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="student : ${students}">
+            <td th:text="${student.id}">1</td>
+            <td th:text="${student.name}">Student name</td>
+            <td th:text="${student.email}">student@example.com</td>
+            <td th:text="${student.age}">20</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <p><a th:href="@{/students/new}">Add a student</a></p>
+    <p><a th:href="@{/}">Home</a></p>
+</body>
+</html>
