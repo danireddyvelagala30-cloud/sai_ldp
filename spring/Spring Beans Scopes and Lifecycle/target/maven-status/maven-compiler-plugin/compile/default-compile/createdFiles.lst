@@ -1,0 +1,6 @@
+practice\spring\AppConfig.class
+practice\spring\CustomLifecycleBean.class
+practice\spring\Main.class
+practice\spring\PrototypeBean.class
+practice\spring\SingletonBean.class
+practice\spring\LifecycleBean.class
