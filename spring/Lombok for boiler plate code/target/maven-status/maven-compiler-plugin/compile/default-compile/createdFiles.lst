@@ -1,0 +1,8 @@
+com\example\lombok\Student$StudentBuilder.class
+com\example\lombok\Course.class
+com\example\lombok\Course$CourseBuilder.class
+com\example\lombok\Address.class
+com\example\lombok\LombokPracticeApplication.class
+com\example\lombok\StudentService.class
+com\example\lombok\Address$AddressBuilder.class
+com\example\lombok\Student.class
