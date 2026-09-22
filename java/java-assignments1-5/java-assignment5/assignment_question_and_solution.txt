@@ -1,0 +1,26 @@
+JAVA ASSIGNMENT 5
+
+Question
+Create a class in a data package with uninitialized instance int and char members and a method to print them. Add a method with local variables and print their values. Create a singleton-package class with a non-static String member, a static factory method that initializes it, and a method to print it. Create a main-package class that uses both classes. Explain any task that Java does not allow.
+
+Solution Method
+1. Data stores int and char instance fields without explicit initialization. Java assigns default values to instance fields: 0 for int and the null character for char.
+2. Data.printInstanceVariables() prints those default instance values.
+3. Local variables are explicitly initialized to 0 and the null character before printing.
+4. Java does not allow a local variable to be read before definite initialization. The invalid example is documented in a block comment in Data.java.
+5. Singleton.createObject(String) creates an object, assigns the String to its non-static field, and returns the object.
+6. Main creates Data directly, then creates Singleton through its static factory method and prints the stored text.
+
+Packages
+java_assignment.data
+java_assignment.singleton
+java_assignment.main
+
+Source Files
+src/java_assignment/data/Data.java
+src/java_assignment/singleton/Singleton.java
+src/java_assignment/main/Main.java
+
+How to Run
+javac -d output src\java_assignment\data\Data.java src\java_assignment\singleton\Singleton.java src\java_assignment\main\Main.java
+java -cp output java_assignment.main.Main

@@ -1,0 +1,24 @@
+JAVA ASSIGNMENT 3
+
+Question
+Write a Java function that pings a host given as input and computes the median time taken for the ping. Use the system ping utility and do not use deprecated methods.
+
+Solution Method
+1. Read the host name and number of pings from the user.
+2. Build the operating-system-specific ping command: -n for Windows and -c for Linux or macOS.
+3. Start the command with ProcessBuilder.
+4. Read the ping process output line by line.
+5. Use a regular expression to extract successful response times in milliseconds.
+6. Store the response times in a list and sort the list.
+7. Return the middle value for an odd-sized list, or the average of the two middle values for an even-sized list.
+8. Report an error when no successful responses are received and restore the interrupted status when interrupted.
+
+Source File
+src/PingMedian.java
+
+How to Run
+javac -d output src\PingMedian.java
+java -cp output PingMedian
+
+Note
+The system must have the ping command available on its PATH.

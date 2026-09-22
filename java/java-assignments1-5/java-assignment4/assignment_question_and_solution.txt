@@ -1,0 +1,25 @@
+JAVA ASSIGNMENT 4
+
+Question
+Calculate the allowable KYC form-date range from a signup date and current date. The form can be filled for the closest signup anniversary in the past or within 30 days in the future. The form date cannot be in the future. Print the range in dd-MM-yyyy format, or No range when it is not allowed.
+
+Solution Method
+1. Parse both input dates with LocalDate and a dd-MM-yyyy formatter.
+2. Return No range if the signup date is after the current date.
+3. Create the signup anniversary in the current year.
+4. If that anniversary is more than 30 days in the past, move it to the next year.
+5. Return No range if the selected anniversary is more than 30 days in the future.
+6. Calculate anniversary minus 30 days as the starting date.
+7. Calculate anniversary plus 30 days as the ending date.
+8. Limit the ending date to the current date so no future form date is returned.
+9. Format and print the final range.
+
+Source File
+src/KYCForm.java
+
+How to Run
+javac -d output src\KYCForm.java
+java -cp output KYCForm
+
+Input Format
+The first line contains the number of cases. Each following line contains signup-date current-date.

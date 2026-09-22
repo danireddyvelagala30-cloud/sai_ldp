@@ -1,0 +1,23 @@
+JAVA ASSIGNMENT 2
+
+Question
+Write a Java function that checks whether an input string contains every letter from a to z, ignoring case. Include the time and space complexity in the source code comments.
+
+Solution Method
+1. Convert the input to lowercase.
+2. Create a boolean array with 26 positions, one for each alphabet letter.
+3. Visit each character in the input.
+4. For characters between a and z, calculate the array index with ch - 'a'.
+5. Mark that letter as found.
+6. Check all 26 positions. Return false if any letter is missing; otherwise return true.
+
+Complexity
+Time complexity: O(n), where n is the length of the input string.
+Space complexity: O(1), because the boolean array always contains 26 elements.
+
+Source File
+src/AlphabetChecker.java
+
+How to Run
+javac -d output src\AlphabetChecker.java
+java -cp output AlphabetChecker
