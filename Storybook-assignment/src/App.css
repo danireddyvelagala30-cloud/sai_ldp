@@ -1,0 +1,494 @@
+/* ==========================================================================
+   Base & Layout
+   ========================================================================== */
+body {
+  margin: 0;
+  background-color: #19181c;
+  color: #e8e7f0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.app-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  border-bottom: 1px solid #28272f;
+  padding-bottom: 20px;
+}
+
+.app-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 20px;
+}
+
+.section {
+  padding: 24px;
+  background-color: #201f24;
+  border: 1px solid #2d2c35;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.section-title {
+  margin: 0 0 16px 0;
+  color: #a5a5b2;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.demo-col {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.demo-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.demo-wrap-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.demo-space-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.slider-value-display {
+  margin-top: 10px;
+}
+
+.component-demo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.icons-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  background: #26252b;
+  border-radius: 8px;
+  min-width: 60px;
+}
+
+/* ==========================================================================
+   Atom: Text
+   ========================================================================== */
+.atom-text {
+  display: inline-block;
+  color: inherit;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.atom-text--normal {
+  font-weight: 400;
+}
+
+.atom-text--bold {
+  font-weight: 700;
+}
+
+.atom-text--lighter {
+  font-weight: 300;
+}
+
+.atom-text--muted {
+  color: #a5a5b2;
+}
+
+.atom-text--primary {
+  color: #6c5dd3;
+}
+
+.atom-text--white {
+  color: #ffffff;
+}
+
+.atom-text--light {
+  color: #e8e7f0;
+}
+
+/* ==========================================================================
+   Atom: Checkbox
+   ========================================================================== */
+.atom-checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: #6c5dd3;
+  cursor: pointer;
+  border-radius: 4px;
+  margin: 0;
+}
+
+.atom-checkbox:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* ==========================================================================
+   Atom: Button
+   ========================================================================== */
+.atom-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  outline: none;
+  font-family: inherit;
+  transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+.atom-button--small {
+  padding: 6px 14px;
+  font-size: 13px;
+  border-radius: 8px;
+}
+
+.atom-button--medium {
+  padding: 12px 20px;
+  font-size: 14px;
+  border-radius: 12px;
+}
+
+.atom-button--large {
+  padding: 14px 28px;
+  font-size: 16px;
+  border-radius: 14px;
+}
+
+.atom-button--full-width {
+  width: 100%;
+}
+
+.atom-button--disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Button Variants */
+.atom-button--primary {
+  background-color: #6c5dd3;
+  color: #ffffff;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(108, 93, 211, 0.25);
+}
+
+.atom-button--primary:hover:not(:disabled) {
+  background-color: #5b4cc4;
+}
+
+.atom-button--secondary {
+  background-color: #2c2b33;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.atom-button--secondary:hover:not(:disabled) {
+  background-color: #36353e;
+}
+
+.atom-button--back {
+  background-color: #201f24;
+  color: #e8e7f0;
+  border: 1px solid #2d2c34;
+  border-radius: 10px;
+  padding: 8px 16px;
+  font-weight: 500;
+}
+
+.atom-button--back:hover:not(:disabled) {
+  background-color: #28272f;
+  border-color: #3c3b46;
+}
+
+.atom-button--reset {
+  background-color: #26252b;
+  color: #a5a5b2;
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.atom-button--reset:hover:not(:disabled) {
+  background-color: #32313a;
+  color: #e8e7f0;
+}
+
+.atom-button--nav {
+  background-color: transparent;
+  color: #a5a5b2;
+  border-radius: 10px;
+  width: 100%;
+  padding: 10px 14px;
+  justify-content: flex-start;
+  font-weight: 500;
+}
+
+.atom-button--nav:hover:not(:disabled),
+.atom-button--nav-active {
+  background-color: #26252b;
+  color: #ffffff;
+}
+
+.atom-button--ghost {
+  background-color: transparent;
+  color: #a5a5b2;
+  padding: 6px 10px;
+  font-weight: 500;
+}
+
+.atom-button--ghost:hover:not(:disabled) {
+  color: #ffffff;
+}
+
+.atom-button-icon {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ==========================================================================
+   Atom: Icon
+   ========================================================================== */
+.atom-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+.atom-icon--clickable {
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   Atom: Slider
+   ========================================================================== */
+.atom-slider-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 24px;
+}
+
+.atom-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background-color: #33323b;
+  outline: none;
+  cursor: pointer;
+  margin: 0;
+  transition: opacity 0.2s ease;
+}
+
+.atom-slider:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.atom-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 6px;
+  background: #b0a8fe;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  transition: transform 0.1s ease;
+}
+
+.atom-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}
+
+.atom-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 6px;
+  background: #b0a8fe;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* ==========================================================================
+   Atom: Avatar
+   ========================================================================== */
+.atom-avatar-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.atom-avatar-container--clickable {
+  cursor: pointer;
+}
+
+.atom-avatar {
+  overflow: hidden;
+  background-color: #36353e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #28272f;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.atom-avatar--circle {
+  border-radius: 50%;
+}
+
+.atom-avatar--rounded {
+  border-radius: 8px;
+}
+
+.atom-avatar--small {
+  width: 28px;
+  height: 28px;
+}
+
+.atom-avatar--medium {
+  width: 36px;
+  height: 36px;
+}
+
+.atom-avatar--large {
+  width: 48px;
+  height: 48px;
+}
+
+.atom-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.atom-avatar-fallback {
+  color: #e8e7f0;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.atom-avatar--small .atom-avatar-fallback {
+  font-size: 11px;
+}
+
+.atom-avatar--medium .atom-avatar-fallback {
+  font-size: 14px;
+}
+
+.atom-avatar--large .atom-avatar-fallback {
+  font-size: 18px;
+}
+
+.atom-avatar-dropdown-icon {
+  stroke: #a5a5b2;
+}
+
+/* ==========================================================================
+   Atom: Chip / Badge
+   ========================================================================== */
+.atom-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border-radius: 6px;
+  font-weight: 500;
+  box-sizing: border-box;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+.atom-chip--clickable {
+  cursor: pointer;
+}
+
+.atom-chip--small {
+  padding: 2px 8px;
+  font-size: 12px;
+}
+
+.atom-chip--medium {
+  padding: 4px 12px;
+  font-size: 14px;
+}
+
+.atom-chip--default {
+  background-color: #2c2b33;
+  color: #e8e7f0;
+}
+
+.atom-chip--fee {
+  background-color: #201f24;
+  color: #a5a5b2;
+  border: 1px solid #2d2c34;
+  font-size: 11px;
+}
+
+.atom-chip--purple {
+  background-color: rgba(108, 93, 211, 0.18);
+  color: #9c8eff;
+  border: 1px solid rgba(108, 93, 211, 0.3);
+}
+
+.atom-chip--subtle {
+  background-color: #26252b;
+  color: #a5a5b2;
+}
+
+.atom-chip--outline {
+  background-color: transparent;
+  color: #e8e7f0;
+  border: 1px solid #36353e;
+}
+
+.atom-chip-icon {
+  display: inline-flex;
+}
