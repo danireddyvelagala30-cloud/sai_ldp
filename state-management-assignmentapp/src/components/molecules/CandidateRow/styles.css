@@ -1,0 +1,84 @@
+.candidate-row:hover td {
+  background-color: var(--mui-palette-grey-50);
+}
+
+.candidate-row td {
+  border-bottom: 1px solid var(--mui-palette-divider);
+  padding: 8px 24px;
+  vertical-align: middle;
+}
+
+.candidate-row-link,
+.candidate-row-link:link,
+.candidate-row-link:visited,
+.candidate-row-link:hover,
+.candidate-row-link:active,
+.candidate-row-link:focus {
+  text-decoration: none;
+  color: var(--mui-palette-primary-main) !important;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.candidate-row-link:hover {
+  text-decoration: underline;
+}
+
+.candidate-row__adjudication-chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 4px;
+  padding: 0 8px;
+  height: 24px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.candidate-row__adjudication-chip--engaged {
+  border: 1px solid var(--mui-palette-success-light);
+  background-color: var(--mui-palette-success-light);
+  color: var(--mui-palette-success-dark);
+}
+
+.candidate-row__adjudication-chip--neutral {
+  border: 1px solid var(--mui-palette-grey-300);
+  background-color: var(--mui-palette-grey-50);
+  color: var(--mui-palette-grey-700);
+}
+
+.candidate-row__empty-text {
+  color: var(--mui-palette-text-secondary);
+  font-size: 14px;
+}
+
+.candidate-row__location {
+  color: var(--mui-palette-grey-700);
+  font-size: 14px;
+}
+
+.candidate-row__date {
+  color: var(--mui-palette-text-secondary);
+  font-size: 14px;
+}
+
+.candidate-row__cell--name {
+  width: 22%;
+}
+
+.candidate-row__cell--adjudication {
+  width: 18%;
+}
+
+.candidate-row__cell--status {
+  width: 18%;
+}
+
+.candidate-row__cell--location {
+  width: 22%;
+}
+
+.candidate-row__cell--date {
+  width: 20%;
+}

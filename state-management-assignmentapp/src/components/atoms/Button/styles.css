@@ -1,0 +1,40 @@
+.primary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: "Inter", sans-serif;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+  border: 1px solid transparent;
+}
+
+.primary-btn--contained {
+  background-color: var(--mui-palette-primary-main);
+  color: var(--mui-palette-common-white);
+  border-color: var(--mui-palette-primary-main);
+}
+
+.primary-btn--contained:hover {
+  background-color: var(--mui-palette-primary-dark);
+  border-color: var(--mui-palette-primary-dark);
+}
+
+.primary-btn--outlined {
+  background-color: transparent;
+  color: var(--mui-palette-grey-700);
+  border-color: var(--mui-palette-grey-300);
+}
+
+.primary-btn--outlined:hover {
+  background-color: var(--mui-palette-grey-50);
+  border-color: var(--mui-palette-grey-400);
+}
+
+.primary-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

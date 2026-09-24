@@ -1,0 +1,174 @@
+.candidate-details-page {
+  width: 100%;
+  height: 100vh;
+  background-color: var(--mui-palette-background-default);
+  display: flex;
+  overflow: hidden;
+}
+
+.candidate-details-page__not-found {
+  padding: 32px;
+}
+
+.candidate-details-page__main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.candidate-details-page__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 32px;
+  background-color: var(--mui-palette-background-paper);
+  border-bottom: 1px solid var(--mui-palette-grey-200);
+}
+
+.candidate-details-page__header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.candidate-details-page__back-btn {
+  color: var(--mui-palette-grey-700);
+  padding: 4px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+.candidate-details-page__title {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--mui-palette-text-primary);
+  line-height: 28px;
+  margin: 0;
+}
+
+.candidate-details-page__header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.candidate-details-page__btn-pre-adverse {
+  border-radius: 6px;
+  border: 1px solid var(--mui-palette-grey-300);
+  color: var(--mui-palette-grey-700);
+  font-weight: 600;
+  font-size: 14px;
+  font-family: "Inter", sans-serif;
+  padding: 8px 16px;
+  background-color: transparent;
+  cursor: pointer;
+  box-shadow: 0px 1px 2px rgba(var(--mui-palette-common-blackChannel) / 0.05);
+  transition: all 0.15s ease;
+}
+
+.candidate-details-page__btn-pre-adverse:hover {
+  border-color: var(--mui-palette-grey-400);
+  background-color: var(--mui-palette-grey-50);
+}
+
+.candidate-details-page__btn-engage {
+  border-radius: 6px;
+  border: 1px solid transparent;
+  background-color: var(--mui-palette-primary-main);
+  color: var(--mui-palette-common-white);
+  font-weight: 600;
+  font-size: 14px;
+  font-family: "Inter", sans-serif;
+  padding: 8px 16px;
+  cursor: pointer;
+  box-shadow: 0px 1px 2px rgba(var(--mui-palette-common-blackChannel) / 0.05);
+  transition: all 0.15s ease;
+}
+
+.candidate-details-page__btn-engage:hover {
+  background-color: var(--mui-palette-primary-dark);
+}
+
+.candidate-details-page__btn-engage:disabled {
+  background-color: var(--mui-palette-grey-400);
+  cursor: not-allowed;
+}
+
+.candidate-details-page__content {
+  padding: 24px 32px 48px 32px;
+}
+
+.candidate-details-page__tabs-bar {
+  border-bottom: 1px solid var(--mui-palette-divider);
+  margin-bottom: 24px;
+}
+
+.candidate-details-page__table-container {
+  border: 1px solid var(--mui-palette-divider);
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: var(--mui-palette-background-paper);
+}
+
+.candidate-details-page__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.candidate-details-page__table-head {
+  background-color: var(--mui-palette-grey-50);
+}
+
+.candidate-details-page__th {
+  border-bottom: 1px solid var(--mui-palette-divider);
+  padding: 12px 24px;
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--mui-palette-grey-600);
+  letter-spacing: 0.02em;
+  text-align: left;
+}
+
+.candidate-details-page__th--search {
+  width: 280px;
+}
+
+.candidate-details-page__th--status {
+  width: 200px;
+}
+
+.candidate-details-page__row td {
+  border-bottom: 1px solid var(--mui-palette-divider);
+  padding: 16px 24px;
+  font-size: 14px;
+}
+
+.candidate-details-page__row:last-child td {
+  border-bottom: none;
+}
+
+.candidate-details-page__cell-search {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--mui-palette-primary-main);
+}
+
+.candidate-details-page__cell-date {
+  color: var(--mui-palette-text-secondary);
+  font-size: 14px;
+}
+
+.candidate-details-page__empty-row td {
+  color: var(--mui-palette-text-secondary);
+  font-size: 14px;
+  text-align: center;
+  padding: 24px;
+}
