@@ -1,6 +1,6 @@
 .search-input {
   width: 100%;
-  border: 1px solid #cbd5e1;
+  border: 1px solid var(--mui-palette-grey-300);
   border-radius: 6px;
   padding: 8px 10px;
   font-size: 14px;
@@ -10,5 +10,5 @@
 }
 
 .search-input:focus {
-  border-color: #224dff;
+  border-color: var(--mui-palette-primary-main);
 }

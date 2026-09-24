@@ -8,7 +8,7 @@
   font-weight: 600;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  background-color: #e0e7ff;
-  color: #3730a3;
+  background-color: var(--mui-palette-primary-light);
+  color: var(--mui-palette-primary-dark);
   border: none;
 }

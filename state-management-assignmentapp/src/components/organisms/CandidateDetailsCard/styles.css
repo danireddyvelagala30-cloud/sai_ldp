@@ -1,10 +1,10 @@
 .details-card {
-  background-color: #ffffff;
+  background-color: var(--mui-palette-background-paper);
   border-radius: 8px;
-  border: 1px solid #e4e7ec;
+  border: 1px solid var(--mui-palette-grey-200);
   overflow: hidden;
   margin-bottom: 16px;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.04);
+  box-shadow: 0px 1px 3px rgba(var(--mui-palette-common-blackChannel) / 0.04);
 }
 
 .details-card__header {
@@ -14,14 +14,14 @@
   padding: 16px 24px;
   cursor: pointer;
   user-select: none;
-  background-color: #ffffff;
+  background-color: var(--mui-palette-background-paper);
 }
 
 .details-card__title {
   font-family: "Inter", sans-serif;
   font-weight: 600;
   font-size: 16px;
-  color: #1d2939;
+  color: var(--mui-palette-grey-800);
   line-height: 24px;
   margin: 0;
 }
@@ -30,7 +30,7 @@
   background: none;
   border: none;
   cursor: pointer;
-  color: #667085;
+  color: var(--mui-palette-text-secondary);
   display: grid;
   place-items: center;
   padding: 4px;
@@ -47,9 +47,9 @@
 }
 
 .details-card__body {
-  border-top: 1px solid #eaecf0;
+  border-top: 1px solid var(--mui-palette-divider);
   padding: 20px 24px;
-  background-color: #fafafa;
+  background-color: var(--mui-palette-grey-50);
 }
 
 .details-card__grid {
@@ -67,7 +67,7 @@
 .details-card__field-label {
   font-size: 12px;
   font-weight: 500;
-  color: #667085;
+  color: var(--mui-palette-text-secondary);
   display: block;
   margin-bottom: 2px;
 }
@@ -75,5 +75,5 @@
 .details-card__field-value {
   font-size: 14px;
   font-weight: 600;
-  color: #1d2939;
+  color: var(--mui-palette-grey-800);
 }

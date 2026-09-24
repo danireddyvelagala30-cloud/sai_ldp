@@ -1,9 +1,9 @@
 .candidate-row:hover td {
-  background-color: #f9fafb;
+  background-color: var(--mui-palette-grey-50);
 }
 
 .candidate-row td {
-  border-bottom: 1px solid #eaecf0;
+  border-bottom: 1px solid var(--mui-palette-divider);
   padding: 8px 24px;
   vertical-align: middle;
 }
@@ -15,7 +15,7 @@
 .candidate-row-link:active,
 .candidate-row-link:focus {
   text-decoration: none;
-  color: #224dff !important;
+  color: var(--mui-palette-primary-main) !important;
   font-weight: 500;
   font-size: 14px;
 }
@@ -37,29 +37,29 @@
 }
 
 .candidate-row__adjudication-chip--engaged {
-  border: 1px solid #a6f4c5;
-  background-color: #ecfdf5;
-  color: #12b76a;
+  border: 1px solid var(--mui-palette-success-light);
+  background-color: var(--mui-palette-success-light);
+  color: var(--mui-palette-success-dark);
 }
 
 .candidate-row__adjudication-chip--neutral {
-  border: 1px solid #d0d5dd;
-  background-color: #f9fafb;
-  color: #344054;
+  border: 1px solid var(--mui-palette-grey-300);
+  background-color: var(--mui-palette-grey-50);
+  color: var(--mui-palette-grey-700);
 }
 
 .candidate-row__empty-text {
-  color: #667085;
+  color: var(--mui-palette-text-secondary);
   font-size: 14px;
 }
 
 .candidate-row__location {
-  color: #344054;
+  color: var(--mui-palette-grey-700);
   font-size: 14px;
 }
 
 .candidate-row__date {
-  color: #667085;
+  color: var(--mui-palette-text-secondary);
   font-size: 14px;
 }
 

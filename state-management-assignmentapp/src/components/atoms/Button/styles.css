@@ -13,25 +13,25 @@
 }
 
 .primary-btn--contained {
-  background-color: #224dff;
-  color: #ffffff;
-  border-color: #224dff;
+  background-color: var(--mui-palette-primary-main);
+  color: var(--mui-palette-common-white);
+  border-color: var(--mui-palette-primary-main);
 }
 
 .primary-btn--contained:hover {
-  background-color: #1b3ec8;
-  border-color: #1b3ec8;
+  background-color: var(--mui-palette-primary-dark);
+  border-color: var(--mui-palette-primary-dark);
 }
 
 .primary-btn--outlined {
   background-color: transparent;
-  color: #344054;
-  border-color: #d0d5dd;
+  color: var(--mui-palette-grey-700);
+  border-color: var(--mui-palette-grey-300);
 }
 
 .primary-btn--outlined:hover {
-  background-color: #f9fafb;
-  border-color: #98a2b3;
+  background-color: var(--mui-palette-grey-50);
+  border-color: var(--mui-palette-grey-400);
 }
 
 .primary-btn:disabled {

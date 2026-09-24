@@ -15,6 +15,7 @@ import AddIcon from "@mui/icons-material/Add";
 import Sidebar from "../../components/organisms/Sidebar";
 import CandidateTable from "../../components/molecules/CandidateTable";
 import type { Candidate } from "../../models/Candidate";
+import { APP_CONSTANTS } from "../../utils/constants";
 import "./styles.css";
 
 interface CandidateListProps {
@@ -86,7 +87,7 @@ const CandidateList = ({ candidates }: CandidateListProps) => {
         <div className="candidate-list-page__card">
           <header className="candidate-list-page__card-header">
             <h1 className="candidate-list-page__card-title">
-              Candidates
+              {APP_CONSTANTS.candidates}
             </h1>
 
             <div className="candidate-list-page__card-actions">
@@ -95,21 +96,21 @@ const CandidateList = ({ candidates }: CandidateListProps) => {
                 className="candidate-list-page__btn-export"
               >
                 <ExportIcon sx={{ fontSize: "18px" }} />
-                Export
+                {APP_CONSTANTS.export}
               </button>
               <button
                 type="button"
                 className="candidate-list-page__btn-add"
               >
                 <AddIcon sx={{ fontSize: "18px" }} />
-                Add Candidate
+                {APP_CONSTANTS.addCandidate}
               </button>
             </div>
           </header>
 
           <div className="candidate-list-page__toolbar">
             <h2 className="candidate-list-page__toolbar-title">
-              Candidate Information
+              {APP_CONSTANTS.candidateInformation}
             </h2>
 
             <div className="candidate-list-page__toolbar-controls">
@@ -117,7 +118,7 @@ const CandidateList = ({ candidates }: CandidateListProps) => {
                 <SearchIcon className="candidate-list-page__search-icon" />
                 <input
                   type="text"
-                  placeholder="Search candidate"
+                  placeholder={APP_CONSTANTS.searchCandidate}
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                 />
@@ -128,8 +129,8 @@ const CandidateList = ({ candidates }: CandidateListProps) => {
                 onClick={handleFilterClick}
                 className="candidate-list-page__btn-filter"
               >
-                <FilterIcon sx={{ fontSize: "18px", color: "#344054" }} />
-                Filters
+                <FilterIcon sx={{ fontSize: "18px", color: "text.primary" }} />
+                {APP_CONSTANTS.filters}
               </button>
 
               <Popover
@@ -151,7 +152,7 @@ const CandidateList = ({ candidates }: CandidateListProps) => {
                 }}
               >
                 <h3 className="candidate-list-page__filter-heading">
-                  Status
+                  {APP_CONSTANTS.status}
                 </h3>
                 <FormGroup>
                   <FormControlLabel
@@ -162,7 +163,7 @@ const CandidateList = ({ candidates }: CandidateListProps) => {
                         onChange={() => handleStatusChange("CLEAR")}
                       />
                     }
-                    label={<Typography variant="body2">Clear</Typography>}
+                    label={<Typography variant="body2">{APP_CONSTANTS.clear}</Typography>}
                   />
                   <FormControlLabel
                     control={
@@ -172,12 +173,12 @@ const CandidateList = ({ candidates }: CandidateListProps) => {
                         onChange={() => handleStatusChange("CONSIDER")}
                       />
                     }
-                    label={<Typography variant="body2">Consider</Typography>}
+                    label={<Typography variant="body2">{APP_CONSTANTS.consider}</Typography>}
                   />
                 </FormGroup>
 
                 <h3 className="candidate-list-page__filter-heading candidate-list-page__filter-heading--spaced">
-                  Adjudication
+                  {APP_CONSTANTS.adjudication}
                 </h3>
                 <FormGroup>
                   <FormControlLabel
@@ -188,7 +189,7 @@ const CandidateList = ({ candidates }: CandidateListProps) => {
                         onChange={() => handleAdjudicationChange("ENGAGE")}
                       />
                     }
-                    label={<Typography variant="body2">Engage</Typography>}
+                    label={<Typography variant="body2">{APP_CONSTANTS.engage}</Typography>}
                   />
                 </FormGroup>
               </Popover>

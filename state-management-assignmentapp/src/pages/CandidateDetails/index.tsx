@@ -11,6 +11,7 @@ import Sidebar from "../../components/organisms/Sidebar";
 import CandidateDetailsCard from "../../components/organisms/CandidateDetailsCard";
 import StatusChip from "../../components/atoms/StatusChip";
 import type { Candidate } from "../../models/Candidate";
+import { APP_CONSTANTS } from "../../utils/constants";
 import "./styles.css";
 
 interface CandidateDetailsProps {
@@ -31,14 +32,14 @@ const CandidateDetails = ({
   if (!candidate) {
     return (
       <div className="candidate-details-page__not-found">
-        <Typography variant="h5">Candidate not found</Typography>
+        <Typography variant="h5">{APP_CONSTANTS.candidateNotFound}</Typography>
         <button
           type="button"
           onClick={() => navigate("/")}
           className="candidate-details-page__btn-pre-adverse"
           style={{ marginTop: "16px" }}
         >
-          Back to Candidates
+          {APP_CONSTANTS.backToCandidates}
         </button>
       </div>
     );
@@ -48,7 +49,7 @@ const CandidateDetails = ({
 
   return (
     <div className="candidate-details-page">
-      <Sidebar activeItem="Candidates" />
+            <Sidebar activeItem={APP_CONSTANTS.candidates} />
 
       <main className="candidate-details-page__main">
         <header className="candidate-details-page__header">
@@ -70,7 +71,7 @@ const CandidateDetails = ({
               type="button"
               className="candidate-details-page__btn-pre-adverse"
             >
-              Pre-Adverse Action
+              {APP_CONSTANTS.preAdverseAction}
             </button>
             <button
               type="button"
@@ -78,19 +79,19 @@ const CandidateDetails = ({
               onClick={() => engageCandidate(candidate.id)}
               className="candidate-details-page__btn-engage"
             >
-              {isEngaged ? "Engaged" : "Engage"}
+              {isEngaged ? APP_CONSTANTS.engaged : APP_CONSTANTS.engage}
             </button>
           </div>
         </header>
 
         <section className="candidate-details-page__content">
           <CandidateDetailsCard
-            title="Candidate Information"
+            title={APP_CONSTANTS.candidateInformation}
             defaultExpanded={true}
             candidate={candidate}
           />
 
-          <CandidateDetailsCard title="Report Information" defaultExpanded={true}>
+          <CandidateDetailsCard title={APP_CONSTANTS.reportInformation} defaultExpanded={true}>
             <div className="candidate-details-page__tabs-bar">
               <Tabs
                 value={tabIndex}
@@ -98,7 +99,7 @@ const CandidateDetails = ({
                 sx={{
                   minHeight: "40px",
                   "& .MuiTabs-indicator": {
-                    backgroundColor: "#224DFF",
+                    backgroundColor: "primary.main",
                     height: 2,
                   },
                 }}
@@ -110,7 +111,7 @@ const CandidateDetails = ({
                     fontSize: "14px",
                     fontWeight: 600,
                     textTransform: "none",
-                    color: tabIndex === 0 ? "#224DFF" : "#667085",
+                    color: tabIndex === 0 ? "primary.main" : "text.secondary",
                     minHeight: "40px",
                     px: 0,
                     mr: "24px",
@@ -124,13 +125,13 @@ const CandidateDetails = ({
                 <thead className="candidate-details-page__table-head">
                   <tr>
                     <th className="candidate-details-page__th candidate-details-page__th--search">
-                      SEARCH
+                      {APP_CONSTANTS.searchLabel}
                     </th>
                     <th className="candidate-details-page__th candidate-details-page__th--status">
-                      STATUS
+                      {APP_CONSTANTS.statusLabel}
                     </th>
                     <th className="candidate-details-page__th">
-                      DATE
+                      {APP_CONSTANTS.date}
                     </th>
                   </tr>
                 </thead>
@@ -152,7 +153,7 @@ const CandidateDetails = ({
                   ) : (
                     <tr className="candidate-details-page__empty-row">
                       <td colSpan={3}>
-                        No court searches recorded for this candidate.
+                        {APP_CONSTANTS.noCourtSearches}
                       </td>
                     </tr>
                   )}

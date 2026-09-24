@@ -10,7 +10,7 @@
 
 .search-input {
     width: 100%;
-    border: 1px solid #cbd5e1;
+    border: 1px solid var(--mui-palette-grey-300);
     border-radius: 6px;
     padding: 8px 10px;
     font-size: 14px;
@@ -19,7 +19,7 @@
 }
 
 .search-input:focus {
-    border-color: #224dff;
+    border-color: var(--mui-palette-primary-main);
 }
 
 .header-container {
@@ -49,16 +49,16 @@
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    background: #dbeafe;
+    background: var(--mui-palette-primary-light);
     display: grid;
     place-items: center;
     font-weight: 600;
-    color: #1e40af;
+    color: var(--mui-palette-primary-dark);
 }
 
 .candidate-row-link {
     text-decoration: none;
-    color: #224dff;
+    color: var(--mui-palette-primary-main);
     font-weight: 500;
     font-size: 14px;
 }
@@ -74,7 +74,7 @@
 .candidates-page-main {
     flex: 1;
     padding: 16px;
-    background: #eef2f6;
+    background: var(--mui-palette-background-default);
     min-height: 100vh;
 }
 

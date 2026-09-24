@@ -14,11 +14,11 @@
 }
 
 .status-chip--clear {
-  background-color: #ecfdf5;
-  color: #12b76a;
+  background-color: var(--mui-palette-success-light);
+  color: var(--mui-palette-success-dark);
 }
 
 .status-chip--consider {
-  background-color: #fef0c7;
-  color: #b54708;
+  background-color: var(--mui-palette-warning-light);
+  color: var(--mui-palette-warning-dark);
 }

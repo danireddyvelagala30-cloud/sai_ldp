@@ -16,7 +16,7 @@ body,
 
 body {
   font-family: 'Inter', Arial, Helvetica, sans-serif;
-  background: #f3f3f3;
+  background: var(--mui-palette-grey-100);
 }
 
 html {

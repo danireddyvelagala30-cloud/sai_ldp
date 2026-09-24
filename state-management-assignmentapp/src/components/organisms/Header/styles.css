@@ -10,7 +10,7 @@
   margin: 0;
   font-size: 18px;
   font-weight: 700;
-  color: #101828;
+  color: var(--mui-palette-text-primary);
   font-family: "Inter", sans-serif;
 }
 
@@ -28,11 +28,11 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: #dbeafe;
+  background: var(--mui-palette-primary-light);
   display: grid;
   place-items: center;
   font-weight: 600;
-  color: #1e40af;
+  color: var(--mui-palette-primary-dark);
   font-size: 14px;
   font-family: "Inter", sans-serif;
   flex-shrink: 0;

@@ -1,5 +1,6 @@
 import SearchInput from "../../atoms/SearchInput";
-import PrimaryButton from "../../atoms/PrimaryButton";
+import Button from "../../atoms/Button";
+import { APP_CONSTANTS } from "../../../utils/constants";
 import "./styles.css";
 
 interface HeaderProps {
@@ -10,15 +11,19 @@ interface HeaderProps {
 const Header = ({ search, setSearch }: HeaderProps) => {
   return (
     <div className="header-container">
-      <h2 className="header-title">Candidates</h2>
+      <h2 className="header-title">{APP_CONSTANTS.candidates}</h2>
 
       <div className="header-actions">
         <div className="header-search-box">
-          <SearchInput value={search} onChange={setSearch} />
+          <SearchInput
+            value={search}
+            onChange={setSearch}
+            placeholder={APP_CONSTANTS.searchCandidate}
+          />
         </div>
 
-        <PrimaryButton label="Filter" variant="outlined" />
-        <PrimaryButton label="Export" />
+        <Button label={APP_CONSTANTS.filters} variant="outlined" />
+        <Button label={APP_CONSTANTS.export} />
         <div className="header-avatar">A</div>
       </div>
     </div>

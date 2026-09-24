@@ -1,4 +1,4 @@
-import "./styles.css";
+import { TextField } from "@mui/material";
 
 interface SearchInputProps {
   value: string;
@@ -12,12 +12,17 @@ const SearchInput = ({
   placeholder = "Search Candidate",
 }: SearchInputProps) => {
   return (
-    <input
-      type="text"
+    <TextField
+      fullWidth
+      size="small"
+      variant="outlined"
       value={value}
       placeholder={placeholder}
       onChange={(event) => onChange(event.target.value)}
-      className="search-input"
+      sx={{
+        backgroundColor: "common.white",
+        borderRadius: 1,
+      }}
     />
   );
 };

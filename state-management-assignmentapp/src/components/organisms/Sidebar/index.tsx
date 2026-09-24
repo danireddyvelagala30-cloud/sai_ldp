@@ -10,6 +10,7 @@ import {
   LogoutOutlined as LogoutIcon,
 } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
+import { APP_CONSTANTS } from "../../../utils/constants";
 import "./styles.css";
 
 interface SidebarProps {
@@ -18,16 +19,16 @@ interface SidebarProps {
 }
 
 const navItems = [
-  { name: "Home", icon: HomeIcon, path: "/" },
-  { name: "Candidates", icon: CandidatesIcon, path: "/" },
-  { name: "Adverse Actions", icon: AdverseActionsIcon, path: "#" },
-  { name: "Logs", icon: LogsIcon, path: "#" },
-  { name: "Analytics", icon: AnalyticsIcon, path: "#" },
-  { name: "Account", icon: AccountIcon, path: "#" },
-  { name: "Screenings", icon: ScreeningsIcon, path: "#" },
+  { name: APP_CONSTANTS.home, icon: HomeIcon, path: "/" },
+  { name: APP_CONSTANTS.candidates, icon: CandidatesIcon, path: "/" },
+  { name: APP_CONSTANTS.adverseActions, icon: AdverseActionsIcon, path: "#" },
+  { name: APP_CONSTANTS.logs, icon: LogsIcon, path: "#" },
+  { name: APP_CONSTANTS.analytics, icon: AnalyticsIcon, path: "#" },
+  { name: APP_CONSTANTS.account, icon: AccountIcon, path: "#" },
+  { name: APP_CONSTANTS.screenings, icon: ScreeningsIcon, path: "#" },
 ];
 
-const Sidebar = ({ activeItem = "Candidates", onSelectItem }: SidebarProps) => {
+const Sidebar = ({ activeItem = APP_CONSTANTS.candidates, onSelectItem }: SidebarProps) => {
   const navigate = useNavigate();
 
   const handleItemClick = (item: typeof navItems[0]) => {
@@ -43,7 +44,7 @@ const Sidebar = ({ activeItem = "Candidates", onSelectItem }: SidebarProps) => {
     <aside className="sidebar">
       <div className="sidebar__top">
         <Typography variant="h6" className="sidebar__logo">
-          RECRUIT
+          {APP_CONSTANTS.appName}
         </Typography>
 
         <div className="sidebar__nav-list">

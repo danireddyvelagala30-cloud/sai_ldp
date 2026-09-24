@@ -1,7 +1,7 @@
 .candidate-list-page {
   width: 100%;
   height: 100vh;
-  background-color: #f7f8fa;
+  background-color: var(--mui-palette-background-default);
   display: flex;
   overflow: hidden;
 }
@@ -20,10 +20,10 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  background-color: #ffffff;
+  background-color: var(--mui-palette-background-paper);
   border-radius: 8px;
-  border: 1px solid #e4e7ec;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--mui-palette-grey-200);
+  box-shadow: 0px 1px 3px rgba(var(--mui-palette-common-blackChannel) / 0.04);
   overflow: hidden;
 }
 
@@ -32,14 +32,14 @@
   align-items: center;
   justify-content: space-between;
   padding: 20px 24px;
-  border-bottom: 1px solid #eaecf0;
+  border-bottom: 1px solid var(--mui-palette-divider);
 }
 
 .candidate-list-page__card-title {
   font-family: "Inter", sans-serif;
   font-weight: 700;
   font-size: 18px;
-  color: #101828;
+  color: var(--mui-palette-text-primary);
   line-height: 28px;
   margin: 0;
 }
@@ -55,9 +55,9 @@
   align-items: center;
   gap: 6px;
   border-radius: 6px;
-  border: 1px solid #d0d5dd;
+  border: 1px solid var(--mui-palette-grey-300);
   background-color: transparent;
-  color: #344054;
+  color: var(--mui-palette-grey-700);
   font-weight: 600;
   font-size: 14px;
   font-family: "Inter", sans-serif;
@@ -67,8 +67,8 @@
 }
 
 .candidate-list-page__btn-export:hover {
-  border-color: #98a2b3;
-  background-color: #f9fafb;
+  border-color: var(--mui-palette-grey-400);
+  background-color: var(--mui-palette-grey-50);
 }
 
 .candidate-list-page__btn-add {
@@ -76,9 +76,9 @@
   align-items: center;
   gap: 6px;
   border-radius: 6px;
-  border: 1px solid #224dff;
-  background-color: #224dff;
-  color: #ffffff;
+  border: 1px solid var(--mui-palette-primary-main);
+  background-color: var(--mui-palette-primary-main);
+  color: var(--mui-palette-common-white);
   font-weight: 600;
   font-size: 14px;
   font-family: "Inter", sans-serif;
@@ -88,8 +88,8 @@
 }
 
 .candidate-list-page__btn-add:hover {
-  background-color: #1b3ec8;
-  border-color: #1b3ec8;
+  background-color: var(--mui-palette-primary-dark);
+  border-color: var(--mui-palette-primary-dark);
 }
 
 .candidate-list-page__toolbar {
@@ -97,8 +97,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 16px 24px;
-  border-bottom: 1px solid #eaecf0;
-  background-color: #ffffff;
+  border-bottom: 1px solid var(--mui-palette-divider);
+  background-color: var(--mui-palette-background-paper);
   gap: 16px;
   flex-wrap: wrap;
 }
@@ -107,7 +107,7 @@
   font-family: "Inter", sans-serif;
   font-weight: 600;
   font-size: 16px;
-  color: #1d2939;
+  color: var(--mui-palette-grey-800);
   margin: 0;
 }
 
@@ -124,10 +124,10 @@
   gap: 8px;
   width: 240px;
   height: 38px;
-  border: 1px solid #d0d5dd;
+  border: 1px solid var(--mui-palette-grey-300);
   border-radius: 6px;
   padding: 0 10px;
-  background-color: #ffffff;
+  background-color: var(--mui-palette-background-paper);
   box-sizing: border-box;
 }
 
@@ -138,19 +138,19 @@
   font-size: 14px;
   font-family: "Inter", sans-serif;
   background: transparent;
-  color: #344054;
+  color: var(--mui-palette-grey-700);
 }
 
 .candidate-list-page__search-field input::placeholder {
-  color: #98a2b3;
+  color: var(--mui-palette-grey-400);
 }
 
 .candidate-list-page__search-field:focus-within {
-  border-color: #224dff;
+  border-color: var(--mui-palette-primary-main);
 }
 
 .candidate-list-page__search-icon {
-  color: #667085;
+  color: var(--mui-palette-text-secondary);
   font-size: 20px;
   flex-shrink: 0;
 }
@@ -161,9 +161,9 @@
   gap: 6px;
   height: 38px;
   border-radius: 6px;
-  border: 1px solid #d0d5dd;
+  border: 1px solid var(--mui-palette-grey-300);
   background-color: transparent;
-  color: #344054;
+  color: var(--mui-palette-grey-700);
   font-weight: 600;
   font-size: 14px;
   font-family: "Inter", sans-serif;
@@ -173,8 +173,8 @@
 }
 
 .candidate-list-page__btn-filter:hover {
-  border-color: #98a2b3;
-  background-color: #f9fafb;
+  border-color: var(--mui-palette-grey-400);
+  background-color: var(--mui-palette-grey-50);
 }
 
 .candidate-list-page__btn-more {
@@ -182,24 +182,24 @@
   place-items: center;
   width: 38px;
   height: 38px;
-  border: 1px solid #d0d5dd;
+  border: 1px solid var(--mui-palette-grey-300);
   border-radius: 6px;
   background: transparent;
-  color: #344054;
+  color: var(--mui-palette-grey-700);
   cursor: pointer;
   transition: background-color 0.15s ease;
 }
 
 .candidate-list-page__btn-more:hover {
-  background-color: #f9fafb;
+  background-color: var(--mui-palette-grey-50);
 }
 
 .candidate-list-page__filter-popover {
   width: 260px;
   padding: 16px;
   border-radius: 8px;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
-  background: #ffffff;
+  box-shadow: 0px 4px 20px rgba(var(--mui-palette-common-blackChannel) / 0.08);
+  background: var(--mui-palette-background-paper);
   position: absolute;
   z-index: 100;
 }
@@ -207,7 +207,7 @@
 .candidate-list-page__filter-heading {
   font-weight: 600;
   font-size: 14px;
-  color: #344054;
+  color: var(--mui-palette-grey-700);
   margin: 0 0 8px;
   font-family: "Inter", sans-serif;
 }

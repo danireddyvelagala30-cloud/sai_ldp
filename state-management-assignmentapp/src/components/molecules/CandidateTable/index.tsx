@@ -13,6 +13,7 @@ import { useState, useEffect } from "react";
 
 import type { Candidate } from "../../../models/Candidate";
 import CandidateRow from "../CandidateRow";
+import { APP_CONSTANTS } from "../../../utils/constants";
 import "./styles.css";
 
 interface CandidateTableProps {
@@ -60,19 +61,19 @@ const CandidateTable = ({ candidates }: CandidateTableProps) => {
           <TableHead>
             <TableRow className="candidate-table__head-row">
               <TableCell className="candidate-table__head-cell--name">
-                NAME
+                {APP_CONSTANTS.name.toUpperCase()}
               </TableCell>
               <TableCell className="candidate-table__head-cell--adjudication">
-                ADJUDICATION
+                {APP_CONSTANTS.adjudication.toUpperCase()}
               </TableCell>
               <TableCell className="candidate-table__head-cell--status">
-                STATUS
+                {APP_CONSTANTS.status.toUpperCase()}
               </TableCell>
               <TableCell className="candidate-table__head-cell--location">
-                LOCATION
+                {APP_CONSTANTS.location.toUpperCase()}
               </TableCell>
               <TableCell className="candidate-table__head-cell--date">
-                DATE
+                {APP_CONSTANTS.date.toUpperCase()}
               </TableCell>
             </TableRow>
           </TableHead>
@@ -80,7 +81,7 @@ const CandidateTable = ({ candidates }: CandidateTableProps) => {
             {candidates.length === 0 ? (
               <TableRow>
                 <TableCell colSpan={5} className="candidate-table__empty-cell">
-                  No candidates found.
+                  {APP_CONSTANTS.noCandidatesFound}
                 </TableCell>
               </TableRow>
             ) : (
