@@ -1,13 +1,20 @@
 import Checkbox from "../../atoms/Checkbox/Checkbox";
 import Text from "../../atoms/Text/Text";
 
-const ContractRow = () => {
+interface ContractRowProps {
+  name: string;
+  billingCycle: string;
+  amount: number;
+  selected: boolean;
+}
+
+const ContractRow = ({ name, billingCycle, amount, selected }: ContractRowProps) => {
   return (
     <div className="row">
-      <Checkbox />
-      <Text text="Contract 1" />
-      <Text text="Monthly" />
-      <Text text="$12,000" />
+      <Checkbox label={name} checked={selected} />
+      <Text text={name} />
+      <Text text={billingCycle} />
+      <Text text={`$${amount.toLocaleString()}`} />
     </div>
   );
 };

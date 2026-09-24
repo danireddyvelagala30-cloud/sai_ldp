@@ -1,23 +1,30 @@
+import Button from "../../atoms/Button/Button";
 import Text from "../../atoms/Text/Text";
+import { contracts, summaryDetails } from "../../../data/contracts";
+
+const selectedContracts = contracts.filter((contract) => contract.selected).length;
+const totalPayable = contracts
+  .filter((contract) => contract.selected)
+  .reduce((sum, contract) => sum + contract.amount, 0);
 
 const SummaryCard = () => {
   return (
     <div className="summary">
-      <h2>Summary</h2>
+      <Text text={summaryDetails.title} />
 
       <p>
-        <Text text="Term: 12 Months" />
+        <Text text={`Term: ${summaryDetails.term}`} />
       </p>
 
       <p>
-        <Text text="Selected Contracts: 0" />
+        <Text text={`Selected Contracts: ${selectedContracts}`} />
       </p>
 
       <p>
-        <Text text="Total Payable: $0.00" />
+        <Text text={`Total Payable: $${totalPayable.toLocaleString()}`} />
       </p>
 
-      <button>Review Your Credit</button>
+      <Button label={summaryDetails.reviewButtonLabel} />
     </div>
   );
 };
