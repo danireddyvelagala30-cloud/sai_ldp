@@ -1,12 +1,12 @@
 import { useState } from "react";
 import "./App.css";
-import Checkbox from "./components/atoms/checkbox/Checkbox";
-import Text from "./components/atoms/text/Text";
-import Button from "./components/atoms/button/Button";
-import Icon from "./components/atoms/icon/Icon";
-import Slider from "./components/atoms/slider/Slider";
-import Avatar from "./components/atoms/avatar/Avatar";
-import Chip from "./components/atoms/chip/Chip";
+import Checkbox from "./components/atoms/checkbox";
+import Text from "./components/atoms/text";
+import Button from "./components/atoms/button";
+import Icon from "./components/atoms/icon";
+import Slider from "./components/atoms/slider";
+import Avatar from "./components/atoms/avatar";
+import Chip from "./components/atoms/chip";
 
 const App = () => {
   const [sliderVal, setSliderVal] = useState(350000);
