@@ -1,0 +1,5 @@
+com\example\Student.class
+com\example\StudentController.class
+com\example\SpringConfigurationApplication.class
+com\example\StudentService.class
+com\example\AppConfig.class
