@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Student</title>
+</head>
+<body>
+    <h1>Add Student</h1>
+
+    <form th:action="@{/students}" th:object="${student}" method="post">
+        <div>
+            <label for="name">Name:</label>
+            <input id="name" type="text" th:field="*{name}">
+            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input id="email" type="email" th:field="*{email}">
+            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+        </div>
+        <div>
+            <label for="age">Age:</label>
+            <input id="age" type="number" min="1" th:field="*{age}">
+            <span th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></span>
+        </div>
+        <button type="submit">Save student</button>
+    </form>
+
+    <p><a th:href="@{/students}">Back to students</a></p>
+</body>
+</html>
