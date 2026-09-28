@@ -1,0 +1,6 @@
+com\example\dto\dto\StudentRequestDTO.class
+com\example\dto\entity\Student.class
+com\example\dto\service\StudentService.class
+com\example\dto\controller\StudentController.class
+com\example\dto\dto\StudentResponseDTO.class
+com\example\dto\DtoPracticeApplication.class
