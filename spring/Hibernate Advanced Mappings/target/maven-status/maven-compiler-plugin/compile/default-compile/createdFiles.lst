@@ -1,0 +1,6 @@
+com\example\util\HibernateUtil.class
+com\example\entity\Employee.class
+com\example\entity\Project.class
+com\example\entity\EmployeeProfile.class
+com\example\Main.class
+com\example\entity\Department.class
