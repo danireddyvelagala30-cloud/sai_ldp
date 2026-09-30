@@ -1,0 +1,55 @@
+.summary-slider-wrapper {
+  margin: 16px 0;
+}
+
+.summary-slider-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.summary-slider-label-text {
+  color: #a5a2b8;
+  font-size: 0.95rem;
+}
+
+.summary-slider-reset-btn {
+  border: none;
+  background: #201f2d;
+  color: #8a84ff;
+  padding: 6px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.summary-slider-reset-btn:disabled {
+  color: #454359;
+  cursor: default;
+}
+
+.summary-slider-track {
+  margin: 12px 0;
+}
+
+.summary-slider-value-row {
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+}
+
+.summary-slider-selected-value {
+  color: #a29bff;
+  font-weight: 600;
+}
+
+.summary-slider-of-label {
+  color: #a5a2b8;
+}
+
+.summary-slider-max-value {
+  color: #ffffff;
+  font-weight: 600;
+}

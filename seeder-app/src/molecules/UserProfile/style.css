@@ -1,0 +1,17 @@
+.user-profile-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.user-profile-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.user-profile-arrow {
+  margin-top: 2px;
+}

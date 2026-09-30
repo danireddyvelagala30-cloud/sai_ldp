@@ -1,0 +1,17 @@
+.cash-kick-loading {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px;
+  color: #8a84ff;
+}
+
+.cash-kick-error-container {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px;
+}
+
+.cash-kick-error-msg {
+  color: #ff6b6b;
+  margin-bottom: 16px;
+}

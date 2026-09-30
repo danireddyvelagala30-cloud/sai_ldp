@@ -1,0 +1,47 @@
+.custom-btn {
+  font-family: inherit;
+  transition: all 0.15s ease;
+}
+
+.custom-btn-primary {
+  width: 100%;
+  background: linear-gradient(135deg, #8a84ff, #5e53ff);
+  border: none;
+  color: white;
+  padding: 16px 20px;
+  border-radius: 16px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.custom-btn-secondary {
+  border: none;
+  background: #191b2b;
+  color: #8a84ff;
+  padding: 8px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.custom-btn-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  color: #e2e1ee;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid #292a38;
+  background: #20212d;
+  padding: 6px 14px;
+  border-radius: 12px;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.custom-btn-text:hover {
+  background: #292a3a;
+  border-color: #38394b;
+  color: #ffffff;
+}
