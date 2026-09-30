@@ -1,0 +1,3 @@
+com\example\aspect\LoggingAspect.class
+com\example\service\UserService.class
+com\example\App.class
