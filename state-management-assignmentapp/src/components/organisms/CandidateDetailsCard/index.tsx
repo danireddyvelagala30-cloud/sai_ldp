@@ -2,8 +2,7 @@ import { useState } from "react";
 import { Collapse, IconButton, Typography } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
-import type { Candidate } from "../../../models/Candidate";
-import "./styles.css";
+import type { Candidate } from "../../../data/models/Candidate";
 
 interface CandidateDetailsCardProps {
   title: string;

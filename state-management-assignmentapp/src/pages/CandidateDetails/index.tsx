@@ -10,9 +10,8 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Sidebar from "../../components/organisms/Sidebar";
 import CandidateDetailsCard from "../../components/organisms/CandidateDetailsCard";
 import StatusChip from "../../components/atoms/StatusChip";
-import type { Candidate } from "../../models/Candidate";
-import { APP_CONSTANTS } from "../../utils/constants";
-import "./styles.css";
+import type { Candidate } from "../../data/models/Candidate";
+import { APP_CONSTANTS } from "../../data/constants";
 
 interface CandidateDetailsProps {
   candidates: Candidate[];

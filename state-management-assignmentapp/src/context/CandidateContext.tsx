@@ -1,5 +1,5 @@
 import React, { createContext, useState } from "react";
-import type { Candidate } from "../models/Candidate";
+import type { Candidate } from "../data/models/Candidate";
 import { candidates } from "../data/candidates";
 
 interface CandidateContextValue {

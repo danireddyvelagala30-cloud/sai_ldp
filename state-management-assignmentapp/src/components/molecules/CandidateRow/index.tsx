@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
 import { TableCell, TableRow, Typography } from "@mui/material";
 
-import type { Candidate } from "../../../models/Candidate";
+import type { Candidate } from "../../../data/models/Candidate";
 import StatusChip from "../../atoms/StatusChip";
-import "./styles.css";
 
 interface CandidateRowProps {
   candidate: Candidate;

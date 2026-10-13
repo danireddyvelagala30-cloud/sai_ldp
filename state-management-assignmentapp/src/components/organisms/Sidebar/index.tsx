@@ -10,8 +10,7 @@ import {
   LogoutOutlined as LogoutIcon,
 } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
-import { APP_CONSTANTS } from "../../../utils/constants";
-import "./styles.css";
+import { APP_CONSTANTS } from "../../../data/constants";
 
 interface SidebarProps {
   activeItem?: string;

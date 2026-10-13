@@ -11,10 +11,9 @@ import {
 } from "@mui/icons-material";
 import { useState, useEffect } from "react";
 
-import type { Candidate } from "../../../models/Candidate";
+import type { Candidate } from "../../../data/models/Candidate";
 import CandidateRow from "../CandidateRow";
-import { APP_CONSTANTS } from "../../../utils/constants";
-import "./styles.css";
+import { APP_CONSTANTS } from "../../../data/constants";
 
 interface CandidateTableProps {
   candidates: Candidate[];

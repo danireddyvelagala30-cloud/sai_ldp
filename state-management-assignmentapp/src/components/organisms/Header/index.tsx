@@ -1,7 +1,6 @@
 import SearchInput from "../../atoms/SearchInput";
 import Button from "../../atoms/Button";
-import { APP_CONSTANTS } from "../../../utils/constants";
-import "./styles.css";
+import { APP_CONSTANTS } from "../../../data/constants";
 
 interface HeaderProps {
   search: string;

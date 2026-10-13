@@ -14,9 +14,8 @@ import AddIcon from "@mui/icons-material/Add";
 
 import Sidebar from "../../components/organisms/Sidebar";
 import CandidateTable from "../../components/molecules/CandidateTable";
-import type { Candidate } from "../../models/Candidate";
-import { APP_CONSTANTS } from "../../utils/constants";
-import "./styles.css";
+import type { Candidate } from "../../data/models/Candidate";
+import { APP_CONSTANTS } from "../../data/constants";
 
 interface CandidateListProps {
   candidates: Candidate[];

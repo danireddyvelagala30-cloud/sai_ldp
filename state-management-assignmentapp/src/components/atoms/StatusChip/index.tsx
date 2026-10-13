@@ -1,4 +1,3 @@
-import "./styles.css";
 
 interface StatusChipProps {
   label: string;
