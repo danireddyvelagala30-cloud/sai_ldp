@@ -1,0 +1,13 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="ListPractice" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="CollectionsAPI.ListPractice" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+    <option name="ALTERNATIVE_JRE_PATH" value="C:\Program Files\Java\jdk-26.0.2.1" />
+    <option name="VM_PARAMETERS" value="-classpath &quot;$PROJECT_DIR$\out\production\Core-Java-Practice&quot;" />
+    <module name="Core-Java-Practice" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
