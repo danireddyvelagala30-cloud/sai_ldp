@@ -1,3 +1,0 @@
-Hello, Java!
-This is a sample text file.
-Count every character carefully.
