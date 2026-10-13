@@ -1,5 +1,4 @@
 import { Typography } from "@mui/material";
-import "./CustomTypography.css";
 
 interface TypographyProps {
   title: string;

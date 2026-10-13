@@ -1,5 +1,4 @@
 import { Avatar } from "@mui/material";
-import "./CustomIcon.css";
 
 interface CustomIconProps {
   children: React.ReactNode;

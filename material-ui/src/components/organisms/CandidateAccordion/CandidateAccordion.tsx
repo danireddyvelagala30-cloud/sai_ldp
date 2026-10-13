@@ -16,7 +16,6 @@ import BadgeOutlinedIcon from "@mui/icons-material/BadgeOutlined";
 import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
 
 import InfoCard from "../../molecules/InfoCard/InfoCard";
-import "./CandidateAccordion.css";
 
 const CandidateAccordion = () => {
   return (
