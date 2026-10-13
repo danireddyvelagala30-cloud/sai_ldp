@@ -7,6 +7,10 @@
     <artifactId>java-assignment12</artifactId>
     <version>1.0.0</version>
 
+    <build>
+        <sourceDirectory>src</sourceDirectory>
+    </build>
+
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
