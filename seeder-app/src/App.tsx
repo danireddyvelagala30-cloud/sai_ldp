@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import { theme } from './theme/theme';
-import { Sidebar } from './organisms/Sidebar';
+import { Sidebar } from './components/organisms/Sidebar';
 import { DashboardLayout } from './templates/DashboardLayout';
 import { NewCashKickPage } from './pages/NewCashKickPage';
 import { HomePage } from './pages/HomePage';

@@ -1,5 +1,4 @@
 import React from 'react';
-import './style.css';
 
 export interface DashboardLayoutProps {
   sidebar: React.ReactNode;

@@ -1,7 +1,6 @@
 import React from 'react';
-import { Header } from '../../organisms/Header';
-import { Typography } from '../../atoms/Typography';
-import './style.css';
+import { Header } from '../../components/organisms/Header';
+import { Typography } from '../../components/atoms/Typography';
 
 export const HomePage: React.FC = () => {
   return (

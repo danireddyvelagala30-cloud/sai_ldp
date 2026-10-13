@@ -1,11 +1,11 @@
 import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { NewCashKickPage } from './index';
-import * as api from '../../services/api';
+import * as api from '../../api/apiService';
 import { Contract } from '../../types/Contract';
-import * as SummaryCardModule from '../../organisms/SummaryCard';
+import * as SummaryCardModule from '../../components/organisms/SummaryCard';
 
-jest.mock('../../services/api');
+jest.mock('../../api/apiService');
 
 const mockContracts: Contract[] = [
   { id: 1, name: 'Contract 1', type: 'Monthly', perPayment: 12000.25, term: '12 months', feeRate: 12, amount: 100000 },

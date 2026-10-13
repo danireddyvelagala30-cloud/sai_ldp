@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Header } from '../../organisms/Header';
-import { ContractsTable } from '../../organisms/ContractsTable';
-import { SummaryCard } from '../../organisms/SummaryCard';
+import { Header } from '../../components/organisms/Header';
+import { ContractsTable } from '../../components/organisms/ContractsTable';
+import { SummaryCard } from '../../components/organisms/SummaryCard';
 import { Contract } from '../../types/Contract';
-import { getContracts } from '../../services/api';
-import { Button } from '../../atoms/Button';
-import './style.css';
+import { getContracts } from '../../api/apiService';
+import { Button } from '../../components/atoms/Button';
 
 export const NewCashKickPage: React.FC = () => {
   const [contracts, setContracts] = useState<Contract[]>([]);
