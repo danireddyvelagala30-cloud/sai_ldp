@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import Slider from ".";
+import Slider from "./Slider";
 
 const meta: Meta<typeof Slider> = {
   title: "Atoms/Slider",
