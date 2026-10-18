@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import CandidateList from "./pages/CandidateList";
 import CandidateDetails from "./pages/CandidateDetails";
 import { candidates as initialCandidates } from "./data/candidates";
+import { APP_CONSTANTS } from "./data/constants";
 
 function App() {
   const [candidates, setCandidates] = useState(initialCandidates);
@@ -12,7 +13,10 @@ function App() {
     setCandidates((prev) =>
       prev.map((candidate) =>
         candidate.id === id
-          ? { ...candidate, adjudication: "ENGAGE" }
+          ? {
+              ...candidate,
+              adjudication: APP_CONSTANTS.candidateAdjudicationEngage,
+            }
           : candidate
       )
     );
@@ -20,10 +24,13 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<CandidateList candidates={candidates} />} />
+      <Route
+        path={APP_CONSTANTS.routes.candidates}
+        element={<CandidateList candidates={candidates} />}
+      />
 
       <Route
-        path="/candidate/:id"
+        path={APP_CONSTANTS.routes.candidateDetails}
         element={
           <CandidateDetails
             candidates={candidates}

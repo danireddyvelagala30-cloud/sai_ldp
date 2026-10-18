@@ -1,10 +1,13 @@
 import { useContext, useState } from "react";
+import { Box, Stack, Typography } from "@mui/material";
 
 import Sidebar from "../../components/organisms/Sidebar";
 import Header from "../../components/organisms/Header";
 import CandidateTable from "../../components/molecules/CandidateTable";
 
 import { CandidateContext } from "../../context/CandidateContext";
+import { APP_CONSTANTS } from "../../data/constants";
+import { styles } from "./styles";
 
 const CandidatesPage = () => {
   const { candidateList } = useContext(CandidateContext);
@@ -15,15 +18,17 @@ const CandidatesPage = () => {
   );
 
   return (
-    <div className="candidates-page-container">
+    <Box sx={styles.page}>
       <Sidebar />
 
-      <div className="candidates-page-main">
+      <Stack sx={styles.main}>
         <Header search={search} setSearch={setSearch} />
-        <p>Total Candidates : {filteredCandidates.length}</p>
+        <Typography color="text.secondary" sx={styles.count}>
+          {APP_CONSTANTS.totalCandidates}: {filteredCandidates.length}
+        </Typography>
         <CandidateTable candidates={filteredCandidates} />
-      </div>
-    </div>
+      </Stack>
+    </Box>
   );
 };
 

@@ -1,8 +1,16 @@
 import { useState } from "react";
-import { Collapse, IconButton, Typography } from "@mui/material";
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Box,
+  Typography,
+} from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
+import { APP_CONSTANTS } from "../../../data/constants";
 import type { Candidate } from "../../../data/models/Candidate";
+import { styles } from "./styles";
 
 interface CandidateDetailsCardProps {
   title: string;
@@ -18,72 +26,41 @@ const CandidateDetailsCard = ({
   candidate,
 }: CandidateDetailsCardProps) => {
   const [expanded, setExpanded] = useState(defaultExpanded);
+  const sectionId = title.toLowerCase().replace(/\s+/g, "-");
 
   return (
-    <div className="details-card">
-      <div
-        className="details-card__header"
-        onClick={() => setExpanded((prev) => !prev)}
+    <Accordion
+      expanded={expanded}
+      onChange={(_, nextExpanded) => setExpanded(nextExpanded)}
+      sx={styles.root}
+    >
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon />}
+        aria-controls={`${sectionId}-content`}
+        id={`${sectionId}-header`}
+        sx={styles.summary}
       >
-        <Typography className="details-card__title">
+        <Typography variant="subtitle1" fontWeight={600}>
           {title}
         </Typography>
-
-        <IconButton
-          size="small"
-          className={`details-card__toggle-btn ${
-            expanded
-              ? "details-card__toggle-btn--expanded"
-              : "details-card__toggle-btn--collapsed"
-          }`}
-        >
-          <ExpandMoreIcon />
-        </IconButton>
-      </div>
-
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <div className="details-card__body">
-          {children ? (
-            children
-          ) : candidate ? (
-            <div className="details-card__grid">
-              <div>
-                <span className="details-card__field-label">
-                  Name
-                </span>
-                <span className="details-card__field-value">
-                  {candidate.name}
-                </span>
-              </div>
-              <div>
-                <span className="details-card__field-label">
-                  Location
-                </span>
-                <span className="details-card__field-value">
-                  {candidate.location}
-                </span>
-              </div>
-              <div>
-                <span className="details-card__field-label">
-                  Date
-                </span>
-                <span className="details-card__field-value">
-                  {candidate.date}
-                </span>
-              </div>
-              <div>
-                <span className="details-card__field-label">
-                  Position
-                </span>
-                <span className="details-card__field-value">
-                  {candidate.position}
-                </span>
-              </div>
-            </div>
-          ) : null}
-        </div>
-      </Collapse>
-    </div>
+      </AccordionSummary>
+      <AccordionDetails id={`${sectionId}-content`} sx={styles.details}>
+        {children ?? (candidate ? (
+          <Box sx={styles.grid}>
+            {APP_CONSTANTS.candidateDetailFields.map(({ field, label }) => (
+              <Box key={field}>
+                <Typography variant="caption" color="text.secondary" display="block">
+                  {label}
+                </Typography>
+                <Typography variant="body2" fontWeight={600}>
+                  {candidate[field]}
+                </Typography>
+              </Box>
+            ))}
+          </Box>
+        ) : null)}
+      </AccordionDetails>
+    </Accordion>
   );
 };
 

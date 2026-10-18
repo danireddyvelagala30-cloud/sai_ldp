@@ -1,6 +1,7 @@
 import React, { createContext, useState } from "react";
 import type { Candidate } from "../data/models/Candidate";
 import { candidates } from "../data/candidates";
+import { APP_CONSTANTS } from "../data/constants";
 
 interface CandidateContextValue {
   candidateList: Candidate[];
@@ -19,7 +20,10 @@ const CandidateProvider = ({ children }: { children: React.ReactNode }) => {
     setCandidateList((prev) =>
       prev.map((candidate) =>
         candidate.id === id
-          ? { ...candidate, adjudication: "ENGAGE" }
+          ? {
+              ...candidate,
+              adjudication: APP_CONSTANTS.candidateAdjudicationEngage,
+            }
           : candidate
       )
     );

@@ -1,4 +1,5 @@
 import { Button as MuiButton } from "@mui/material";
+import { styles } from "./styles";
 
 interface ButtonProps {
   label: string;
@@ -19,6 +20,7 @@ const Button = ({
       color="primary"
       disabled={disabled}
       onClick={onClick}
+      sx={styles.root}
     >
       {label}
     </MuiButton>

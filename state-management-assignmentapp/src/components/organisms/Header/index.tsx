@@ -1,6 +1,9 @@
+import { Avatar, Box, Stack, Typography } from "@mui/material";
+
 import SearchInput from "../../atoms/SearchInput";
 import Button from "../../atoms/Button";
 import { APP_CONSTANTS } from "../../../data/constants";
+import { styles } from "./styles";
 
 interface HeaderProps {
   search: string;
@@ -9,23 +12,23 @@ interface HeaderProps {
 
 const Header = ({ search, setSearch }: HeaderProps) => {
   return (
-    <div className="header-container">
-      <h2 className="header-title">{APP_CONSTANTS.candidates}</h2>
+    <Stack direction={{ xs: "column", sm: "row" }} sx={styles.root}>
+      <Typography variant="h5" component="h1">
+        {APP_CONSTANTS.candidates}
+      </Typography>
 
-      <div className="header-actions">
-        <div className="header-search-box">
-          <SearchInput
-            value={search}
-            onChange={setSearch}
-            placeholder={APP_CONSTANTS.searchCandidate}
-          />
-        </div>
+      <Stack direction="row" spacing={1.5} alignItems="center" sx={styles.actions}>
+        <Box sx={styles.search}>
+          <SearchInput value={search} onChange={setSearch} />
+        </Box>
 
         <Button label={APP_CONSTANTS.filters} variant="outlined" />
         <Button label={APP_CONSTANTS.export} />
-        <div className="header-avatar">A</div>
-      </div>
-    </div>
+        <Avatar sx={styles.avatar} aria-label={APP_CONSTANTS.profileAvatarAlt}>
+          {APP_CONSTANTS.profileInitial}
+        </Avatar>
+      </Stack>
+    </Stack>
   );
 };
 

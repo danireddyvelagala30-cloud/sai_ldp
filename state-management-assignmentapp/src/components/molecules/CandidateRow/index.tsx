@@ -1,53 +1,59 @@
-import { Link } from "react-router-dom";
-import { TableCell, TableRow, Typography } from "@mui/material";
+import { Link as RouterLink } from "react-router-dom";
+import { Link, TableCell, TableRow, Typography } from "@mui/material";
 
 import type { Candidate } from "../../../data/models/Candidate";
-import StatusChip from "../../atoms/StatusChip";
+import { APP_CONSTANTS } from "../../../data/constants";
+import Chip from "../../atoms/Chip";
+import { styles } from "./styles";
 
 interface CandidateRowProps {
   candidate: Candidate;
 }
 
 const CandidateRow = ({ candidate }: CandidateRowProps) => {
-  const isEngaged = candidate.adjudication === "ENGAGE";
+  const isEngaged =
+    candidate.adjudication === APP_CONSTANTS.candidateAdjudicationEngage;
   const hasAdjudication = Boolean(candidate.adjudication?.trim());
 
   return (
-    <TableRow hover className="candidate-row">
-      <TableCell className="candidate-row__cell--name">
+    <TableRow hover sx={styles.row}>
+      <TableCell sx={styles.nameCell}>
         <Link
-          to={`/candidate/${candidate.id}`}
-          className="candidate-row-link"
+          component={RouterLink}
+          to={APP_CONSTANTS.routes.candidateDetails.replace(
+            ":id",
+            String(candidate.id),
+          )}
+          underline="hover"
+          sx={styles.link}
         >
           {candidate.name}
         </Link>
       </TableCell>
 
-      <TableCell className="candidate-row__cell--adjudication">
+      <TableCell sx={styles.adjudicationCell}>
         {hasAdjudication ? (
-          <span
-            className={`candidate-row__adjudication-chip ${
-              isEngaged
-                ? "candidate-row__adjudication-chip--engaged"
-                : "candidate-row__adjudication-chip--neutral"
-            }`}
-          >
-            {candidate.adjudication}
-          </span>
+          <Chip
+            label={candidate.adjudication}
+            color={isEngaged ? "success" : "default"}
+            size="small"
+            variant="outlined"
+            sx={isEngaged ? styles.engagedChip : styles.neutralChip}
+          />
         ) : (
-          <Typography className="candidate-row__empty-text">-</Typography>
+          <Typography color="text.secondary">-</Typography>
         )}
       </TableCell>
 
-      <TableCell className="candidate-row__cell--status">
-        <StatusChip label={candidate.status} />
+      <TableCell sx={styles.statusCell}>
+        <Chip appearance="status" label={candidate.status} />
       </TableCell>
 
-      <TableCell className="candidate-row__cell--location candidate-row__location">
+      <TableCell sx={styles.locationCell}>
         {candidate.location}
       </TableCell>
 
-      <TableCell className="candidate-row__cell--date candidate-row__date">
+      <TableCell sx={styles.dateCell}>
         {candidate.date}
       </TableCell>
     </TableRow>

@@ -1,6 +1,17 @@
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import {
+  Box,
+  Button,
+  IconButton,
+  Paper,
+  Stack,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
   Typography,
   Tabs,
   Tab,
@@ -9,9 +20,10 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 import Sidebar from "../../components/organisms/Sidebar";
 import CandidateDetailsCard from "../../components/organisms/CandidateDetailsCard";
-import StatusChip from "../../components/atoms/StatusChip";
+import Chip from "../../components/atoms/Chip";
 import type { Candidate } from "../../data/models/Candidate";
 import { APP_CONSTANTS } from "../../data/constants";
+import { styles } from "./styles";
 
 interface CandidateDetailsProps {
   candidates: Candidate[];
@@ -30,60 +42,63 @@ const CandidateDetails = ({
 
   if (!candidate) {
     return (
-      <div className="candidate-details-page__not-found">
+      <Box sx={styles.notFound}>
         <Typography variant="h5">{APP_CONSTANTS.candidateNotFound}</Typography>
-        <button
-          type="button"
-          onClick={() => navigate("/")}
-          className="candidate-details-page__btn-pre-adverse"
-          style={{ marginTop: "16px" }}
+        <Button
+          variant="outlined"
+          onClick={() => navigate(APP_CONSTANTS.routes.candidates)}
+          sx={styles.backButton}
         >
           {APP_CONSTANTS.backToCandidates}
-        </button>
-      </div>
+        </Button>
+      </Box>
     );
   }
 
-  const isEngaged = candidate.adjudication === "ENGAGE";
+  const isEngaged =
+    candidate.adjudication === APP_CONSTANTS.candidateAdjudicationEngage;
 
   return (
-    <div className="candidate-details-page">
-            <Sidebar activeItem={APP_CONSTANTS.candidates} />
+    <Box sx={styles.page}>
+      <Sidebar activeItem={APP_CONSTANTS.candidates} />
 
-      <main className="candidate-details-page__main">
-        <header className="candidate-details-page__header">
-          <div className="candidate-details-page__header-left">
-            <button
-              type="button"
-              className="candidate-details-page__back-btn"
-              onClick={() => navigate("/")}
+      <Box component="main" sx={styles.main}>
+        <Stack
+          component="header"
+          direction={{ xs: "column", sm: "row" }}
+          sx={styles.header}
+        >
+          <Stack direction="row" spacing={2} alignItems="center">
+            <IconButton
+              aria-label={APP_CONSTANTS.backToCandidates}
+              onClick={() => navigate(APP_CONSTANTS.routes.candidates)}
+              sx={styles.backIcon}
             >
-              <ArrowBackIcon sx={{ fontSize: "20px" }} />
-            </button>
-            <h1 className="candidate-details-page__title">
+              <ArrowBackIcon />
+            </IconButton>
+            <Typography variant="h5" component="h1" sx={styles.title}>
               {candidate.name}
-            </h1>
-          </div>
+            </Typography>
+          </Stack>
 
-          <div className="candidate-details-page__header-actions">
-            <button
-              type="button"
-              className="candidate-details-page__btn-pre-adverse"
+          <Stack direction="row" spacing={1.5} sx={styles.headerActions}>
+            <Button
+              variant="outlined"
+              aria-label={APP_CONSTANTS.preAdverseAction}
             >
               {APP_CONSTANTS.preAdverseAction}
-            </button>
-            <button
-              type="button"
+            </Button>
+            <Button
+              variant="contained"
               disabled={isEngaged}
               onClick={() => engageCandidate(candidate.id)}
-              className="candidate-details-page__btn-engage"
             >
               {isEngaged ? APP_CONSTANTS.engaged : APP_CONSTANTS.engage}
-            </button>
-          </div>
-        </header>
+            </Button>
+          </Stack>
+        </Stack>
 
-        <section className="candidate-details-page__content">
+        <Box component="section" sx={styles.content}>
           <CandidateDetailsCard
             title={APP_CONSTANTS.candidateInformation}
             defaultExpanded={true}
@@ -91,78 +106,67 @@ const CandidateDetails = ({
           />
 
           <CandidateDetailsCard title={APP_CONSTANTS.reportInformation} defaultExpanded={true}>
-            <div className="candidate-details-page__tabs-bar">
-              <Tabs
-                value={tabIndex}
-                onChange={(_, newValue) => setTabIndex(newValue)}
-                sx={{
-                  minHeight: "40px",
-                  "& .MuiTabs-indicator": {
-                    backgroundColor: "primary.main",
-                    height: 2,
-                  },
-                }}
-              >
+            <Box sx={styles.tabsBar}>
+              <Tabs value={tabIndex} onChange={(_, newValue) => setTabIndex(newValue)} sx={styles.tabs}>
                 <Tab
-                  label="Adverse Actions"
-                  sx={{
-                    fontFamily: '"Inter", sans-serif',
-                    fontSize: "14px",
-                    fontWeight: 600,
-                    textTransform: "none",
-                    color: tabIndex === 0 ? "primary.main" : "text.secondary",
-                    minHeight: "40px",
-                    px: 0,
-                    mr: "24px",
-                  }}
+                  label={APP_CONSTANTS.adverseActions}
+                  id="adverse-actions-tab"
+                  aria-controls="adverse-actions-panel"
                 />
               </Tabs>
-            </div>
+            </Box>
 
-            <div className="candidate-details-page__table-container">
-              <table className="candidate-details-page__table">
-                <thead className="candidate-details-page__table-head">
-                  <tr>
-                    <th className="candidate-details-page__th candidate-details-page__th--search">
+            <TableContainer
+              id="adverse-actions-panel"
+              role="tabpanel"
+              aria-labelledby="adverse-actions-tab"
+              component={Paper}
+              elevation={0}
+              sx={styles.searchTableContainer}
+            >
+              <Table aria-labelledby="adverse-actions-tab">
+                <TableHead>
+                  <TableRow>
+                    <TableCell sx={styles.searchHeader}>
                       {APP_CONSTANTS.searchLabel}
-                    </th>
-                    <th className="candidate-details-page__th candidate-details-page__th--status">
+                    </TableCell>
+                    <TableCell sx={styles.statusHeader}>
                       {APP_CONSTANTS.statusLabel}
-                    </th>
-                    <th className="candidate-details-page__th">
+                    </TableCell>
+                    <TableCell sx={styles.dateHeader}>
                       {APP_CONSTANTS.date}
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
+                    </TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
                   {candidate.courtSearches && candidate.courtSearches.length > 0 ? (
-                    candidate.courtSearches.map((searchItem, index) => (
-                      <tr key={index} className="candidate-details-page__row">
-                        <td className="candidate-details-page__cell-search">
+                    candidate.courtSearches.map((searchItem) => (
+                      <TableRow key={`${searchItem.search}-${searchItem.date}`}>
+                        <TableCell sx={styles.searchCell}>
                           {searchItem.search}
-                        </td>
-                        <td>
-                          <StatusChip label={searchItem.status} />
-                        </td>
-                        <td className="candidate-details-page__cell-date">
+                        </TableCell>
+                        <TableCell>
+                          <Chip appearance="status" label={searchItem.status} />
+                        </TableCell>
+                        <TableCell sx={styles.dateCell}>
                           {searchItem.date}
-                        </td>
-                      </tr>
+                        </TableCell>
+                      </TableRow>
                     ))
                   ) : (
-                    <tr className="candidate-details-page__empty-row">
-                      <td colSpan={3}>
+                    <TableRow>
+                      <TableCell colSpan={3} align="center" sx={styles.emptyCell}>
                         {APP_CONSTANTS.noCourtSearches}
-                      </td>
-                    </tr>
+                      </TableCell>
+                    </TableRow>
                   )}
-                </tbody>
-              </table>
-            </div>
+                </TableBody>
+              </Table>
+            </TableContainer>
           </CandidateDetailsCard>
-        </section>
-      </main>
-    </div>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 

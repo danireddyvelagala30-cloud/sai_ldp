@@ -54,6 +54,10 @@ const theme = createTheme({
     body1: {
       fontSize: "14px",
     },
+    button: {
+      fontWeight: 600,
+      textTransform: "none",
+    },
   },
 
   shape: {

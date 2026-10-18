@@ -1,10 +1,19 @@
 import { useState, useMemo } from "react";
 import {
+  Box,
+  Button,
   Popover,
   Checkbox,
+  FormControl,
   FormGroup,
   FormControlLabel,
+  IconButton,
+  InputAdornment,
+  Paper,
+  Stack,
+  TextField,
   Typography,
+  Tooltip,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import FilterIcon from "@mui/icons-material/FilterList";
@@ -16,6 +25,11 @@ import Sidebar from "../../components/organisms/Sidebar";
 import CandidateTable from "../../components/molecules/CandidateTable";
 import type { Candidate } from "../../data/models/Candidate";
 import { APP_CONSTANTS } from "../../data/constants";
+import { styles } from "./styles";
+
+type CandidateStatus =
+  | typeof APP_CONSTANTS.candidateStatusClear
+  | typeof APP_CONSTANTS.candidateStatusConsider;
 
 interface CandidateListProps {
   candidates: Candidate[];
@@ -23,15 +37,16 @@ interface CandidateListProps {
 
 const CandidateList = ({ candidates }: CandidateListProps) => {
   const [search, setSearch] = useState("");
-  const [filterAnchorEl, setFilterAnchorEl] = useState<HTMLButtonElement | null>(null);
+  const [filterAnchorEl, setFilterAnchorEl] =
+    useState<HTMLButtonElement | null>(null);
 
-  const [statusFilters, setStatusFilters] = useState<{ [key: string]: boolean }>({
-    CLEAR: false,
-    CONSIDER: false,
+  const [statusFilters, setStatusFilters] = useState<Record<CandidateStatus, boolean>>({
+    [APP_CONSTANTS.candidateStatusClear]: false,
+    [APP_CONSTANTS.candidateStatusConsider]: false,
   });
 
-  const [adjudicationFilters, setAdjudicationFilters] = useState<{ [key: string]: boolean }>({
-    ENGAGE: false,
+  const [adjudicationFilters, setAdjudicationFilters] = useState({
+    [APP_CONSTANTS.candidateAdjudicationEngage]: false,
   });
 
   const handleFilterClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -42,14 +57,16 @@ const CandidateList = ({ candidates }: CandidateListProps) => {
     setFilterAnchorEl(null);
   };
 
-  const handleStatusChange = (statusKey: string) => {
+  const handleStatusChange = (statusKey: CandidateStatus) => {
     setStatusFilters((prev) => ({
       ...prev,
       [statusKey]: !prev[statusKey],
     }));
   };
 
-  const handleAdjudicationChange = (adjKey: string) => {
+  const handleAdjudicationChange = (
+    adjKey: typeof APP_CONSTANTS.candidateAdjudicationEngage,
+  ) => {
     setAdjudicationFilters((prev) => ({
       ...prev,
       [adjKey]: !prev[adjKey],
@@ -63,11 +80,15 @@ const CandidateList = ({ candidates }: CandidateListProps) => {
         candidate.name.toLowerCase().includes(search.toLowerCase()) ||
         candidate.location.toLowerCase().includes(search.toLowerCase());
 
-      const activeStatusKeys = Object.keys(statusFilters).filter((k) => statusFilters[k]);
+      const activeStatusKeys = Object.keys(statusFilters).filter(
+        (key) => statusFilters[key as CandidateStatus],
+      );
       const matchesStatus =
         activeStatusKeys.length === 0 || activeStatusKeys.includes(candidate.status.toUpperCase());
 
-      const activeAdjKeys = Object.keys(adjudicationFilters).filter((k) => adjudicationFilters[k]);
+      const activeAdjKeys = Object.keys(adjudicationFilters).filter(
+        (key) => adjudicationFilters[key as typeof APP_CONSTANTS.candidateAdjudicationEngage],
+      );
       const matchesAdjudication =
         activeAdjKeys.length === 0 ||
         (candidate.adjudication && activeAdjKeys.includes(candidate.adjudication.toUpperCase()));
@@ -79,135 +100,143 @@ const CandidateList = ({ candidates }: CandidateListProps) => {
   const isFilterOpen = Boolean(filterAnchorEl);
 
   return (
-    <div className="candidate-list-page">
-      <Sidebar activeItem="Candidates" />
+    <Box component="main" sx={styles.page}>
+      <Sidebar activeItem={APP_CONSTANTS.candidates} />
 
-      <main className="candidate-list-page__main">
-        <div className="candidate-list-page__card">
-          <header className="candidate-list-page__card-header">
-            <h1 className="candidate-list-page__card-title">
+      <Box sx={styles.main}>
+        <Paper elevation={0} sx={styles.card}>
+          <Stack
+            component="header"
+            direction={{ xs: "column", sm: "row" }}
+            sx={styles.cardHeader}
+          >
+            <Typography variant="h5" component="h1" sx={styles.cardTitle}>
               {APP_CONSTANTS.candidates}
-            </h1>
+            </Typography>
 
-            <div className="candidate-list-page__card-actions">
-              <button
-                type="button"
-                className="candidate-list-page__btn-export"
+            <Stack direction="row" spacing={1.5} sx={styles.cardActions}>
+              <Button
+                variant="outlined"
+                startIcon={<ExportIcon />}
+                sx={styles.actionButton}
               >
-                <ExportIcon sx={{ fontSize: "18px" }} />
                 {APP_CONSTANTS.export}
-              </button>
-              <button
-                type="button"
-                className="candidate-list-page__btn-add"
+              </Button>
+              <Button
+                variant="contained"
+                startIcon={<AddIcon />}
+                sx={styles.actionButton}
               >
-                <AddIcon sx={{ fontSize: "18px" }} />
                 {APP_CONSTANTS.addCandidate}
-              </button>
-            </div>
-          </header>
+              </Button>
+            </Stack>
+          </Stack>
 
-          <div className="candidate-list-page__toolbar">
-            <h2 className="candidate-list-page__toolbar-title">
+          <Stack
+            component="section"
+            direction={{ xs: "column", lg: "row" }}
+            sx={styles.toolbar}
+          >
+            <Typography variant="subtitle1" component="h2" sx={styles.toolbarTitle}>
               {APP_CONSTANTS.candidateInformation}
-            </h2>
+            </Typography>
 
-            <div className="candidate-list-page__toolbar-controls">
-              <div className="candidate-list-page__search-field">
-                <SearchIcon className="candidate-list-page__search-icon" />
-                <input
-                  type="text"
-                  placeholder={APP_CONSTANTS.searchCandidate}
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                />
-              </div>
+            <Stack direction="row" spacing={1.5} sx={styles.toolbarControls}>
+              <TextField
+                size="small"
+                type="search"
+                label={APP_CONSTANTS.searchCandidates}
+                inputProps={{ "aria-label": APP_CONSTANTS.searchCandidates }}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <SearchIcon color="action" />
+                    </InputAdornment>
+                  ),
+                }}
+                sx={styles.searchField}
+                value={search}
+                onChange={(event) => setSearch(event.target.value)}
+              />
 
-              <button
-                type="button"
+              <Button
+                variant="outlined"
+                startIcon={<FilterIcon />}
                 onClick={handleFilterClick}
-                className="candidate-list-page__btn-filter"
+                sx={styles.filterButton}
               >
-                <FilterIcon sx={{ fontSize: "18px", color: "text.primary" }} />
                 {APP_CONSTANTS.filters}
-              </button>
+              </Button>
 
               <Popover
                 open={isFilterOpen}
                 anchorEl={filterAnchorEl}
                 onClose={handleFilterClose}
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "right",
-                }}
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                slotProps={{
-                  paper: {
-                    className: "candidate-list-page__filter-popover",
-                  },
-                }}
+                anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+                transformOrigin={{ vertical: "top", horizontal: "right" }}
+                slotProps={{ paper: { sx: styles.filterPopover } }}
               >
-                <h3 className="candidate-list-page__filter-heading">
-                  {APP_CONSTANTS.status}
-                </h3>
-                <FormGroup>
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        size="small"
-                        checked={statusFilters.CLEAR}
-                        onChange={() => handleStatusChange("CLEAR")}
+                <Box sx={styles.filterGroup}>
+                  <Typography variant="subtitle2">{APP_CONSTANTS.status}</Typography>
+                  <FormControl component="fieldset">
+                    <FormGroup>
+                      <FormControlLabel
+                        control={
+                          <Checkbox
+                            size="small"
+                            checked={statusFilters[APP_CONSTANTS.candidateStatusClear]}
+                            onChange={() => handleStatusChange(APP_CONSTANTS.candidateStatusClear)}
+                          />
+                        }
+                        label={APP_CONSTANTS.clear}
                       />
-                    }
-                    label={<Typography variant="body2">{APP_CONSTANTS.clear}</Typography>}
-                  />
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        size="small"
-                        checked={statusFilters.CONSIDER}
-                        onChange={() => handleStatusChange("CONSIDER")}
+                      <FormControlLabel
+                        control={
+                          <Checkbox
+                            size="small"
+                            checked={statusFilters[APP_CONSTANTS.candidateStatusConsider]}
+                            onChange={() => handleStatusChange(APP_CONSTANTS.candidateStatusConsider)}
+                          />
+                        }
+                        label={APP_CONSTANTS.consider}
                       />
-                    }
-                    label={<Typography variant="body2">{APP_CONSTANTS.consider}</Typography>}
-                  />
-                </FormGroup>
+                    </FormGroup>
+                  </FormControl>
+                </Box>
 
-                <h3 className="candidate-list-page__filter-heading candidate-list-page__filter-heading--spaced">
-                  {APP_CONSTANTS.adjudication}
-                </h3>
-                <FormGroup>
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        size="small"
-                        checked={adjudicationFilters.ENGAGE}
-                        onChange={() => handleAdjudicationChange("ENGAGE")}
+                <Box sx={styles.filterGroup}>
+                  <Typography variant="subtitle2">{APP_CONSTANTS.adjudication}</Typography>
+                  <FormControl component="fieldset">
+                    <FormGroup>
+                      <FormControlLabel
+                        control={
+                          <Checkbox
+                            size="small"
+                            checked={adjudicationFilters[APP_CONSTANTS.candidateAdjudicationEngage]}
+                            onChange={() => handleAdjudicationChange(APP_CONSTANTS.candidateAdjudicationEngage)}
+                          />
+                        }
+                        label={APP_CONSTANTS.engage}
                       />
-                    }
-                    label={<Typography variant="body2">{APP_CONSTANTS.engage}</Typography>}
-                  />
-                </FormGroup>
+                    </FormGroup>
+                  </FormControl>
+                </Box>
               </Popover>
 
-              <button
-                type="button"
-                className="candidate-list-page__btn-more"
-              >
-                <MoreIcon sx={{ fontSize: "20px" }} />
-              </button>
-            </div>
-          </div>
+              <Tooltip title={APP_CONSTANTS.moreActions}>
+                <IconButton aria-label={APP_CONSTANTS.moreActions}>
+                  <MoreIcon />
+                </IconButton>
+              </Tooltip>
+            </Stack>
+          </Stack>
 
-          <div className="candidate-list-page__table-area">
+          <Box sx={styles.tableArea}>
             <CandidateTable candidates={filteredCandidates} />
-          </div>
-        </div>
-      </main>
-    </div>
+          </Box>
+        </Paper>
+      </Box>
+    </Box>
   );
 };
 
