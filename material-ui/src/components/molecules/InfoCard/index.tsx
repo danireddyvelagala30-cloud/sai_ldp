@@ -1,6 +1,6 @@
 import { Card, CardContent, Stack } from "@mui/material";
-import CustomIcon from "../../atoms/CustomIcon/CustomIcon";
-import CustomTypography from "../../atoms/CustomTypography/CustomTypography";
+import CustomIcon from "../../atoms/CustomIcon";
+import CustomTypography from "../../atoms/CustomTypography";
 
 interface InfoCardProps {
   title: string;
