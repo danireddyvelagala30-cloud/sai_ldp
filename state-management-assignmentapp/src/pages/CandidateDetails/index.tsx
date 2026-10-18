@@ -22,7 +22,7 @@ import Sidebar from "../../components/organisms/Sidebar";
 import CandidateDetailsCard from "../../components/organisms/CandidateDetailsCard";
 import Chip from "../../components/atoms/Chip";
 import type { Candidate } from "../../data/models/Candidate";
-import { APP_CONSTANTS } from "../../data/constants";
+import { APP_CONSTANTS } from "../../utils/constants";
 import { styles } from "./styles";
 
 interface CandidateDetailsProps {
@@ -68,7 +68,7 @@ const CandidateDetails = ({
           direction={{ xs: "column", sm: "row" }}
           sx={styles.header}
         >
-          <Stack direction="row" spacing={2} alignItems="center">
+          <Stack direction="row" spacing={2} sx={styles.headerLeft}>
             <IconButton
               aria-label={APP_CONSTANTS.backToCandidates}
               onClick={() => navigate(APP_CONSTANTS.routes.candidates)}

@@ -29,6 +29,7 @@ export const styles: Record<string, SxProps<Theme>> = {
   },
   navIcon: { minWidth: 36, color: "inherit" },
   profile: {
+    alignItems: "center",
     p: 2,
     borderTop: 1,
     borderColor: "divider",
@@ -36,5 +37,6 @@ export const styles: Record<string, SxProps<Theme>> = {
   },
   avatar: { width: 38, height: 38, objectFit: "cover" },
   profileInfo: { minWidth: 0, flex: 1 },
+  profileName: { fontWeight: 600 },
   logout: { color: "text.secondary", flexShrink: 0 },
 };

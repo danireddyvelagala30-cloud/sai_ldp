@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
-import { APP_CONSTANTS } from "../../../data/constants";
+import { APP_CONSTANTS } from "../../../utils/constants";
 import type { Candidate } from "../../../data/models/Candidate";
 import { styles } from "./styles";
 
@@ -40,7 +40,7 @@ const CandidateDetailsCard = ({
         id={`${sectionId}-header`}
         sx={styles.summary}
       >
-        <Typography variant="subtitle1" fontWeight={600}>
+        <Typography variant="subtitle1" sx={styles.summaryTitle}>
           {title}
         </Typography>
       </AccordionSummary>
@@ -49,10 +49,10 @@ const CandidateDetailsCard = ({
           <Box sx={styles.grid}>
             {APP_CONSTANTS.candidateDetailFields.map(({ field, label }) => (
               <Box key={field}>
-                <Typography variant="caption" color="text.secondary" display="block">
+                <Typography variant="caption" sx={styles.fieldLabel}>
                   {label}
                 </Typography>
-                <Typography variant="body2" fontWeight={600}>
+                <Typography variant="body2" sx={styles.fieldValue}>
                   {candidate[field]}
                 </Typography>
               </Box>

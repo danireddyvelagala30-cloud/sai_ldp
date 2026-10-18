@@ -9,11 +9,11 @@ import {
   TableRow,
   TableContainer,
 } from "@mui/material";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import type { Candidate } from "../../../data/models/Candidate";
-import CandidateRow from "../CandidateRow";
-import { APP_CONSTANTS } from "../../../data/constants";
+import CandidateRow from "../../molecules/CandidateRow";
+import { APP_CONSTANTS } from "../../../utils/constants";
 import { styles } from "./styles";
 
 interface CandidateTableProps {
@@ -22,11 +22,28 @@ interface CandidateTableProps {
 
 const CandidateTable = ({ candidates }: CandidateTableProps) => {
   const [pageSize, setPageSize] = useState<number>(10);
-  const [page, setPage] = useState<number>(0);
 
-  useEffect(() => {
-    setPage(0);
-  }, [candidates.length]);
+  return (
+    <PaginatedCandidateTable
+      key={candidates.length}
+      candidates={candidates}
+      pageSize={pageSize}
+      setPageSize={setPageSize}
+    />
+  );
+};
+
+interface PaginatedCandidateTableProps extends CandidateTableProps {
+  pageSize: number;
+  setPageSize: (pageSize: number) => void;
+}
+
+const PaginatedCandidateTable = ({
+  candidates,
+  pageSize,
+  setPageSize,
+}: PaginatedCandidateTableProps) => {
+  const [page, setPage] = useState<number>(0);
 
   const totalCount = candidates.length;
   const startIndex = page * pageSize;

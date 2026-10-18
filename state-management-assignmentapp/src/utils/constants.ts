@@ -16,6 +16,7 @@ export const APP_CONSTANTS = {
   logout: "Log out",
   preAdverseActionDescription: "Review pre-adverse action",
   outOf: "of",
+  emptyValue: "-",
   rowsPerPage: "Rows per page:",
   rowsPerPageOptions: [10, 25, 50] as const,
   adverseActionsTab: "Adverse Actions",
@@ -59,3 +60,15 @@ export const APP_CONSTANTS = {
   searchLabel: "SEARCH",
   statusLabel: "STATUS",
 } as const;
+
+export const SIDEBAR_NAV_ITEMS = [
+  { key: "home", name: APP_CONSTANTS.home, path: APP_CONSTANTS.routes.candidates },
+  { key: "candidates", name: APP_CONSTANTS.candidates, path: APP_CONSTANTS.routes.candidates },
+  { key: "adverseActions", name: APP_CONSTANTS.adverseActions, path: null },
+  { key: "logs", name: APP_CONSTANTS.logs, path: null },
+  { key: "analytics", name: APP_CONSTANTS.analytics, path: null },
+  { key: "account", name: APP_CONSTANTS.account, path: null },
+  { key: "screenings", name: APP_CONSTANTS.screenings, path: null },
+] as const;
+
+export type SidebarNavKey = (typeof SIDEBAR_NAV_ITEMS)[number]["key"];

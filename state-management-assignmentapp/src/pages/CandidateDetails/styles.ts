@@ -4,6 +4,7 @@ export const styles: Record<string, SxProps<Theme>> = {
   page: { display: "flex", width: "100%", minHeight: "100vh", bgcolor: "background.default" },
   main: { flex: 1, minWidth: 0, minHeight: "100vh", overflowY: "auto", display: "flex", flexDirection: "column" },
   header: { justifyContent: "space-between", alignItems: { xs: "stretch", sm: "center" }, gap: 2, px: { xs: 2, md: 4 }, py: 2.5, bgcolor: "background.paper", borderBottom: 1, borderColor: "divider" },
+  headerLeft: { alignItems: "center" },
   headerActions: { flexWrap: "wrap", justifyContent: { xs: "flex-start", sm: "flex-end" } },
   backIcon: { color: "text.secondary" },
   title: { color: "text.primary" },

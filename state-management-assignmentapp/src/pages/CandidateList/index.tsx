@@ -22,9 +22,9 @@ import ExportIcon from "@mui/icons-material/FileUploadOutlined";
 import AddIcon from "@mui/icons-material/Add";
 
 import Sidebar from "../../components/organisms/Sidebar";
-import CandidateTable from "../../components/molecules/CandidateTable";
+import CandidateTable from "../../components/organisms/CandidateTable";
 import type { Candidate } from "../../data/models/Candidate";
-import { APP_CONSTANTS } from "../../data/constants";
+import { APP_CONSTANTS } from "../../utils/constants";
 import { styles } from "./styles";
 
 type CandidateStatus =
@@ -36,7 +36,7 @@ interface CandidateListProps {
 }
 
 const CandidateList = ({ candidates }: CandidateListProps) => {
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState<string>("");
   const [filterAnchorEl, setFilterAnchorEl] =
     useState<HTMLButtonElement | null>(null);
 
@@ -146,13 +146,15 @@ const CandidateList = ({ candidates }: CandidateListProps) => {
                 size="small"
                 type="search"
                 label={APP_CONSTANTS.searchCandidates}
-                inputProps={{ "aria-label": APP_CONSTANTS.searchCandidates }}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <SearchIcon color="action" />
-                    </InputAdornment>
-                  ),
+                slotProps={{
+                  htmlInput: { "aria-label": APP_CONSTANTS.searchCandidates },
+                  input: {
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <SearchIcon color="action" />
+                      </InputAdornment>
+                    ),
+                  },
                 }}
                 sx={styles.searchField}
                 value={search}

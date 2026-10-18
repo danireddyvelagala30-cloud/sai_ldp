@@ -7,7 +7,11 @@ export const styles: Record<string, SxProps<Theme>> = {
     gap: 2,
     mb: 2,
   },
-  actions: { flexWrap: "wrap", justifyContent: { xs: "flex-start", sm: "flex-end" } },
+  actions: {
+    alignItems: "center",
+    flexWrap: "wrap",
+    justifyContent: { xs: "flex-start", sm: "flex-end" },
+  },
   search: { width: { xs: "100%", sm: 280 } },
   avatar: {
     width: 36,

@@ -3,10 +3,10 @@ import { Box, Stack, Typography } from "@mui/material";
 
 import Sidebar from "../../components/organisms/Sidebar";
 import Header from "../../components/organisms/Header";
-import CandidateTable from "../../components/molecules/CandidateTable";
+import CandidateTable from "../../components/organisms/CandidateTable";
 
 import { CandidateContext } from "../../context/CandidateContext";
-import { APP_CONSTANTS } from "../../data/constants";
+import { APP_CONSTANTS } from "../../utils/constants";
 import { styles } from "./styles";
 
 const CandidatesPage = () => {

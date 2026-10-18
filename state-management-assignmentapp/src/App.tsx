@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import CandidateList from "./pages/CandidateList";
 import CandidateDetails from "./pages/CandidateDetails";
 import { candidates as initialCandidates } from "./data/candidates";
-import { APP_CONSTANTS } from "./data/constants";
+import { APP_CONSTANTS } from "./utils/constants";
 
 function App() {
   const [candidates, setCandidates] = useState(initialCandidates);

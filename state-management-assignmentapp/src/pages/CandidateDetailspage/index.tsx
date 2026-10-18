@@ -4,7 +4,7 @@ import { Box, Button, Typography } from "@mui/material";
 
 import CandidateDetailsCard from "../../components/organisms/CandidateDetailsCard";
 import { CandidateContext } from "../../context/CandidateContext";
-import { APP_CONSTANTS } from "../../data/constants";
+import { APP_CONSTANTS } from "../../utils/constants";
 import { styles } from "./styles";
 
 const CandidateDetailsPage = () => {

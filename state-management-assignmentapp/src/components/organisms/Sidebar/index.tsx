@@ -20,8 +20,13 @@ import {
   FactCheckOutlined as ScreeningsIcon,
   LogoutOutlined as LogoutIcon,
 } from "@mui/icons-material";
+import type { ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
-import { APP_CONSTANTS } from "../../../data/constants";
+import {
+  APP_CONSTANTS,
+  SIDEBAR_NAV_ITEMS,
+  type SidebarNavKey,
+} from "../../../utils/constants";
 import { styles } from "./styles";
 
 interface SidebarProps {
@@ -29,20 +34,20 @@ interface SidebarProps {
   onSelectItem?: (item: string) => void;
 }
 
-const navItems = [
-  { name: APP_CONSTANTS.home, icon: HomeIcon, path: "/" },
-  { name: APP_CONSTANTS.candidates, icon: CandidatesIcon, path: APP_CONSTANTS.routes.candidates },
-  { name: APP_CONSTANTS.adverseActions, icon: AdverseActionsIcon },
-  { name: APP_CONSTANTS.logs, icon: LogsIcon },
-  { name: APP_CONSTANTS.analytics, icon: AnalyticsIcon },
-  { name: APP_CONSTANTS.account, icon: AccountIcon },
-  { name: APP_CONSTANTS.screenings, icon: ScreeningsIcon },
-];
+const navigationIcons: Record<SidebarNavKey, ReactNode> = {
+  home: <HomeIcon fontSize="small" />,
+  candidates: <CandidatesIcon fontSize="small" />,
+  adverseActions: <AdverseActionsIcon fontSize="small" />,
+  logs: <LogsIcon fontSize="small" />,
+  analytics: <AnalyticsIcon fontSize="small" />,
+  account: <AccountIcon fontSize="small" />,
+  screenings: <ScreeningsIcon fontSize="small" />,
+};
 
 const Sidebar = ({ activeItem = APP_CONSTANTS.candidates, onSelectItem }: SidebarProps) => {
   const navigate = useNavigate();
 
-  const handleItemClick = (item: typeof navItems[0]) => {
+  const handleItemClick = (item: (typeof SIDEBAR_NAV_ITEMS)[number]) => {
     if (onSelectItem) {
       onSelectItem(item.name);
     }
@@ -59,8 +64,7 @@ const Sidebar = ({ activeItem = APP_CONSTANTS.candidates, onSelectItem }: Sideba
         </Typography>
 
         <List disablePadding sx={styles.navList}>
-          {navItems.map((item) => {
-            const Icon = item.icon;
+          {SIDEBAR_NAV_ITEMS.map((item) => {
             const isActive = activeItem === item.name;
 
             return (
@@ -71,15 +75,17 @@ const Sidebar = ({ activeItem = APP_CONSTANTS.candidates, onSelectItem }: Sideba
                 aria-current={isActive ? "page" : undefined}
                 sx={styles.navItem}
               >
-                <ListItemIcon sx={styles.navIcon}><Icon fontSize="small" /></ListItemIcon>
-                <ListItemText primary={item.name} primaryTypographyProps={{ variant: "body2" }} />
+                <ListItemIcon sx={styles.navIcon}>{navigationIcons[item.key]}</ListItemIcon>
+                <ListItemText
+                  primary={<Typography variant="body2">{item.name}</Typography>}
+                />
               </ListItemButton>
             );
           })}
         </List>
       </Stack>
 
-      <Stack direction="row" spacing={1.5} alignItems="center" sx={styles.profile}>
+      <Stack direction="row" spacing={1.5} sx={styles.profile}>
           <Avatar
             src={APP_CONSTANTS.profileAvatarUrl}
             alt={APP_CONSTANTS.profileAvatarAlt}
@@ -88,7 +94,9 @@ const Sidebar = ({ activeItem = APP_CONSTANTS.candidates, onSelectItem }: Sideba
             {APP_CONSTANTS.profileInitials}
           </Avatar>
           <Stack sx={styles.profileInfo}>
-            <Typography variant="body2" fontWeight={600}>{APP_CONSTANTS.profileName}</Typography>
+            <Typography variant="body2" sx={styles.profileName}>
+              {APP_CONSTANTS.profileName}
+            </Typography>
             <Typography variant="caption" color="text.secondary">{APP_CONSTANTS.profileSubtitle}</Typography>
           </Stack>
           <Tooltip title={APP_CONSTANTS.logout}>

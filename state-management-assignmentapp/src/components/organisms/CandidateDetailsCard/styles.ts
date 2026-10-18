@@ -12,7 +12,10 @@ export const styles: Record<string, SxProps<Theme>> = {
     "&:before": { display: "none" },
   },
   summary: { px: 3, py: 1, minHeight: 56 },
+  summaryTitle: { fontWeight: 600 },
   details: { borderTop: 1, borderColor: "divider", px: 3, py: 2.5, bgcolor: "grey.50" },
+  fieldLabel: { color: "text.secondary", display: "block" },
+  fieldValue: { fontWeight: 600 },
   grid: {
     display: "grid",
     gridTemplateColumns: { xs: "repeat(2, minmax(0, 1fr))", md: "repeat(4, minmax(0, 1fr))" },

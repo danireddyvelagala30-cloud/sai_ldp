@@ -2,7 +2,7 @@ import { Link as RouterLink } from "react-router-dom";
 import { Link, TableCell, TableRow, Typography } from "@mui/material";
 
 import type { Candidate } from "../../../data/models/Candidate";
-import { APP_CONSTANTS } from "../../../data/constants";
+import { APP_CONSTANTS } from "../../../utils/constants";
 import Chip from "../../atoms/Chip";
 import { styles } from "./styles";
 
@@ -38,10 +38,9 @@ const CandidateRow = ({ candidate }: CandidateRowProps) => {
             color={isEngaged ? "success" : "default"}
             size="small"
             variant="outlined"
-            sx={isEngaged ? styles.engagedChip : styles.neutralChip}
           />
         ) : (
-          <Typography color="text.secondary">-</Typography>
+          <Typography color="text.secondary">{APP_CONSTANTS.emptyValue}</Typography>
         )}
       </TableCell>
 

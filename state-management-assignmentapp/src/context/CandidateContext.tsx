@@ -1,7 +1,7 @@
 import React, { createContext, useState } from "react";
 import type { Candidate } from "../data/models/Candidate";
 import { candidates } from "../data/candidates";
-import { APP_CONSTANTS } from "../data/constants";
+import { APP_CONSTANTS } from "../utils/constants";
 
 interface CandidateContextValue {
   candidateList: Candidate[];

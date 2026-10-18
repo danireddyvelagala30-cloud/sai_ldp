@@ -2,7 +2,7 @@ import { Avatar, Box, Stack, Typography } from "@mui/material";
 
 import SearchInput from "../../atoms/SearchInput";
 import Button from "../../atoms/Button";
-import { APP_CONSTANTS } from "../../../data/constants";
+import { APP_CONSTANTS } from "../../../utils/constants";
 import { styles } from "./styles";
 
 interface HeaderProps {
@@ -17,7 +17,7 @@ const Header = ({ search, setSearch }: HeaderProps) => {
         {APP_CONSTANTS.candidates}
       </Typography>
 
-      <Stack direction="row" spacing={1.5} alignItems="center" sx={styles.actions}>
+      <Stack direction="row" spacing={1.5} sx={styles.actions}>
         <Box sx={styles.search}>
           <SearchInput value={search} onChange={setSearch} />
         </Box>
