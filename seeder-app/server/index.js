@@ -23,13 +23,13 @@ app.get('/api/health', (req, res) => {
 });
 
 const server = app.listen(PORT, () => {
-  console.log(`🚀 Backend Mock Server running on http://localhost:${PORT}`);
-  console.log(`📋 GET Contracts API: http://localhost:${PORT}/api/contracts`);
+  console.log(` Backend Mock Server running on http://localhost:${PORT}`);
+  console.log(` GET Contracts API: http://localhost:${PORT}/api/contracts`);
 });
 
 server.on('error', (err) => {
   if (err.code === 'EADDRINUSE') {
-    console.error(`⚠️ Port ${PORT} is already in use by another process.`);
+    console.error(` Port ${PORT} is already in use by another process.`);
   } else {
     console.error('Server error:', err);
   }
