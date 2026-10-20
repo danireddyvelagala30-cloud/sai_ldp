@@ -1,0 +1,43 @@
+import type { SxProps, Theme } from "@mui/material/styles";
+
+export const styles: Record<string, SxProps<Theme>> = {
+  root: {
+    width: 238,
+    minWidth: 238,
+    minHeight: { xs: "auto", md: "calc(100vh - 48px)" },
+    m: { xs: 1, md: 3 },
+    bgcolor: "background.paper",
+    border: 1,
+    borderColor: "divider",
+    borderRadius: 1,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    overflow: "hidden",
+    flexShrink: 0,
+  },
+  top: { p: 3, gap: 2 },
+  logo: { color: "primary.dark", fontWeight: 800, mb: 1 },
+  navList: { display: "grid", gap: 0.5 },
+  navItem: {
+    minHeight: 44,
+    borderRadius: 1,
+    color: "text.secondary",
+    "& .MuiListItemIcon-root": { minWidth: 36, color: "inherit" },
+    "&.Mui-selected": { bgcolor: "primary.light", color: "primary.main", fontWeight: 600 },
+    "&.Mui-selected:hover": { bgcolor: "primary.light" },
+  },
+  navIcon: { minWidth: 36, color: "inherit" },
+  profile: {
+    alignItems: "center",
+    p: 2,
+    borderTop: 1,
+    borderColor: "divider",
+    bgcolor: "background.paper",
+  },
+  avatar: { width: 38, height: 38, objectFit: "cover" },
+  profileInfo: { minWidth: 0, flex: 1 },
+  profileName: { fontWeight: 600 },
+  profileSubtitle: { color: "text.secondary" },
+  logout: { color: "text.secondary", flexShrink: 0 },
+};
