@@ -1,4 +1,4 @@
-package com.assignment.product.controller;
+package com.assignment.product.exception;
 
 import jakarta.persistence.EntityNotFoundException;
 import java.util.Map;

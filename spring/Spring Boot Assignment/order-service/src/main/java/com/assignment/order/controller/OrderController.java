@@ -1,6 +1,8 @@
 package com.assignment.order.controller;
 
 import com.assignment.order.dto.OrderRequest;
+import com.assignment.order.dto.ProductRequestDto;
+import com.assignment.order.dto.ProductResponse;
 import com.assignment.order.model.CustomerOrder;
 import com.assignment.order.service.OrderService;
 import jakarta.validation.Valid;
@@ -55,6 +57,38 @@ public class OrderController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         orderService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/{id}/product")
+    public ProductResponse getProductForOrder(@PathVariable Long id) {
+        return orderService.getProductForOrder(id);
+    }
+
+    @GetMapping("/products")
+    public List<ProductResponse> getAllProducts() {
+        return orderService.getAllProductsFromProductService();
+    }
+
+    @GetMapping("/products/{productId}")
+    public ProductResponse getProductById(@PathVariable Long productId) {
+        return orderService.getProductFromProductService(productId);
+    }
+
+    @PostMapping("/products")
+    public ResponseEntity<ProductResponse> createProduct(@Valid @RequestBody ProductRequestDto request) {
+        ProductResponse product = orderService.createProductInProductService(request);
+        return ResponseEntity.ok(product);
+    }
+
+    @PutMapping("/products/{productId}")
+    public ProductResponse updateProduct(@PathVariable Long productId, @Valid @RequestBody ProductRequestDto request) {
+        return orderService.updateProductInProductService(productId, request);
+    }
+
+    @DeleteMapping("/products/{productId}")
+    public ResponseEntity<Void> deleteProduct(@PathVariable Long productId) {
+        orderService.deleteProductInProductService(productId);
         return ResponseEntity.noContent().build();
     }
 }
