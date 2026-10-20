@@ -60,3 +60,11 @@ export const Outline: Story = {
     variant: "outline",
   },
 };
+
+export const Subtle: Story = {
+  args: {
+    label: "Subtle Tag",
+    variant: "subtle",
+  },
+};
+

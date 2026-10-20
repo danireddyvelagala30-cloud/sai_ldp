@@ -1,32 +1,25 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import Text from "./Typography";
+import Typography from "./Typography";
 
-const meta: Meta<typeof Text> = {
-  title: "Atoms/Text",
-  component: Text,
-
+const meta: Meta<typeof Typography> = {
+  title: "Atoms/Typography",
+  component: Typography,
+  parameters: {
+    backgrounds: {
+      default: "dark",
+      values: [{ name: "dark", value: "#19181C" }],
+    },
+  },
   argTypes: {
     text: {
       control: "text",
     },
-
-    color: {
-      control: "color",
+    variant: {
+      control: "select",
+      options: ["muted", "white", "light", "primary"],
     },
-
-    fontSize: {
-      control: {
-        type: "number",
-        min: 12,
-        max: 40,
-        step: 2,
-      },
-    },
-
     fontWeight: {
-      control: {
-        type: "select",
-      },
+      control: "select",
       options: ["normal", "bold", "lighter"],
     },
   },
@@ -34,22 +27,46 @@ const meta: Meta<typeof Text> = {
 
 export default meta;
 
-type Story = StoryObj<typeof Text>;
+type Story = StoryObj<typeof Typography>;
 
 export const Default: Story = {
   args: {
-    text: "Hello Storybook",
-    color: "#000000",
-    fontSize: 18,
-    fontWeight: "normal",
+    text: "Seeder Design System - Atoms",
+    variant: "white",
+    fontWeight: "bold",
   },
 };
 
 export const Heading: Story = {
   args: {
-    text: "Candidate Information",
-    color: "#2952FF",
-    fontSize: 28,
+    text: "Review Your Credit",
+    variant: "white",
     fontWeight: "bold",
   },
 };
+
+export const Primary: Story = {
+  args: {
+    text: "$350,000.00 selected of",
+    variant: "primary",
+    fontWeight: "bold",
+  },
+};
+
+export const Muted: Story = {
+  args: {
+    text: "Slide to autoselect",
+    variant: "muted",
+    fontWeight: "normal",
+  },
+};
+
+export const Light: Story = {
+  args: {
+    text: "Contract 1",
+    variant: "light",
+    fontWeight: "bold",
+  },
+};
+
+

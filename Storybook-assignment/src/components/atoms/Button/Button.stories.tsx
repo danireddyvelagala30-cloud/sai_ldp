@@ -50,6 +50,14 @@ export const Primary: Story = {
   },
 };
 
+export const Secondary: Story = {
+  args: {
+    label: "Secondary Action",
+    variant: "secondary",
+  },
+};
+
+
 export const BackButton: Story = {
   args: {
     label: "Back",

@@ -15,8 +15,6 @@ const Text: React.FC<TextProps> = ({
   children,
   variant,
   fontWeight = "normal",
-  fontSize,
-  color,
   className = "",
 }) => {
   const classes = [
@@ -28,18 +26,15 @@ const Text: React.FC<TextProps> = ({
     .filter(Boolean)
     .join(" ");
 
-  const dynamicStyle: React.CSSProperties = {};
-  if (color) dynamicStyle.color = color;
-  if (fontSize) dynamicStyle.fontSize = `${fontSize}px`;
-
   return (
-    <span
-      className={classes}
-      style={Object.keys(dynamicStyle).length > 0 ? dynamicStyle : undefined}
-    >
+    <span className={classes}>
       {text || children}
     </span>
   );
 };
 
-export default Text;
+export type TypographyProps = TextProps;
+export const Typography = Text;
+export { Text };
+export default Typography;
+

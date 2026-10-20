@@ -83,3 +83,20 @@ export const Lightning: Story = {
     color: "#A5A5B2",
   },
 };
+
+export const ChevronDown: Story = {
+  args: {
+    name: "chevron-down",
+    size: 20,
+    color: "#A5A5B2",
+  },
+};
+
+export const Check: Story = {
+  args: {
+    name: "check",
+    size: 20,
+    color: "#6C5DD3",
+  },
+};
+

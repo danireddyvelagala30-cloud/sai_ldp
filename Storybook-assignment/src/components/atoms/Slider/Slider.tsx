@@ -22,17 +22,12 @@ const Slider: React.FC<SliderProps> = ({
   ariaLabel = "Slider",
   className = "",
 }) => {
-  const percentage = Math.min(
-    100,
-    Math.max(0, ((value - min) / (max - min || 1)) * 100)
-  );
-
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     onChange?.(Number(e.target.value));
   };
 
   return (
-    <div className={`atom-slider-container ${className}`}>
+    <div className={`atom-slider-container ${className}`.trim()}>
       <input
         type="range"
         min={min}
@@ -43,9 +38,6 @@ const Slider: React.FC<SliderProps> = ({
         onChange={handleChange}
         aria-label={ariaLabel}
         className="atom-slider"
-        style={{
-          background: `linear-gradient(to right, #6C5DD3 0%, #6C5DD3 ${percentage}%, #33323B ${percentage}%, #33323B 100%)`,
-        }}
       />
     </div>
   );

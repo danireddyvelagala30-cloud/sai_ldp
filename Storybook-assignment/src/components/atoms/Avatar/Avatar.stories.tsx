@@ -28,9 +28,6 @@ const meta: Meta<typeof Avatar> = {
     fallback: {
       control: "text",
     },
-    showDropdown: {
-      control: "boolean",
-    },
     onClick: {
       action: "clicked",
     },
@@ -46,7 +43,6 @@ export const Default: Story = {
     src: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80",
     alt: "User",
     size: "medium",
-    showDropdown: true,
   },
 };
 
@@ -54,9 +50,10 @@ export const FallbackText: Story = {
   args: {
     fallback: "SK",
     size: "medium",
-    showDropdown: true,
   },
 };
+
+
 
 export const Small: Story = {
   args: {
@@ -71,3 +68,12 @@ export const Large: Story = {
     size: "large",
   },
 };
+
+export const Rounded: Story = {
+  args: {
+    src: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80",
+    size: "medium",
+    shape: "rounded",
+  },
+};
+
