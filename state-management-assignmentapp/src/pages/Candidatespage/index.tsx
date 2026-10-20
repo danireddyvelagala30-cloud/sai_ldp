@@ -11,7 +11,7 @@ import { styles } from "./styles";
 
 const CandidatesPage = () => {
   const { candidateList } = useContext(CandidateContext);
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState<string>("");
 
   const filteredCandidates = candidateList.filter((candidate) =>
     candidate.name.toLowerCase().includes(search.toLowerCase())
@@ -23,7 +23,7 @@ const CandidatesPage = () => {
 
       <Stack sx={styles.main}>
         <Header search={search} setSearch={setSearch} />
-        <Typography color="text.secondary" sx={styles.count}>
+        <Typography sx={styles.count}>
           {APP_CONSTANTS.totalCandidates}: {filteredCandidates.length}
         </Typography>
         <CandidateTable candidates={filteredCandidates} />

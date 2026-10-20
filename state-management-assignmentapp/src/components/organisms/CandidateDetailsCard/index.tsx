@@ -48,7 +48,7 @@ const CandidateDetailsCard = ({
         {children ?? (candidate ? (
           <Box sx={styles.grid}>
             {APP_CONSTANTS.candidateDetailFields.map(({ field, label }) => (
-              <Box key={field}>
+              <Box key={field} sx={styles.fieldBox}>
                 <Typography variant="caption" sx={styles.fieldLabel}>
                   {label}
                 </Typography>

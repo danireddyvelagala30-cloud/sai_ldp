@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import {
   Box,
-  Button,
   IconButton,
   Paper,
   Stack,
@@ -18,6 +17,7 @@ import {
 } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
+import Button from "../../components/atoms/Button";
 import Sidebar from "../../components/organisms/Sidebar";
 import CandidateDetailsCard from "../../components/organisms/CandidateDetailsCard";
 import Chip from "../../components/atoms/Chip";
@@ -43,7 +43,9 @@ const CandidateDetails = ({
   if (!candidate) {
     return (
       <Box sx={styles.notFound}>
-        <Typography variant="h5">{APP_CONSTANTS.candidateNotFound}</Typography>
+        <Typography variant="h5" sx={styles.notFoundTitle}>
+          {APP_CONSTANTS.candidateNotFound}
+        </Typography>
         <Button
           variant="outlined"
           onClick={() => navigate(APP_CONSTANTS.routes.candidates)}
@@ -85,6 +87,7 @@ const CandidateDetails = ({
             <Button
               variant="outlined"
               aria-label={APP_CONSTANTS.preAdverseAction}
+              sx={styles.actionButton}
             >
               {APP_CONSTANTS.preAdverseAction}
             </Button>
@@ -92,6 +95,7 @@ const CandidateDetails = ({
               variant="contained"
               disabled={isEngaged}
               onClick={() => engageCandidate(candidate.id)}
+              sx={styles.actionButton}
             >
               {isEngaged ? APP_CONSTANTS.engaged : APP_CONSTANTS.engage}
             </Button>
@@ -110,42 +114,43 @@ const CandidateDetails = ({
               <Tabs value={tabIndex} onChange={(_, newValue) => setTabIndex(newValue)} sx={styles.tabs}>
                 <Tab
                   label={APP_CONSTANTS.adverseActions}
-                  id="adverse-actions-tab"
-                  aria-controls="adverse-actions-panel"
+                  id={APP_CONSTANTS.adverseActionsTabId}
+                  aria-controls={APP_CONSTANTS.adverseActionsPanelId}
+                  sx={styles.tab}
                 />
               </Tabs>
             </Box>
 
             <TableContainer
-              id="adverse-actions-panel"
+              id={APP_CONSTANTS.adverseActionsPanelId}
               role="tabpanel"
-              aria-labelledby="adverse-actions-tab"
+              aria-labelledby={APP_CONSTANTS.adverseActionsTabId}
               component={Paper}
               elevation={0}
               sx={styles.searchTableContainer}
             >
-              <Table aria-labelledby="adverse-actions-tab">
-                <TableHead>
-                  <TableRow>
+              <Table aria-labelledby={APP_CONSTANTS.adverseActionsTabId} sx={styles.searchTable}>
+                <TableHead sx={styles.searchTableHead}>
+                  <TableRow sx={styles.searchHeaderRow}>
                     <TableCell sx={styles.searchHeader}>
-                      {APP_CONSTANTS.searchLabel}
+                      {APP_CONSTANTS.courtSearchHeaders.search}
                     </TableCell>
                     <TableCell sx={styles.statusHeader}>
-                      {APP_CONSTANTS.statusLabel}
+                      {APP_CONSTANTS.courtSearchHeaders.status}
                     </TableCell>
                     <TableCell sx={styles.dateHeader}>
-                      {APP_CONSTANTS.date}
+                      {APP_CONSTANTS.courtSearchHeaders.date}
                     </TableCell>
                   </TableRow>
                 </TableHead>
-                <TableBody>
+                <TableBody sx={styles.searchTableBody}>
                   {candidate.courtSearches && candidate.courtSearches.length > 0 ? (
                     candidate.courtSearches.map((searchItem) => (
-                      <TableRow key={`${searchItem.search}-${searchItem.date}`}>
+                      <TableRow key={`${searchItem.search}-${searchItem.date}`} sx={styles.searchTableRow}>
                         <TableCell sx={styles.searchCell}>
                           {searchItem.search}
                         </TableCell>
-                        <TableCell>
+                        <TableCell sx={styles.statusCell}>
                           <Chip appearance="status" label={searchItem.status} />
                         </TableCell>
                         <TableCell sx={styles.dateCell}>
@@ -154,7 +159,7 @@ const CandidateDetails = ({
                       </TableRow>
                     ))
                   ) : (
-                    <TableRow>
+                    <TableRow sx={styles.emptyRow}>
                       <TableCell colSpan={3} align="center" sx={styles.emptyCell}>
                         {APP_CONSTANTS.noCourtSearches}
                       </TableCell>

@@ -20,6 +20,8 @@ export const styles: Record<string, SxProps<Theme>> = {
   statusHeader: { width: "18%", bgcolor: "grey.50", color: "text.secondary", fontWeight: 600, fontSize: 12, py: 1.25, px: 3 },
   locationHeader: { width: "22%", bgcolor: "grey.50", color: "text.secondary", fontWeight: 600, fontSize: 12, py: 1.25, px: 3 },
   dateHeader: { width: "20%", bgcolor: "grey.50", color: "text.secondary", fontWeight: 600, fontSize: 12, py: 1.25, px: 3 },
+  headerRow: { bgcolor: "grey.50" },
+  emptyRow: {},
   emptyCell: { py: 4, color: "text.secondary" },
   pagination: {
     flexShrink: 0,

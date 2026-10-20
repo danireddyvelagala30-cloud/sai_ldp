@@ -13,7 +13,7 @@ interface HeaderProps {
 const Header = ({ search, setSearch }: HeaderProps) => {
   return (
     <Stack direction={{ xs: "column", sm: "row" }} sx={styles.root}>
-      <Typography variant="h5" component="h1">
+      <Typography variant="h5" component="h1" sx={styles.title}>
         {APP_CONSTANTS.candidates}
       </Typography>
 
@@ -22,8 +22,8 @@ const Header = ({ search, setSearch }: HeaderProps) => {
           <SearchInput value={search} onChange={setSearch} />
         </Box>
 
-        <Button label={APP_CONSTANTS.filters} variant="outlined" />
-        <Button label={APP_CONSTANTS.export} />
+        <Button label={APP_CONSTANTS.filters} variant="outlined" sx={styles.button} />
+        <Button label={APP_CONSTANTS.export} sx={styles.button} />
         <Avatar sx={styles.avatar} aria-label={APP_CONSTANTS.profileAvatarAlt}>
           {APP_CONSTANTS.profileInitial}
         </Avatar>

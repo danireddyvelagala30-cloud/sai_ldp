@@ -1,26 +1,24 @@
 import { useState, useMemo } from "react";
 import {
   Box,
-  Button,
   Popover,
   Checkbox,
   FormControl,
   FormGroup,
   FormControlLabel,
   IconButton,
-  InputAdornment,
   Paper,
   Stack,
-  TextField,
   Typography,
   Tooltip,
 } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
 import FilterIcon from "@mui/icons-material/FilterList";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import ExportIcon from "@mui/icons-material/FileUploadOutlined";
 import AddIcon from "@mui/icons-material/Add";
 
+import Button from "../../components/atoms/Button";
+import SearchInput from "../../components/atoms/SearchInput";
 import Sidebar from "../../components/organisms/Sidebar";
 import CandidateTable from "../../components/organisms/CandidateTable";
 import type { Candidate } from "../../data/models/Candidate";
@@ -142,23 +140,12 @@ const CandidateList = ({ candidates }: CandidateListProps) => {
             </Typography>
 
             <Stack direction="row" spacing={1.5} sx={styles.toolbarControls}>
-              <TextField
-                size="small"
-                type="search"
-                label={APP_CONSTANTS.searchCandidates}
-                slotProps={{
-                  htmlInput: { "aria-label": APP_CONSTANTS.searchCandidates },
-                  input: {
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <SearchIcon color="action" />
-                      </InputAdornment>
-                    ),
-                  },
-                }}
-                sx={styles.searchField}
+              <SearchInput
                 value={search}
-                onChange={(event) => setSearch(event.target.value)}
+                onChange={setSearch}
+                label={APP_CONSTANTS.searchCandidates}
+                placeholder={APP_CONSTANTS.searchCandidates}
+                sx={styles.searchField}
               />
 
               <Button

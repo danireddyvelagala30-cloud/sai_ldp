@@ -1,30 +1,29 @@
 import { Button as MuiButton } from "@mui/material";
-import { styles } from "./styles";
+import type { ButtonProps as MuiButtonProps } from "@mui/material";
 
-interface ButtonProps {
-  label: string;
-  onClick?: () => void;
-  variant?: "contained" | "outlined";
-  disabled?: boolean;
+export interface ButtonProps extends MuiButtonProps {
+  label?: string;
 }
 
 const Button = ({
   label,
-  onClick,
+  children,
   variant = "contained",
+  color = "primary",
   disabled = false,
+  ...rest
 }: ButtonProps) => {
   return (
     <MuiButton
       variant={variant}
-      color="primary"
+      color={color}
       disabled={disabled}
-      onClick={onClick}
-      sx={styles.root}
+      {...rest}
     >
-      {label}
+      {label ?? children}
     </MuiButton>
   );
 };
 
 export default Button;
+

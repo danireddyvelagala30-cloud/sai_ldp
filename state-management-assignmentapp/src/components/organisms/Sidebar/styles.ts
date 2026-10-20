@@ -38,5 +38,6 @@ export const styles: Record<string, SxProps<Theme>> = {
   avatar: { width: 38, height: 38, objectFit: "cover" },
   profileInfo: { minWidth: 0, flex: 1 },
   profileName: { fontWeight: 600 },
+  profileSubtitle: { color: "text.secondary" },
   logout: { color: "text.secondary", flexShrink: 0 },
 };

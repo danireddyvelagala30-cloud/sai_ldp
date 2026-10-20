@@ -20,6 +20,8 @@ export const APP_CONSTANTS = {
   rowsPerPage: "Rows per page:",
   rowsPerPageOptions: [10, 25, 50] as const,
   adverseActionsTab: "Adverse Actions",
+  adverseActionsTabId: "adverse-actions-tab",
+  adverseActionsPanelId: "adverse-actions-panel",
   candidateStatusClear: "CLEAR",
   candidateStatusConsider: "CONSIDER",
   candidateAdjudicationEngage: "ENGAGE",
@@ -59,6 +61,23 @@ export const APP_CONSTANTS = {
   screenings: "Screenings",
   searchLabel: "SEARCH",
   statusLabel: "STATUS",
+  tableHeaders: {
+    name: "NAME",
+    adjudication: "ADJUDICATION",
+    status: "STATUS",
+    location: "LOCATION",
+    date: "DATE",
+  },
+  tableNameHeader: "NAME",
+  tableAdjudicationHeader: "ADJUDICATION",
+  tableStatusHeader: "STATUS",
+  tableLocationHeader: "LOCATION",
+  tableDateHeader: "DATE",
+  courtSearchHeaders: {
+    search: "SEARCH",
+    status: "STATUS",
+    date: "DATE",
+  },
 } as const;
 
 export const SIDEBAR_NAV_ITEMS = [

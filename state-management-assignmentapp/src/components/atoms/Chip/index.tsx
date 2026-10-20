@@ -1,9 +1,8 @@
 import { Chip as MuiChip } from "@mui/material";
 import type { ChipProps as MuiChipProps } from "@mui/material";
 import { APP_CONSTANTS } from "../../../utils/constants";
-import { styles } from "./styles";
 
-interface ChipProps extends Pick<MuiChipProps, "color" | "size" | "variant"> {
+export interface ChipProps extends Omit<MuiChipProps, "label"> {
   label: string;
   appearance?: "default" | "status";
 }
@@ -14,6 +13,7 @@ const Chip = ({
   color = "primary",
   size = "small",
   variant,
+  ...rest
 }: ChipProps) => {
   if (!label) return null;
 
@@ -26,9 +26,10 @@ const Chip = ({
       size={size}
       color={isStatus ? (isClear ? "success" : "warning") : color}
       variant={variant ?? (isStatus ? "filled" : "outlined")}
-      sx={isStatus ? styles.status : styles.root}
+      {...rest}
     />
   );
 };
 
 export default Chip;
+

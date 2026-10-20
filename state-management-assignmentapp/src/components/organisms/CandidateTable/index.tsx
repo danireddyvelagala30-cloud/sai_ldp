@@ -55,27 +55,27 @@ const PaginatedCandidateTable = ({
       <TableContainer component={Paper} elevation={0} sx={styles.container}>
         <Table stickyHeader sx={styles.table}>
           <TableHead>
-            <TableRow>
+            <TableRow sx={styles.headerRow}>
               <TableCell sx={styles.nameHeader}>
-                {APP_CONSTANTS.name.toUpperCase()}
+                {APP_CONSTANTS.tableHeaders.name}
               </TableCell>
               <TableCell sx={styles.adjudicationHeader}>
-                {APP_CONSTANTS.adjudication.toUpperCase()}
+                {APP_CONSTANTS.tableHeaders.adjudication}
               </TableCell>
               <TableCell sx={styles.statusHeader}>
-                {APP_CONSTANTS.status.toUpperCase()}
+                {APP_CONSTANTS.tableHeaders.status}
               </TableCell>
               <TableCell sx={styles.locationHeader}>
-                {APP_CONSTANTS.location.toUpperCase()}
+                {APP_CONSTANTS.tableHeaders.location}
               </TableCell>
               <TableCell sx={styles.dateHeader}>
-                {APP_CONSTANTS.date.toUpperCase()}
+                {APP_CONSTANTS.tableHeaders.date}
               </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {candidates.length === 0 ? (
-              <TableRow>
+              <TableRow sx={styles.emptyRow}>
                 <TableCell colSpan={5} align="center" sx={styles.emptyCell}>
                   {APP_CONSTANTS.noCandidatesFound}
                 </TableCell>

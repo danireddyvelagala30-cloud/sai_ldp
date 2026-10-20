@@ -7,6 +7,8 @@ export const styles: Record<string, SxProps<Theme>> = {
     gap: 2,
     mb: 2,
   },
+  title: { fontWeight: 600 },
+  button: { minHeight: 40 },
   actions: {
     alignItems: "center",
     flexWrap: "wrap",

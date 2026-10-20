@@ -13,4 +13,5 @@ export const styles: Record<string, SxProps<Theme>> = {
   link: { fontWeight: 500, color: "primary.main" },
   engagedChip: { bgcolor: "success.light", color: "success.dark", borderColor: "success.light" },
   neutralChip: { bgcolor: "grey.50", color: "text.secondary", borderColor: "divider" },
+  emptyTypography: { color: "text.secondary" },
 };

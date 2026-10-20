@@ -38,9 +38,10 @@ const CandidateRow = ({ candidate }: CandidateRowProps) => {
             color={isEngaged ? "success" : "default"}
             size="small"
             variant="outlined"
+            sx={isEngaged ? styles.engagedChip : styles.neutralChip}
           />
         ) : (
-          <Typography color="text.secondary">{APP_CONSTANTS.emptyValue}</Typography>
+          <Typography sx={styles.emptyTypography}>{APP_CONSTANTS.emptyValue}</Typography>
         )}
       </TableCell>
 

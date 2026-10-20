@@ -21,4 +21,5 @@ export const styles: Record<string, SxProps<Theme>> = {
     gridTemplateColumns: { xs: "repeat(2, minmax(0, 1fr))", md: "repeat(4, minmax(0, 1fr))" },
     gap: 2,
   },
+  fieldBox: { display: "flex", flexDirection: "column" },
 };

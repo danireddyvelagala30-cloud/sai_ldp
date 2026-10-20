@@ -97,7 +97,7 @@ const Sidebar = ({ activeItem = APP_CONSTANTS.candidates, onSelectItem }: Sideba
             <Typography variant="body2" sx={styles.profileName}>
               {APP_CONSTANTS.profileName}
             </Typography>
-            <Typography variant="caption" color="text.secondary">{APP_CONSTANTS.profileSubtitle}</Typography>
+            <Typography variant="caption" sx={styles.profileSubtitle}>{APP_CONSTANTS.profileSubtitle}</Typography>
           </Stack>
           <Tooltip title={APP_CONSTANTS.logout}>
             <IconButton size="small" aria-label={APP_CONSTANTS.logout} sx={styles.logout}>
